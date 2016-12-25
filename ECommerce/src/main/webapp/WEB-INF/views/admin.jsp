@@ -6,6 +6,11 @@
 	<title>Admin page</title>
 </head>
 <body>
+<nav>
+ <ol>
+ <li>
+ </ol>
+</nav>
 	Dear <strong>${user}</strong>, Welcome to Admin Page.
 	<a href="<c:url value="/logout" />">Logout</a>
 </body>

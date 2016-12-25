@@ -1,44 +1,66 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registration</title>
+<title>Register</title>
+<link href="<c:url value=' ../static/css/bootstrap.css' />"  rel="stylesheet" type="text/css" media="all" />
+
+<link href="<c:url value=' ../static/css/style.css' />" rel="stylesheet" type="text/css" media="all" />	
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 </head>
 <body>
-    <div align="center">
-        <form:form action="register" method="post" commandName="adduser">
-            <table border="1">
-                <tr>
-                    <td colspan="2" align="center"><h2>Registration</h2></td>
-                </tr>
-                <tr>
-                    <td>User Name:</td>
-                    <td><input type="text" name="username" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input  type="password" name="password" /></td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td><input  type="email" name="email" /></td>
-                </tr>
-                <tr>
-                    <td>Mobile No:</td>
-                    <td><input  type="tel" name="mobile"  maxlength="10" min="10"/></td>
-                </tr>
-                <tr>
-                    <td>Address:</td>
-                    <td><input  type="text" name="address" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center"><input type="submit" value="register" /></td>
-                </tr>
-            </table>
-        </form:form>
-    </div>
+	<!-- grow -->
+	<div class="grow">
+		<div class="container">
+			<h2>Register</h2>
+		</div>
+	</div>
+	<!-- grow -->
+<!--content-->
+<div class="container">
+<div class="register">
+		  	  <form:form action="register" method="post" commandName="adduser"> 
+				 <div class="col-md-6 register-top-grid">
+					<h3>Personal infomation</h3>
+					 <div>
+						<span>Name</span>
+						<input type="text" name="name"> 
+					 </div>
+					 <div>
+						<span>Email</span>
+						<input type="email" name="email"> 
+					 </div>
+					 <div>
+						 <span>Mobile-No</span>
+						 <input type="number" maxlength="10" min="10"> 
+					 </div>
+					  <!--  <a class="news-letter" href="#">
+						 <label class="checkbox"><input type="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+					   </a> -->
+					 </div>
+				     <div class="col-md-6 register-bottom-grid">
+						    <h3>Login information</h3>
+							 <div>
+								<span>Username</span>
+								<input type="text" name="username">
+							 </div>
+							 <div>
+								<span>Password</span>
+								<input type="password" name="password">
+							 </div>
+							 <input type="submit" value="submit">
+							
+					 </div>
+					 <div class="clearfix"> </div>
+				</form:form>
+			</div>
+</div>
 </body>
 </html>
+			

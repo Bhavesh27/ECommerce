@@ -22,9 +22,19 @@ public class User implements Serializable{
 	private String password;
     @Column
     private boolean isActive=true;
-    private String email;
+    @Column
+    //GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int roleId=1;
+    
+    public int getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+	private String email;
     private String mobile;
-    private String address;
+    private String name;
   
 	public String getEmail() {
 		return email;
@@ -38,11 +48,12 @@ public class User implements Serializable{
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getAddress() {
-		return address;
+	
+	public String getName() {
+		return name;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public boolean isActive() {
 		return isActive;

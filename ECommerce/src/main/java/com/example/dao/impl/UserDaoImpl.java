@@ -13,6 +13,13 @@ import com.example.model.User;
 @Transactional
 public class UserDaoImpl implements UserDao {
 	
+	
+	@Override
+	public User removeUser(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -28,6 +35,12 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserByUsername(String username) {
 		return sessionFactory.getCurrentSession().get(User.class, username);
+	}
+	
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().update(user);
 	}
 
 }
