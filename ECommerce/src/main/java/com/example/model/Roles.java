@@ -5,14 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Roles")
 public class Roles implements Serializable {
 
 	private static final long serialVersionUID = -2572916980057280071L;
 	@Id
 	@Column
-	//GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int user_role_id=1;
 	@Column
 	private String role="ROLE_USER";

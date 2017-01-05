@@ -12,10 +12,11 @@ import javax.persistence.Id;
 public class User implements Serializable{
  
 	private static final long serialVersionUID = -1472066795342727103L;
+	
 	@Id
     @Column
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int userid;
+	private int id;
     @Column(unique=true)
 	private String username;
     @Column
@@ -23,8 +24,13 @@ public class User implements Serializable{
     @Column
     private boolean isActive=true;
     @Column
-    //GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int roleId=1;
+    @Column
+    private String email;
+    @Column(name="Mobile_No")
+    private String mobile;
+    @Column(name="Name")
+    private String name;
     
     public int getRoleId() {
 		return roleId;
@@ -32,10 +38,6 @@ public class User implements Serializable{
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
-	private String email;
-    private String mobile;
-    private String name;
-  
 	public String getEmail() {
 		return email;
 	}
@@ -61,11 +63,12 @@ public class User implements Serializable{
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public int getUserid() {
-		return userid;
+	
+	public int getId() {
+		return id;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getUsername() {
 		return username;

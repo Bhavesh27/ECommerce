@@ -5,10 +5,12 @@
 <html>
 <head>
 <title>Login Page</title>
-<link href="<c:url value=' /static/css/bootstrap.css' />" rel="stylesheet" type="text/css" media="all" />
-<link href="<c:url value=' /static/css/style.css' />" rel="stylesheet" type="text/css" media="all" />	
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css" media="all" />
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet"  type="text/css" media="all" />
+<link href="/static/css/style.css"  rel="stylesheet" type"text/css" media="all" />	
+
 </head>
 <body>
 <c:import url="header.jsp" />

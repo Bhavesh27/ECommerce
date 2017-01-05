@@ -1,19 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
    
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href='<c:url value=' /static/css/bootstrap.css' />'  rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" />
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet" />
 	
-	<style type="text/css">
-		body {
-			min-height: 2000px;
-			padding-top: 0px;
-		}
-	</style>
   </head>
   <body>
     <header>

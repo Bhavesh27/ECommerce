@@ -1,7 +1,11 @@
 
 package com.example.dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,34 +17,41 @@ import com.example.model.User;
 @Transactional
 public class UserDaoImpl implements UserDao {
 	
-	
-	@Override
-	public User removeUser(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Autowired
-	private SessionFactory sessionFactory;
+	private SessionFactory session;
 	
-	public void setSessionFactory(SessionFactory sessionFactory){
-		this.sessionFactory = sessionFactory;
-	}
-	
-	@Override
-	public void addUser(User u) {
-		sessionFactory.getCurrentSession().save(u);
-	}
-	
-	@Override
-	public User getUserByUsername(String username) {
-		return sessionFactory.getCurrentSession().get(User.class, username);
-	}
-	
-	@Override
-	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().update(user);
+	public int addUser(User user) {
+		session.getCurrentSession().save(user);
+		int id = user.getId();
+		
+		return id;
 	}
 
+	public User getUser(int userId) {
+		return session.getCurrentSession().get(User.class, userId);
+	}
+
+	public User getUserByEmail(String email) {
+		//return session.getCurrentSession().get(User.class, email);
+		Criteria criteria = session.getCurrentSession().createCriteria(User.class);
+		criteria.add(Restrictions.eq("email", email));
+		User user = (User) criteria.uniqueResult();
+		return user;
+	}
+
+	public void updateUser(User user) {
+		session.getCurrentSession().update(user);
+	}
+
+	public boolean deleteUser(int userId) {
+		session.getCurrentSession().delete(userId);
+		return false;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<User> getAllUsers() {
+		return (List<User>) session.getCurrentSession().createQuery("from User").list();
+	}
+	
+	
 }
