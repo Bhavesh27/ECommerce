@@ -1,5 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
@@ -10,11 +9,12 @@
 
 <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet"  />
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet"   /> 
-<link href="/static/css/style.css" rel="stylesheet"  />	
+<link href="static/css/style.css" rel="stylesheet"  />	
 
 
 </head>
 <body>
+ <%@ include file="header.jsp" %>
 	<!-- grow -->
 	<div class="grow">
 		<div class="container">
@@ -38,7 +38,7 @@
 					 </div>
 					 <div>
 						 <span>Mobile-No</span>
-						 <input type="number" maxlength="10" min="10"> 
+						 <input type="tel" name="mobileno" maxlength="10" min="10"> 
 					 </div>
 					  <!--  <a class="news-letter" href="#">
 						 <label class="checkbox"><input type="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
@@ -61,6 +61,7 @@
 				</form:form>
 			</div>
 </div>
+ <%@ include file="footer.jsp" %>
 </body>
 </html>
 			

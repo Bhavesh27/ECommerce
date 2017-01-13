@@ -8,6 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" />
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 	
   </head>
   <body>
@@ -15,7 +16,7 @@
     <div class="container">
     <div class="row">
       <div class="col-md-4" >
-        <h3>NERDS VILLA</h3>
+        <h3>BOOKS VILLA</h3>
       </div>
       <div class="col-md-6" style="float: left; padding-bottom: 1px">
         <div class="input-group" style="padding-top: 12px" >
@@ -29,7 +30,7 @@
   </div>
 </header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default first" style="background: #333333;">
+    <nav class="navbar navbar-default" >
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -38,11 +39,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">NERDS VILLA</a>
+          <a class="navbar-brand" href="#">BOOKS VILLA</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">

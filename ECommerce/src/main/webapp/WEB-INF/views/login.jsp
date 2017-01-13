@@ -4,13 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Page</title>
-
-
-    <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css" media="all" />
-	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet"  type="text/css" media="all" />
-<link href="/static/css/style.css"  rel="stylesheet" type"text/css" media="all" />	
-
+	<title>Login Page</title>
+    <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css"  />
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet"  type="text/css"  />
+	<link href="static/css/style.css"  rel="stylesheet" type="text/css" />
 </head>
 <body>
 <c:import url="header.jsp" />
@@ -47,7 +44,7 @@
 			<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
 			  <div class="form-actions">
 				<input type="submit" class="btn btn-block btn-primary btn-default" value="Login"><br />
-				 New User 	<a href='<c:url value="/Registration" />'>REGISTER</a>	Here
+			       New User 	<a href='<c:url value="/Registration" />' style="background:#444444;">REGISTER</a>	Here 
 			</div>	
 			</form>
 		
@@ -59,7 +56,6 @@
 	</div>
 
 </div>
-<c:import url="footer.jsp" />
+ <%@ include file="footer.jsp" %>
 </body>
 </html>
-			

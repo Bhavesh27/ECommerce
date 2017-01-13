@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href=" ../../static/css/footer.css" rel="stylesheet" />
+	<link href="static/css/footer.css" rel="stylesheet" />
 </head>
 <body>
 	<footer>
@@ -19,14 +19,14 @@
 		<section>
 			<h3>Connect With Us</h3>
 			<ul class="social">
-				<li><a href="#"><img src="#" /></a></li>
-				<li><a href="#"><img src="#" /></a></li>
-				<li><a href="#"><img src="#" /></a></li>
-				<li><a href="#"><img src="#" /></a></li>
+				<li><a href="www.facebook.com"><img src="static/images/fb.png" /></a></li>
+				<li><a href="www.googleplus.com"><img src="static/images/googleplus.png" /></a></li>
+				<li><a href="www.twitter.com"><img src="static/images/twitter1.png" /></a></li>
+				<li><a href="www.youtube.com"><img src="static/images/youtube1.png" /></a></li>
 			</ul>
 		</section>
 		<section>
-			<img src="#" />
+			<img src="static/images/images.jpg" />
 		</section>
 	</footer>
 	<footer class="second">

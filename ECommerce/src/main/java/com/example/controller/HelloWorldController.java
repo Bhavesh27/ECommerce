@@ -76,6 +76,7 @@ public class HelloWorldController {
 	}
 	
 	/*@RequestMapping(value = "/registrationSuccess", method = RequestMethod.GET)
+
 	public String registrationSuccess(Model model,Principal principal) {
 		
 		String name=principal.getName();

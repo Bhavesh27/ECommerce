@@ -28,7 +28,7 @@ public class User implements Serializable{
     @Column
     private String email;
     @Column(name="Mobile_No")
-    private String mobile;
+    private String mobileno;
     @Column(name="Name")
     private String name;
     
@@ -44,13 +44,12 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getMobile() {
-		return mobile;
+	public String getMobileno() {
+		return mobileno;
 	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
+	public void setMobileno(String mobileno) {
+		this.mobileno = mobileno;
 	}
-	
 	public String getName() {
 		return name;
 	}
