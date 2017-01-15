@@ -9,11 +9,13 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.model.User;
 import com.example.service.MailService;
 
 @Service("mailService")
+@Transactional
 public class MailServiceImpl implements MailService {
 
 	@Autowired

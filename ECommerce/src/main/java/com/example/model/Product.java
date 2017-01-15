@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
+@Table(name="Product")
 @Component
 public class Product implements Serializable {
 	
