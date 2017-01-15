@@ -6,11 +6,12 @@
 <head>
 	<title>Login Page</title>
     <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css"  />
-	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet"  type="text/css"  />
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  type="text/javascript"  />
 	<link href="static/css/style.css"  rel="stylesheet" type="text/css" />
+	
 </head>
 <body>
-<c:import url="header.jsp" />
+<%-- <c:import url="header.jsp" /> --%>
 	<!-- grow -->
 	<div class="grow">
 		<div class="container">
@@ -22,10 +23,10 @@
 		<div class="account-pass">
 		<div class="col-md-8 account-top">
 			<c:url var="loginUrl" value="/login" />
-			<form action="${loginUrl}" method="POST">
+			<form action="${loginUrl}" method="POST" >                      <%--  ${loginUrl} --%>
 				<c:if test="${param.error != null}">
 					<div class="alert alert-danger">
-						<p>Invalid username and password.</p>
+						<p>Invalid UserName and Password.</p>
 					</div>
 				</c:if>
 				<c:if test="${param.logout != null}">
@@ -34,7 +35,7 @@
 					</div>
 				</c:if>
 			<div> 	
-				<span>Username</span>
+				<span>UserName</span>
 				<input type="text" id="username" name="username" placeholder="Enter Username" required> 
 			</div>
 			<div> 
@@ -42,6 +43,7 @@
 				<input type="password" id="password" name="password" placeholder="Enter Password" required>
 			</div>				
 			<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+			<%@ page isELIgnored ="false" %>
 			  <div class="form-actions">
 				<input type="submit" class="btn btn-block btn-primary btn-default" value="Login"><br />
 			       New User 	<a href='<c:url value="/Registration" />' style="background:#444444;">REGISTER</a>	Here 
@@ -56,6 +58,6 @@
 	</div>
 
 </div>
- <%@ include file="footer.jsp" %>
+<%--  <%@ include file="footer.jsp" %> --%>
 </body>
 </html>

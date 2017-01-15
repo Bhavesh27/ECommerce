@@ -20,11 +20,8 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory session;
 	
-	public int addUser(User user) {
+	public void addUser(User user) {
 		session.getCurrentSession().save(user);
-		int id = user.getId();
-		
-		return id;
 	}
 
 	public User getUser(int userId) {
