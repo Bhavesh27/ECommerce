@@ -1,10 +1,15 @@
 package com.example.test;
 
+import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.example.model.Product;
 import com.example.service.ProductService;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 public class ProductTest {
 
 	public static void main(String[] args) {

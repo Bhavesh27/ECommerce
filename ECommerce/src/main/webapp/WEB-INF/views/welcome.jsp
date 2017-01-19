@@ -6,11 +6,12 @@
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css"  />
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  type="text/javascript"  />
 	<link href="static/css/carousel.css"  rel="stylesheet" type="text/css" />
+	<link href="static/css/style.css"  rel="stylesheet" type="text/css" />
 	<title>HOME page</title>
 </head>
 <body>
 	<c:import url="header.jsp" />
-	 Dear <strong>${user}</strong>, Welcome to Home Page.  
+	 <!-- Dear <strong>${user}</strong>, Welcome to Home Page. -->  
 <!--  <div class="banner">
 		<div class="container">
 			  <script src="static/js/responsiveslides.min.js"></script>

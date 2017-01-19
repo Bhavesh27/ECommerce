@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 @Entity
 @Table(name="Product")
