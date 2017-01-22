@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.example")
+@ComponentScan(basePackages = {"com.example"})
 public class HelloWorldConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Bean(name="HelloWorld")
