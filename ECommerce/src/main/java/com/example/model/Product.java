@@ -16,6 +16,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Product implements Serializable {
 	
+	public String getAuthor_name() {
+		return author_name;
+	}
+
+	public void setAuthor_name(String author_name) {
+		this.author_name = author_name;
+	}
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -30,6 +37,8 @@ public class Product implements Serializable {
 	public double price;
 	@Column
 	public int quantity;
+	@Column
+	String author_name;
 	
 	public int getProduct_id() {
 		return product_id;

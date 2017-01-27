@@ -5,22 +5,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.example.configuration.HibernateConfiguration;
-import com.example.dao.ProductDao;
-import com.example.model.Product;
+import com.example.dao.CategoryDao;
+import com.example.model.Category;
+
 
 @WebAppConfiguration
-public class UnitTest {
+public class CategoryTest {
+
+	@Autowired
+	Category category;
 	
 	@Autowired
-	Product product;
-	
-	@Autowired
-	ProductDao productDao;
+	CategoryDao categoryDao;
 	
 	AnnotationConfigApplicationContext context;
 	
@@ -32,8 +30,8 @@ public class UnitTest {
 		
 		context.refresh();
 		
-		productDao = (ProductDao) context.getBean("productDao");
-		product = (Product) context.getBean("product");
+		categoryDao = (CategoryDao) context.getBean("categoryDao");
+		category = (Category) context.getBean("category");
 		System.out.println("got Bean");
 		
 	}
@@ -43,16 +41,12 @@ public class UnitTest {
 		
 		//product = new Product();
 		System.out.println("run test");
-		product.setProduct_id(1);
-		product.setName("bhavesh");
-        product.setDescription("Best");
-        product.setPrice(1528.0);
-        product.setQuantity(10);
-        product.setAuthor_name("jk rowling");
-        
-        productDao.addProduct(product);
+		category.setCategory_id(1);
+		category.setCategory_name("romance");
+		category.setCategory_desc("this is just awesome");
      
-        Assert.assertEquals(product.getName(), "bhavesh");
+        Assert.assertEquals(category.getCategory_name(), "romance");
         System.out.println("run test1");
 	}
+	
 }

@@ -5,25 +5,24 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.example.configuration.HibernateConfiguration;
-import com.example.dao.ProductDao;
-import com.example.model.Product;
+import com.example.dao.CategoryDao;
+import com.example.dao.SupplierDao;
+import com.example.model.Category;
+import com.example.model.Supplier;
 
 @WebAppConfiguration
-public class UnitTest {
+public class SupplierTest {
 	
 	@Autowired
-	Product product;
+	Supplier supplier;
 	
 	@Autowired
-	ProductDao productDao;
+	SupplierDao supplierDao;
 	
 	AnnotationConfigApplicationContext context;
-	
+
 	@Before
 	public void init(){
 		context = new AnnotationConfigApplicationContext();
@@ -32,8 +31,8 @@ public class UnitTest {
 		
 		context.refresh();
 		
-		productDao = (ProductDao) context.getBean("productDao");
-		product = (Product) context.getBean("product");
+		supplierDao = (SupplierDao) context.getBean("supplierDao");
+		supplier = (Supplier) context.getBean("supplier");
 		System.out.println("got Bean");
 		
 	}
@@ -43,16 +42,13 @@ public class UnitTest {
 		
 		//product = new Product();
 		System.out.println("run test");
-		product.setProduct_id(1);
-		product.setName("bhavesh");
-        product.setDescription("Best");
-        product.setPrice(1528.0);
-        product.setQuantity(10);
-        product.setAuthor_name("jk rowling");
-        
-        productDao.addProduct(product);
+		supplier.setSupplier_id(1);
+		supplier.setSupplier_name("Cloudtail");
+		supplier.setEmailid("email@xyz.com");
+		supplier.setAddress("Delhi");
+		supplier.setMobileno(1234567898);
      
-        Assert.assertEquals(product.getName(), "bhavesh");
+        Assert.assertEquals(supplier.getAddress(), "Delhi");
         System.out.println("run test1");
 	}
 }
