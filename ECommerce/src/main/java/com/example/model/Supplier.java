@@ -74,6 +74,7 @@ public class Supplier implements Serializable {
 	public void setMobileno(long mobileno) {
 		this.mobileno = mobileno;
 	}
+	
 	public Set<Product> getProducts() {
 		return products;
 	}

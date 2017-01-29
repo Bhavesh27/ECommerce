@@ -71,7 +71,7 @@ public class UnitTest {
         product.setAuthor_name("jk rowling");
         //category.setCategory_id(1);
         product.setCategory(categoryDao.getCategoryById(1));
-        product.setSupplier(supplierDao.getSupplierById(1));
+        //product.setSupplier(supplierDao.getSupplierById(1));
         
         productDao.addProduct(product);
      

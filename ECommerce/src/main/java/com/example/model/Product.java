@@ -1,8 +1,8 @@
 package com.example.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +46,7 @@ public class Product implements Serializable {
 	
 	@ManyToMany
 	@JoinTable(name="product_supplier",joinColumns={@JoinColumn(name="product_id")},inverseJoinColumns={@JoinColumn(name="supplier_id")})
-	private Supplier supplier;
+	private Set<Supplier> supplier;
 	
 	public int getProduct_id() {
 		return product_id;
@@ -96,11 +96,11 @@ public class Product implements Serializable {
 		this.category = category;
 	}
 
-	public Supplier getSupplier() {
+	public Set<Supplier> getSupplier() {
 		return supplier;
 	}
 
-	public void setSupplier(Supplier supplier) {
+	public void setSupplier(Set<Supplier> supplier) {
 		this.supplier = supplier;
 	}
 	
