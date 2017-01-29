@@ -37,13 +37,15 @@ public class CategoryTest {
 	}
 	
 	@Test
-	public void testProduct(){
+	public void testCategory(){
 		
 		//product = new Product();
 		System.out.println("run test");
 		category.setCategory_id(1);
 		category.setCategory_name("romance");
 		category.setCategory_desc("this is just awesome");
+		
+		categoryDao.addCategory(category);
      
         Assert.assertEquals(category.getCategory_name(), "romance");
         System.out.println("run test1");

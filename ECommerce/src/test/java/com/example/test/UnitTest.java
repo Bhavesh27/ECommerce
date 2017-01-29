@@ -5,12 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.example.configuration.HibernateConfiguration;
+import com.example.dao.CategoryDao;
 import com.example.dao.ProductDao;
+import com.example.model.Category;
 import com.example.model.Product;
 
 @WebAppConfiguration
@@ -21,6 +20,12 @@ public class UnitTest {
 	
 	@Autowired
 	ProductDao productDao;
+	
+	@Autowired
+	Category category;
+	
+	@Autowired
+	CategoryDao categoryDao;
 	
 	AnnotationConfigApplicationContext context;
 	
@@ -34,6 +39,10 @@ public class UnitTest {
 		
 		productDao = (ProductDao) context.getBean("productDao");
 		product = (Product) context.getBean("product");
+		
+		category = (Category)context.getBean("category");
+		categoryDao = (CategoryDao)context.getBean("categoryDao");
+		
 		System.out.println("got Bean");
 		
 	}
@@ -49,6 +58,8 @@ public class UnitTest {
         product.setPrice(1528.0);
         product.setQuantity(10);
         product.setAuthor_name("jk rowling");
+        //category.setCategory_id(1);
+        product.setCategory(categoryDao.getCategoryById(1));
         
         productDao.addProduct(product);
      

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -16,13 +18,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class Product implements Serializable {
 	
-	public String getAuthor_name() {
-		return author_name;
-	}
-
-	public void setAuthor_name(String author_name) {
-		this.author_name = author_name;
-	}
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -39,6 +34,12 @@ public class Product implements Serializable {
 	public int quantity;
 	@Column
 	String author_name;
+	
+	//Mapping
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "category_id")
+	private Category category;
 	
 	public int getProduct_id() {
 		return product_id;
@@ -71,6 +72,21 @@ public class Product implements Serializable {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public String getAuthor_name() {
+		return author_name;
+	}
+
+	public void setAuthor_name(String author_name) {
+		this.author_name = author_name;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 }

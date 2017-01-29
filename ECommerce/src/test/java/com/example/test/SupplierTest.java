@@ -38,7 +38,7 @@ public class SupplierTest {
 	}
 	
 	@Test
-	public void testProduct(){
+	public void testSupplier(){
 		
 		//product = new Product();
 		System.out.println("run test");
@@ -48,6 +48,8 @@ public class SupplierTest {
 		supplier.setAddress("Delhi");
 		supplier.setMobileno(1234567898);
      
+		supplierDao.addSupplier(supplier);
+		
         Assert.assertEquals(supplier.getAddress(), "Delhi");
         System.out.println("run test1");
 	}

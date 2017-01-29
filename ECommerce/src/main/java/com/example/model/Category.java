@@ -1,12 +1,15 @@
 package com.example.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -30,6 +33,11 @@ public class Category implements Serializable {
 	@Column
 	String category_desc;
 	
+	//Mapping
+	
+	@OneToMany(mappedBy = "category",cascade=CascadeType.ALL)
+	private Set<Product> product;
+	
 	public int getCategory_id() {
 		return category_id;
 	}
@@ -47,6 +55,12 @@ public class Category implements Serializable {
 	}
 	public void setCategory_desc(String category_desc) {
 		this.category_desc = category_desc;
+	}
+	public Set<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(Set<Product> product) {
+		this.product = product;
 	}
 	
 
