@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.example.dao.CategoryDao;
 import com.example.dao.SupplierDao;
-import com.example.model.Category;
 import com.example.model.Supplier;
 
 @WebAppConfiguration
