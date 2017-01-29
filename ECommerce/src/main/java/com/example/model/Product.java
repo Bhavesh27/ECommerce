@@ -2,12 +2,15 @@ package com.example.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,6 +43,10 @@ public class Product implements Serializable {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "category_id")
 	private Category category;
+	
+	@ManyToMany
+	@JoinTable(name="product_supplier",joinColumns={@JoinColumn(name="product_id")},inverseJoinColumns={@JoinColumn(name="supplier_id")})
+	private Supplier supplier;
 	
 	public int getProduct_id() {
 		return product_id;
@@ -87,6 +94,14 @@ public class Product implements Serializable {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 	
 }

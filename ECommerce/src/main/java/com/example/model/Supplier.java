@@ -1,12 +1,15 @@
 package com.example.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -33,6 +36,11 @@ public class Supplier implements Serializable {
 	String emailid;
 	@Column
 	long mobileno;
+	
+	//Mapping
+	
+	@ManyToMany(mappedBy = "supplier" , cascade=CascadeType.ALL)
+	private Set<Product> products;
 	
 	public int getSupplier_id() {
 		return supplier_id;
@@ -66,5 +74,11 @@ public class Supplier implements Serializable {
 	public void setMobileno(long mobileno) {
 		this.mobileno = mobileno;
 	}
-
+	public Set<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+    
 }

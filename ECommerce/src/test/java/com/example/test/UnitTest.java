@@ -9,8 +9,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.example.dao.CategoryDao;
 import com.example.dao.ProductDao;
+import com.example.dao.SupplierDao;
 import com.example.model.Category;
 import com.example.model.Product;
+import com.example.model.Supplier;
 
 @WebAppConfiguration
 public class UnitTest {
@@ -27,6 +29,12 @@ public class UnitTest {
 	@Autowired
 	CategoryDao categoryDao;
 	
+	@Autowired
+	Supplier supplier;
+	
+	@Autowired
+	SupplierDao supplierDao;
+	
 	AnnotationConfigApplicationContext context;
 	
 	@Before
@@ -42,6 +50,9 @@ public class UnitTest {
 		
 		category = (Category)context.getBean("category");
 		categoryDao = (CategoryDao)context.getBean("categoryDao");
+		
+		supplierDao = (SupplierDao) context.getBean("supplierDao");
+		supplier = (Supplier) context.getBean("supplier");
 		
 		System.out.println("got Bean");
 		
@@ -60,6 +71,7 @@ public class UnitTest {
         product.setAuthor_name("jk rowling");
         //category.setCategory_id(1);
         product.setCategory(categoryDao.getCategoryById(1));
+        product.setSupplier(supplierDao.getSupplierById(1));
         
         productDao.addProduct(product);
      
