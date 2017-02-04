@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,14 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	public void addUser(User user) {
-		  userDao.addUser(user);
+		try{
+			userDao.addUser(user);
+			}
+		catch (HibernateException e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+		}
+		  
 		//return user.getId();
 	}
 

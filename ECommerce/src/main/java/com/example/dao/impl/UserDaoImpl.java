@@ -4,6 +4,7 @@ package com.example.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,13 @@ public class UserDaoImpl implements UserDao {
 	private SessionFactory session;
 	
 	public void addUser(User user) {
+		try{
 		session.getCurrentSession().save(user);
+		}
+		catch (HibernateException e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+		}
 	}
 
 	public User getUser(int userId) {

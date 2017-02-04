@@ -25,9 +25,9 @@ public class User implements Serializable{
     private boolean isActive=true;
     @Column
 	private int roleId=1;
-    @Column
+    @Column(unique=true)
     private String email;
-    @Column(name="Mobile_No")
+    @Column(name="Mobile_No",unique=true)
     private String mobileno;
     @Column(name="Name")
     private String name;

@@ -30,11 +30,11 @@ public class Supplier implements Serializable {
 	int supplier_id;
 	@Column
 	String supplier_name;
-	@Column
+	@Column(unique=true)
 	String address;
-	@Column
+	@Column(unique=true)
 	String emailid;
-	@Column
+	@Column(unique=true)
 	long mobileno;
 	
 	//Mapping

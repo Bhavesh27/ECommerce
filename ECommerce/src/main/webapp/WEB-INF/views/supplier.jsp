@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylesheet.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/stylesheet.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -25,14 +28,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="pages.html">Product</a></li>
-            <li><a href="supplier.html">Supplier</a></li>
+            <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li class="active"><a href="supplier.html">Supplier</a></li>
             <li><a href="users.html">Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, ${admin}</a></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#">Welcome, ${user}</a></li>
+            <li><a href="<c:url value="/logout" />">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -42,7 +45,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Edit Page <small> About </small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Supplier<small>Manage Suppliers</small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -64,9 +67,8 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Dashboard</a></li>
-          <li><a href="product.html">Product</a></li>
-          <li class="active">Edit Page</li>
+          <li><a href="admin.html">Dashboard</a></li>
+          <li class="active">Supplier</li>
         </ol>
       </div>
     </section>
@@ -76,11 +78,11 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="index.html" class="list-group-item active main-color-bg">
+              <a href="admin.html" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <a href="product.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="supplier.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
+              <a href="supplier.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier<span class="badge">33</span></a>
               <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
             </div>
 
@@ -103,35 +105,47 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Edit Page</h3>
+                <h3 class="panel-title">Supplier</h3>
               </div>
               <div class="panel-body">
-                <form>
-                  <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text" class="form-control" placeholder="Page Title" value="About">
-                  </div>
-                  <div class="form-group">
-                    <label>Product Description</label>
-                    <textarea name="editor1" class="form-control" placeholder="Page Body">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </textarea>
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" checked> Published
-                    </label>
-                  </div>
-                  <div class="form-group">
-                    <label>Meta Tags</label>
-                    <input type="text" class="form-control" placeholder="Add Some Tags..." value="tag1, tag2">
-                  </div>
-                  <div class="form-group">
-                    <label>Meta Description</label>
-                    <input type="text" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
-                  </div>
-                  <input type="submit" class="btn btn-default" value="Submit">
-                </form>
+                <div class="row">
+                      <div class="col-md-12">
+                          <input class="form-control" type="text" placeholder="Filter Suppliers...">
+                      </div>
+                </div>
+                <br>
+                <table class="table table-striped table-hover">
+                      <tr>
+                        <th>Name</th>
+                        <th>Published</th>
+                        <th>Created</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <td>Blog Post 1</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td>Dec 12, 2016</td>
+                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
+                      </tr>
+                      <tr>
+                        <td>Blog Post 2</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td>Dec 13, 2016</td>
+                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
+                      </tr>
+                      <tr>
+                        <td>Blog Post 3</td>
+                        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                        <td>Dec 13, 2016</td>
+                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
+                      </tr>
+                      <tr>
+                        <td>Blog Post 4</td>
+                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td>Dec 14, 2016</td>
+                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
+                      </tr>
+                    </table>
               </div>
               </div>
 
@@ -268,14 +282,14 @@
 </div>
 <!-- Modals -->
 
-  <script>
+  <!-- <script>
      CKEDITOR.replace( 'editor1' );
- </script>
+ </script> -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
