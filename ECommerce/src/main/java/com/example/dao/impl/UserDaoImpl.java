@@ -19,6 +19,9 @@ import com.example.model.User;
 public class UserDaoImpl implements UserDao {
 	
 	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
 	private SessionFactory session;
 	
 	public void addUser(User user) {
@@ -48,7 +51,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public boolean deleteUser(int userId) {
-		session.getCurrentSession().delete(userId);
+		User u = userDao.getUser(userId);
+		session.getCurrentSession().delete(u);
 		return false;
 	}
 

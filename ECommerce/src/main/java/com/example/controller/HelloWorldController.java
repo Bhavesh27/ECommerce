@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 //import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -40,6 +43,8 @@ public class HelloWorldController {
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
+		List<User> users = userDao.getAllUsers();
+		model.addAttribute("users", users);
 		return "admin";
 	}
 	
@@ -72,6 +77,38 @@ public class HelloWorldController {
 		
 		userDao.addUser(user);
 		return "login";
+		
+	}
+	
+	@RequestMapping(value="/product", method = RequestMethod.GET)
+	public String viewProduct(ModelMap model)
+	{
+		model.addAttribute("user", getPrincipal());
+		return "product";
+		
+	}
+	
+	@RequestMapping(value="/users", method = RequestMethod.GET)
+	public String viewUsers(ModelMap model)
+	{
+		model.addAttribute("user", getPrincipal());
+		return "users";
+		
+	}
+	
+	@RequestMapping(value="/supplier", method = RequestMethod.GET)
+	public String viewSupplier(ModelMap model)
+	{
+		model.addAttribute("user", getPrincipal());
+		return "supplier";
+		
+	}
+	
+	@RequestMapping(value="/delete-user-{id}", method = RequestMethod.GET)
+	public String deleteUser(@PathVariable int id)
+	{
+		userDao.deleteUser(id);
+		return "redirect:/admin";
 		
 	}
 	

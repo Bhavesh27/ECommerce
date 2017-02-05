@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -14,56 +14,7 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Admin</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Dashboard</a></li>
-            <li><a href="product.html">Product</a></li>
-            <li><a href="supplier.html">Supplier</a></li>
-            <li><a href="users.html">Users</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome,${user}</a></li>
-            <li><a href="<c:url value="/logout" />">Logout</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <header id="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small>Manage Site From Here</small></h1>
-          </div>
-          <div class="col-md-2">
-            <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Add Content
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Product</a></li>
-                <li><a type="button" data-toggle="modal" data-target="#addSupplier">Add Supplier</a></li>
-                <li><a type="button" data-toggle="modal" data-target="#addUser">Add User</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
+  	<c:import url="adminheader.jsp"></c:import>
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
@@ -141,36 +92,24 @@
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
-                      <tr>
+                      <thead>
+                      	<tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Joined</th>
-                      </tr>
-                      <tr>
-                        <td>Jill Smith</td>
-                        <td>jillsmith@gmail.com</td>
-                        <td>Dec 12, 2016</td>
-                      </tr>
-                      <tr>
-                        <td>Eve Jackson</td>
-                        <td>ejackson@yahoo.com</td>
-                        <td>Dec 13, 2016</td>
-                      </tr>
-                      <tr>
-                        <td>John Doe</td>
-                        <td>jdoe@gmail.com</td>
-                        <td>Dec 13, 2016</td>
-                      </tr>
-                      <tr>
-                        <td>Stephanie Landon</td>
-                        <td>landon@yahoo.com</td>
-                        <td>Dec 14, 2016</td>
-                      </tr>
-                      <tr>
-                        <td>Mike Johnson</td>
-                        <td>mjohnson@gmail.com</td>
-                        <td>Dec 15, 2016</td>
-                      </tr>
+                        <th>Mobile No</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      	<c:forEach items="${users}" var="user1">
+                      	<tr>
+                      		<td>${user1.name}</td>
+                      		<td><c:out value="${user1.email}"></c:out></td>
+                      		<td><c:out value="${user1.mobileno}"></c:out></td>
+                      		<td><a class="btn btn-default" href="edit-user-${user1.id }">Edit</a></td>
+                      		<td><a class="btn btn-danger" href="delete-user-${user1.id }">Delete</a></td>
+                      	</tr>
+                      	</c:forEach>
+                      </tbody>
                     </table>
                 </div>
               </div>
@@ -182,130 +121,6 @@
     <footer id="footer">
       <p>Copyright NerdsVille, &copy; 2017</p>
     </footer>
-
-    <!-- Modals -->
-
-    <!-- Add Page -->
-    <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Product</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Product Name</label>
-          <input type="text" class="form-control" placeholder="Page Title">
-        </div>
-        <div class="form-group">
-          <label>Product Description</label>
-          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Published
-          </label>
-        </div>
-        <div class="form-group">
-          <label>Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add Some Tags...">
-        </div>
-        <div class="form-group">
-          <label>Meta Description</label>
-          <input type="text" class="form-control" placeholder="Add Meta Description...">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-<!-- Add Supplier -->
-    <div class="modal fade" id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Supplier</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>Supplier Name</label>
-          <input type="text" class="form-control" placeholder="Page Title">
-        </div>
-        <div class="form-group">
-          <label>Supplier Description</label>
-          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Published
-          </label>
-        </div>
-        <div class="form-group">
-          <label>Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add Some Tags...">
-        </div>
-        <div class="form-group">
-          <label>Meta Description</label>
-          <input type="text" class="form-control" placeholder="Add Meta Description...">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-<!-- Add User -->
-    <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <form>
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add User</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label>User Name</label>
-          <input type="text" class="form-control" placeholder="Page Title">
-        </div>
-        <div class="form-group">
-          <label>User Details</label>
-          <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Published
-          </label>
-        </div>
-        <div class="form-group">
-          <label>Meta Tags</label>
-          <input type="text" class="form-control" placeholder="Add Some Tags...">
-        </div>
-        <div class="form-group">
-          <label>Meta Description</label>
-          <input type="text" class="form-control" placeholder="Add Meta Description...">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-<!-- Modals -->
   
   <script>
      CKEDITOR.replace( 'editor1' );
