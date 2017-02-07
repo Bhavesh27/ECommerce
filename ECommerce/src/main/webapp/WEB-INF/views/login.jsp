@@ -32,6 +32,27 @@
 		<div class="col-md-8 account-top">
 			<c:url var="loginUrl" value="/login" />
 			<form action="${loginUrl}" method="POST" >                      <%--  ${loginUrl} --%>
+				<%-- <c:if test="${param.error != null}">
+					<div class="alert alert-danger">
+						<p>Invalid UserName and Password.</p>
+					</div>
+				</c:if>
+				<c:if test="${param.logout != null}">
+					<div class="alert alert-success">
+						<p>You have been logged out successfully.</p>
+					</div>
+				</c:if> --%>
+			<div> 	
+				<span>UserName</span>
+				<input type="text" id="username" name="username" placeholder="Enter Username" required> 
+			</div>
+			<div> 
+				<span >Password</span>
+				<input type="password" id="password" name="password" placeholder="Enter Password" required>
+			</div>				
+			<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
+			  <div class="form-actions">
+				<input type="submit" class="btn btn-block btn-primary btn-default" value="Login"><br />
 				<c:if test="${param.error != null}">
 					<div class="alert alert-danger">
 						<p>Invalid UserName and Password.</p>
@@ -42,25 +63,13 @@
 						<p>You have been logged out successfully.</p>
 					</div>
 				</c:if>
-			<div> 	
-				<span>UserName</span>
-				<input type="text" id="username" name="username" placeholder="Enter Username" required> 
-			</div>
-			<div> 
-				<span >Password</span>
-				<input type="password" id="password" name="password" placeholder="Enter Password" required>
-			</div>				
-			<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-			<%@ page isELIgnored ="false" %>
-			  <div class="form-actions">
-				<input type="submit" class="btn btn-block btn-primary btn-default" value="Login"><br />
-			       New User 	<a href='<c:url value="/Registration" />' style="background:#444444;">REGISTER</a>	Here 
+			      
 			</div>	
 			</form>
 		
-		<!-- <div class="col-md-4 left-account">
-			New User <a href="register.jsp">Register</a> Here
-        </div> -->
+		<div class="col-md-4 left-account">
+			<span class=> New User 	<a href='<c:url value="/Registration" />' style="color:#444444;"><span>REGISTER</span></a>	Here </span>
+        </div> 
 		</div>
 	</div>
 	</div>

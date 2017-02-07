@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
+
+<!doctype html>
+<html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css"  />
@@ -137,7 +139,7 @@
 			<div class="content-top-bottom">
 				<h2>Featured PRODUCTS</h2>
 				<div class="col-md-6 men">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image06.jpg" alt="" />
+					<a href="single.html" class="b-link-stripe b-animate-go  thickbox" ><img class="img-responsive" src="static/images/image06.jpg" alt="" />
 						<div class="b-wrapper">
 							<h3 class="b-animate b-from-top top-in   b-delay03 ">
 								<span>TRIBECA LIVING</span>	
@@ -147,7 +149,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="col-md1 ">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image05.jpg" alt="" />
+						<a href="single.html" class="b-link-stripe b-animate-go  thickbox" ><img class="img-responsive" src="static/images/image05.jpg" alt="" />
 							<div class="b-wrapper">
 											<h3 class="b-animate b-from-top top-in1   b-delay03 ">
 												<span>CLARISSA</span>	

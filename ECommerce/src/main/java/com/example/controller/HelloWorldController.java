@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.dao.UserDao;
 import com.example.model.User;
+import com.example.service.UserService;
 
 @Controller
 public class HelloWorldController {
 
 	
 	@Autowired
-	UserDao userDao;
+	UserService userService;
 	
 	/*@Autowired
 	User user;*/
@@ -43,7 +44,7 @@ public class HelloWorldController {
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
-		List<User> users = userDao.getAllUsers();
+		List<User> users = userService.getAllUsers();
 		model.addAttribute("users", users);
 		return "admin";
 	}
@@ -75,7 +76,7 @@ public class HelloWorldController {
 	@RequestMapping(value= "/register", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("adduser") User user){
 		
-		userDao.addUser(user);
+		userService.addUser(user);
 		return "login";
 		
 	}
@@ -101,14 +102,6 @@ public class HelloWorldController {
 	{
 		model.addAttribute("user", getPrincipal());
 		return "supplier";
-		
-	}
-	
-	@RequestMapping(value="/delete-user-{id}", method = RequestMethod.GET)
-	public String deleteUser(@PathVariable int id)
-	{
-		userDao.deleteUser(id);
-		return "redirect:/admin";
 		
 	}
 	

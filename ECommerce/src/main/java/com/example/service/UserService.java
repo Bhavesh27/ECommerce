@@ -12,5 +12,7 @@ public interface UserService {
 	public void updateUser(User user);
 	public boolean deleteUser(int userId);
 	public List<User> getAllUsers();
+	public boolean isUserExist(User user);
+	public void deleteAllUsers();
 
 }

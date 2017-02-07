@@ -50,5 +50,19 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();
 	}
+
+	@Override
+	public boolean isUserExist(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void deleteAllUsers() {
+		// TODO Auto-generated method stub;
+		//userDao.getAllUsers();
+		//userDao.deleteUser();
+		
+	}
 	
 }

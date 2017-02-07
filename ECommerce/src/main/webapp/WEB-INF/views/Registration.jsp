@@ -14,7 +14,7 @@
 
 </head>
 <body>
- <%@ include file="header.jsp" %>
+ <%-- <%@ include file="header.jsp" %> --%>
 	<!-- grow -->
 	<div class="grow">
 		<div class="container">
@@ -61,7 +61,7 @@
 				</form:form>
 			</div>
 </div>
- <%@ include file="footer.jsp" %>
+ <%-- <%@ include file="footer.jsp" %> --%>
 </body>
 </html>
 			

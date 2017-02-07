@@ -19,9 +19,9 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="admin.html">Dashboard</a></li>
-          <li><a href="product.html">Product</a></li>
-          <li class="active">Edit Page</li>
+          <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
+          <li><a href="<c:url value="/users"/>">Product</a></li>
+          <li class="active">User Edit Page</li>
         </ol>
       </div>
     </section>
@@ -31,12 +31,12 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="admin.html" class="list-group-item active main-color-bg">
+              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="product.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="supplier.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
-              <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
+              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
+              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
             </div>
 
             <!-- <div class="well">
@@ -58,23 +58,24 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Edit Page</h3>
+                <h3 class="panel-title">User Edit Page</h3>
               </div>
               <div class="panel-body">
                 <form>
                   <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text" class="form-control" placeholder="Page Title" value="About">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" placeholder="User Name" value="About">
                   </div>
                   <div class="form-group">
-                    <label>Product Description</label>
-                    <textarea name="editor1" class="form-control" placeholder="Page Body">
+                    <label>User Email</label>
+                    <!-- <textarea name="editor1" class="form-control" placeholder="Page Body">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </textarea>
+                    </textarea> -->
+                    <input type="text" class="form-control" placeholder="User Email" value="About">
                   </div>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" checked> Published
+                      <input type="checkbox" checked> IsActive
                     </label>
                   </div>
                   <div class="form-group">

@@ -14,12 +14,14 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-     <c:import url="adminheader.jsp"></c:import>
+  	<c:import url="adminheader.jsp"></c:import>
+  
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
           <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
-          <li class="active">Product</li>
+          <li><a href="<c:url value="/supplier"/>">Product</a></li>
+          <li class="active">Supplier Edit Page</li>
         </ol>
       </div>
     </section>
@@ -56,47 +58,35 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Product</h3>
+                <h3 class="panel-title">Supplier Edit Page</h3>
               </div>
               <div class="panel-body">
-                <div class="row">
-                      <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter Products...">
-                      </div>
-                </div>
-                <br>
-                <table class="table table-striped table-hover">
-                      <tr>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th></th>
-                      </tr>
-                      <tr>
-                        <td>Home</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 12, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>About</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Services</td>
-                        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Contact</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 14, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                    </table>
+                <form>
+                  <div class="form-group">
+                    <label>Supplier Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Supplier Name" value="About">
+                  </div>
+                  <div class="form-group">
+                    <label>Supplier Address</label>
+                    <textarea name="editor1" class="form-control" placeholder="Enter Supplier Address">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </textarea>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" checked> Verified
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <label>Meta Tags</label>
+                    <input type="text" class="form-control" placeholder="Add Some Tags..." value="tag1, tag2">
+                  </div>
+                  <div class="form-group">
+                    <label>Meta Description</label>
+                    <input type="text" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
+                  </div>
+                  <input type="submit" class="btn btn-default" value="Submit">
+                </form>
               </div>
               </div>
 
