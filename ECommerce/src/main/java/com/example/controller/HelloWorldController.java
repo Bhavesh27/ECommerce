@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import java.util.List;
-
 //import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,11 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.dao.UserDao;
 import com.example.model.User;
 import com.example.service.UserService;
 
@@ -39,14 +35,6 @@ public class HelloWorldController {
 	public String homePage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "welcome";
-	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(ModelMap model) {
-		model.addAttribute("user", getPrincipal());
-		List<User> users = userService.getAllUsers();
-		model.addAttribute("users", users);
-		return "admin";
 	}
 	
 	@RequestMapping(value = "/db", method = RequestMethod.GET)
@@ -77,7 +65,7 @@ public class HelloWorldController {
 	public String addUser(@ModelAttribute("adduser") User user){
 		
 		userService.addUser(user);
-		return "login";
+		return "redirect:/login";
 		
 	}
 	

@@ -48,7 +48,7 @@
 		</section>
 	</footer>
 	<footer class="second">
-		<p> &copy Copyright-NerdsVille,2010 </p>
+		<p> &copy; Copyright-NerdsVille,2010 </p>
 	</footer>
 </body>
 </html>

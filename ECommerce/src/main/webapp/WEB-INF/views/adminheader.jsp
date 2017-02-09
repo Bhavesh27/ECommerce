@@ -28,6 +28,7 @@
             <li><a href="<c:url value="/product"/>" >Product</a></li>
             <li><a href="<c:url value="/supplier"/>" >Supplier</a></li>
             <li><a href="<c:url value="/users" />" >Users</a></li>
+            <li><a href="<c:url value="/category" />" >Category</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, ${user}</a></li>
@@ -52,7 +53,7 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a type="button" data-toggle="modal" data-target="#addPage">Add Product</a></li>
                 <li><a type="button" data-toggle="modal" data-target="#addSupplier">Add Supplier</a></li>
-                <li><a type="button" data-toggle="modal" data-target="#addUser">Add User</a></li>
+                <li><a type="button" data-toggle="modal" data-target="#addCategory">Add Category</a></li>
               </ul>
             </div>
           </div>
@@ -103,7 +104,7 @@
   </div>
 </div>
 <!-- Add Supplier -->
-    <div class="modal fade" id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <form>
@@ -142,8 +143,8 @@
     </div>
   </div>
 </div>
-<!-- Add User -->
-    <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- Add Category -->
+    <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <form>

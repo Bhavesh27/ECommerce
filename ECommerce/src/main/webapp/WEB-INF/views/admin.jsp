@@ -96,14 +96,16 @@
                       	<tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Username</th>
                         <th>Mobile No</th>
                         </tr>
                       </thead>
                       <tbody>
                       	<c:forEach items="${users}" var="user1">
                       	<tr>
-                      		<td>${user1.name}</td>
+                      		<td><c:out value="${user1.name}"></c:out></td>
                       		<td><c:out value="${user1.email}"></c:out></td>
+                      		<td><c:out value="${user1.username}"></c:out></td>
                       		<td><c:out value="${user1.mobileno}"></c:out></td>
                       		<%-- <td><a class="btn btn-default" href="edit-user-${user1.id }">Edit</a></td>
                       		<td><a class="btn btn-danger" href="delete-user-${user1.id }">Delete</a></td> --%>
@@ -122,9 +124,9 @@
       <p>Copyright NerdsVille, &copy; 2017</p>
     </footer>
   
-  <script>
+  <!-- <script>
      CKEDITOR.replace( 'editor1' );
- </script>
+ </script> -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

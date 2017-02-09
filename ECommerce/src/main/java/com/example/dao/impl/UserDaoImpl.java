@@ -60,6 +60,13 @@ public class UserDaoImpl implements UserDao {
 	public List<User> getAllUsers() {
 		return (List<User>) session.getCurrentSession().createQuery("from User").list();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getAllActiveUsers() {
+		// TODO Auto-generated method stub
+		return (List<User>) session.getCurrentSession().createQuery("from User where isactive=true").list();
+	}
 	
 	
 }

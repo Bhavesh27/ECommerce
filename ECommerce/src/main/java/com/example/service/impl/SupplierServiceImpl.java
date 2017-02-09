@@ -3,11 +3,15 @@ package com.example.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.SupplierDao;
 import com.example.model.Supplier;
 import com.example.service.SupplierService;
 
+@Service (value="supplierService")
+@Transactional
 public class SupplierServiceImpl implements SupplierService {
 	
 	@Autowired

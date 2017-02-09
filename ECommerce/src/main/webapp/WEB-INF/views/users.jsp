@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="admin.html">Dashboard</a></li>
+          <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
           <li class="active">Users</li>
         </ol>
       </div>
@@ -31,12 +31,12 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="admin.html" class="list-group-item active main-color-bg">
+              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="product.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="supplier.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
-              <a href="users.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
+              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
+              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
             </div>
 
             <!-- <div class="well">
@@ -68,13 +68,30 @@
                 </div>
                 <br>
                 <table class="table table-striped table-hover">
+                      <thead>
                       <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Joined</th>
+                        <th>Username</th>
+                        <th>Mobile No</th>
+                        <th>Status</th>
                         <th></th>
                       </tr>
-                      <tr>
+                      </thead>
+                      <tbody>
+                      	<c:forEach items="${users}" var="user1">
+                      		<tr>
+                      			<td><c:out value="${user1.name}"></c:out></td>
+	                      		<td><c:out value="${user1.email}"></c:out></td>
+	                      		<td><c:out value="${user1.username}"></c:out></td>
+	                      		<td><c:out value="${user1.mobileno}"></c:out></td>
+	                      		<td><c:out value="${user1.isActive}"></c:out></td>
+	                      		<td><a class="btn btn-default" href="<c:url value="/"/>">Change Status</a> <a class="btn btn-danger" href="<c:url value="/delete-user-{id}"/>">Delete</a></td>
+                      		</tr>
+                      	</c:forEach>
+                      </tbody>
+                      
+                      <!-- <tr>
                         <td>Jill Smith</td>
                         <td>jillsmith@gmail.com</td>
                         <td>Dec 12, 2016</td>
@@ -98,7 +115,8 @@
                         <td>Dec 15, 2016</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
                       </tr>
-                    </table>
+ -->                   
+  </table>
               </div>
               </div>
 

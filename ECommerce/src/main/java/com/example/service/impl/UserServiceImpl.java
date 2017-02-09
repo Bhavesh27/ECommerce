@@ -64,5 +64,11 @@ public class UserServiceImpl implements UserService {
 		//userDao.deleteUser();
 		
 	}
+
+	@Override
+	public List<User> getAllActiveUsers() {
+		// TODO Auto-generated method stub
+		return userDao.getAllActiveUsers();
+	}
 	
 }

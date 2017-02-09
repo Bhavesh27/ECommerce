@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.model.User;
 import com.example.service.MailService;
 
-@Service("mailService")
+@Service(value="mailService")
 @Transactional
 public class MailServiceImpl implements MailService {
 
