@@ -39,6 +39,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
+		
 		List<User> users = userService.getAllActiveUsers();
 		model.addAttribute("users", users);
 		
@@ -63,9 +64,33 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping(value="/users", method = RequestMethod.GET)
+	public String viewUsers(ModelMap model)
+	{
+		List<User> users = userService.getAllUsers();
+		model.addAttribute("users", users);
+		model.addAttribute("user", getPrincipal());
+		return "users";
+		
+	}
+	
 	//PRODUCT PAGE CONTROLLER
 	
-    @RequestMapping(value = "/Product", method = RequestMethod.GET)
+	@RequestMapping(value="/product", method = RequestMethod.GET)
+	public String viewProduct(ModelMap model)
+	{
+		model.addAttribute("user", getPrincipal());
+		
+		List<Product> products = productService.getAllProducts();
+		model.addAttribute("products", products);
+		
+		return "product";
+		
+	}
+	
+	
+	
+    /*@RequestMapping(value = "/Product", method = RequestMethod.GET)
     public String productPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
     	model.addAttribute("new_product",new Product());
@@ -80,7 +105,7 @@ public class AdminController {
         model.addAttribute("products", products);
         
         return "product";
-    }
+    }*/
     
     @RequestMapping(value="/newProduct", method = RequestMethod.POST)
     public String addNewProduct(@ModelAttribute("new_product") Product product)
@@ -89,23 +114,42 @@ public class AdminController {
     	return "redirect:/Product";
     }
     
-    @RequestMapping(value="/edit-product-{product_id}", method = RequestMethod.GET)
-    public String editProduct (ModelMap model)
+    @RequestMapping(value="/edit-product-{product_id}", method = RequestMethod.POST)
+    public String editProduct (@ModelAttribute("updateProduct")Product product)
     {
-    	
+    	productService.updateProduct(product);
     	return "product";
+    }
+    
+    @RequestMapping(value="/productEdit", method = RequestMethod.GET)
+    public String productEdit (ModelMap model)
+    {
+    	model.addAttribute("updateProduct", new Product());
+    	return "productedit";
     }
     
     @RequestMapping(value="/delete-product-{product_id}", method = RequestMethod.GET)
     public String deleteProduct (@PathVariable int product_id)
     {
-    	Product productId = productService.getProductById(product_id);
-		productService.deleteProduct(productId.getProduct_id());
-    	return "redirect:/Product";
+    	//Product productId = productService.getProductById(product_id);
+		productService.deleteProduct(product_id);
+    	return "redirect:/product";
     }
     
     
     //CATEGORY CONTROLLER
+    
+    @RequestMapping(value="/category", method = RequestMethod.GET)
+	public String viewCategory(ModelMap model)
+	{
+		model.addAttribute("user", getPrincipal());
+		
+		List<Category> categories = categoryService.getAllCategorys();
+		model.addAttribute("categories", categories);
+		
+		return "category";
+		
+	}
     
     @RequestMapping(value="/newCategory", method = RequestMethod.POST)
     public String addCategory (@ModelAttribute("new_category") Category category)
@@ -148,6 +192,19 @@ public class AdminController {
     
     
     //SUPPLIER CONTROLLER
+    
+    
+    @RequestMapping(value="/supplier", method = RequestMethod.GET)
+	public String viewSupplier(ModelMap model)
+	{
+		model.addAttribute("user", getPrincipal());
+		
+		List<Supplier> suppliers = supplierService.getAllSuppliers();
+		model.addAttribute("suppliers",suppliers);
+		
+		return "supplier";
+		
+	}
     
     @RequestMapping(value="/Supplier" , method = RequestMethod.GET)
     public String supplierPage(ModelMap model)

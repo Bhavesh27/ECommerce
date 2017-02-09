@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +62,7 @@
                 <h3 class="panel-title">Product Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form>
+                <form:form action="edit-product-{product_id}" method="post" commandName="updateProduct">
                   <div class="form-group">
                     <label>Product Name</label>
                     <input type="text" class="form-control" placeholder="Page Title" value="About">
@@ -72,21 +73,25 @@
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </textarea>
                   </div>
-                  <div class="checkbox">
+                 <!--  <div class="checkbox">
                     <label>
                       <input type="checkbox" checked> Published
                     </label>
+                  </div> -->
+                  <div class="form-group">
+                    <label>Author Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Author Name" value="tag1, tag2">
                   </div>
                   <div class="form-group">
-                    <label>Meta Tags</label>
-                    <input type="text" class="form-control" placeholder="Add Some Tags..." value="tag1, tag2">
+                    <label>Price</label>
+                    <input type="number" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
                   </div>
                   <div class="form-group">
-                    <label>Meta Description</label>
-                    <input type="text" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
+                    <label>Quantity</label>
+                    <input type="number" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
                   </div>
                   <input type="submit" class="btn btn-default" value="Submit">
-                </form>
+                </form:form>
               </div>
               </div>
 

@@ -79,13 +79,13 @@
                       </tr>
                       </thead>
                       <tbody>
-                      	<c:forEach items="${users}" var="user1">
+                      	<c:forEach items="${users}" var="user">
                       		<tr>
-                      			<td><c:out value="${user1.name}"></c:out></td>
-	                      		<td><c:out value="${user1.email}"></c:out></td>
-	                      		<td><c:out value="${user1.username}"></c:out></td>
-	                      		<td><c:out value="${user1.mobileno}"></c:out></td>
-	                      		<td><c:out value="${user1.isActive}"></c:out></td>
+                      			<td><c:out value="${user.name}"></c:out></td>
+	                      		<td><c:out value="${user.email}"></c:out></td>
+	                      		<td><c:out value="${user.username}"></c:out></td>
+	                      		<td><c:out value="${user.mobileno}"></c:out></td>
+	                      		<td><c:out value="${user.isActive}"></c:out></td>
 	                      		<td><a class="btn btn-default" href="<c:url value="/"/>">Change Status</a> <a class="btn btn-danger" href="<c:url value="/delete-user-{id}"/>">Delete</a></td>
                       		</tr>
                       	</c:forEach>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -66,18 +66,33 @@
                 </div>
                 <br>
                 <table class="table table-striped table-hover">
-                      <tr>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th></th>
-                      </tr>
-                      <tr>
-                        <td>Home</td>
+                      <thead>
+                      	<tr>
+	                        <td>Name</td>
+	                        <td>Price</td>
+	                        <td>Author Name</td>
+	                        <td>Quantity</td>
+	                        <td></td>
+                      	</tr>
+                      </thead>
+                      <tbody>
+                      	<c:forEach items="${products}" var="product">
+	                      <tr>
+	                        <td><c:out value="${product.name}"></c:out></td>
+	                        <td><c:out value="${product.price}"></c:out></td>
+	                        <td><c:out value="${product.author_name}"></c:out></td>
+	                        <td><c:out value="${product.quantity}"></c:out></td>
+	                        <td><a class="btn btn-default" href="<c:url value="/productEdit"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-product-{product_id}" />">Delete</a></td>
+	                      </tr>
+	                     </c:forEach>
+                   </tbody>
+                   </table>   
+                      
+                      <!-- 
+                      <td>Home</td>
                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                         <td>Dec 12, 2016</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
                       <tr>
                         <td>About</td>
                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
@@ -95,8 +110,7 @@
                         <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                         <td>Dec 14, 2016</td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                    </table>
+                      </tr> -->
               </div>
               </div>
 

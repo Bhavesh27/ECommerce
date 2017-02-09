@@ -68,31 +68,7 @@ public class HelloWorldController {
 		return "redirect:/login";
 		
 	}
-	
-	@RequestMapping(value="/product", method = RequestMethod.GET)
-	public String viewProduct(ModelMap model)
-	{
-		model.addAttribute("user", getPrincipal());
-		return "product";
-		
-	}
-	
-	@RequestMapping(value="/users", method = RequestMethod.GET)
-	public String viewUsers(ModelMap model)
-	{
-		model.addAttribute("user", getPrincipal());
-		return "users";
-		
-	}
-	
-	@RequestMapping(value="/supplier", method = RequestMethod.GET)
-	public String viewSupplier(ModelMap model)
-	{
-		model.addAttribute("user", getPrincipal());
-		return "supplier";
-		
-	}
-	
+
 	/*@RequestMapping(value = "/registrationSuccess", method = RequestMethod.GET)
 
 	public String registrationSuccess(Model model,Principal principal) {
