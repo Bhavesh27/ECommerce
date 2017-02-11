@@ -16,6 +16,9 @@ public class CategoryDaoImpl implements CategoryDao {
 	
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	@Autowired
+	CategoryDao categoryDao;
 
 	@Override
 	public void addCategory(Category category) {
@@ -31,10 +34,11 @@ public class CategoryDaoImpl implements CategoryDao {
 	}
 
 	@Override
-	public boolean deleteCategory(int category_id) {
+	public void deleteCategory(Category category) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().delete(category_id);
-		return false;
+		//Category c = categoryDao.getCategoryById(category_id);
+		sessionFactory.getCurrentSession().delete(category);
+		//return false;
 	}
 
 	@Override

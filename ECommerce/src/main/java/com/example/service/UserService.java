@@ -10,7 +10,7 @@ public interface UserService {
 	public User getUser(int userId);
 	public User getUserByEmail(String email);
 	public void updateUser(User user);
-	public boolean deleteUser(int userId);
+	public void deleteUser(User user);
 	public List<User> getAllUsers();
 	public boolean isUserExist(User user);
 	public void deleteAllUsers();

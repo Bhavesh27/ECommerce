@@ -27,15 +27,15 @@ public class Category implements Serializable {
 	@Id
 	@Column
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	int category_id;
+	public int category_id;
 	@Column
-	String category_name;
+	public String category_name;
 	@Column
-	String category_desc;
+	public String category_desc;
 	
 	//Mapping
 	
-	@OneToMany(mappedBy = "category",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="category",cascade=CascadeType.ALL)
 	private Set<Product> product;
 	
 	public int getCategory_id() {

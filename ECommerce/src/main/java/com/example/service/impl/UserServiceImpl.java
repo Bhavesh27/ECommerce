@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService {
 		userDao.updateUser(user);
 	}
 
-	public boolean deleteUser(int userId) {
-		return userDao.deleteUser(userId);
+	public void deleteUser(User user) {
+		userDao.deleteUser(user);
 		//return true;
 	}
 

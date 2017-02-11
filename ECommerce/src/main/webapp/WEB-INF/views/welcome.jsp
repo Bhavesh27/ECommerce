@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
@@ -139,7 +139,7 @@
 			<div class="content-top-bottom">
 				<h2>Featured PRODUCTS</h2>
 				<div class="col-md-6 men">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox" ><img class="img-responsive" src="static/images/image06.jpg" alt="" />
+					<a href="#" class="b-link-stripe b-animate-go  thickbox" ><img class="img-responsive" src="static/images/image06.jpg" alt="" />
 						<div class="b-wrapper">
 							<h3 class="b-animate b-from-top top-in   b-delay03 ">
 								<span>TRIBECA LIVING</span>	

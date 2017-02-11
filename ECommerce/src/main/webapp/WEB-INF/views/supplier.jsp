@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
@@ -15,8 +14,8 @@
   </head>
   <body>
  
- 	<c:import url="adminheader.jsp"></c:import>
- 	   
+ 	<%-- <c:import url="adminheader.jsp"></c:import> --%>
+ 	   <%@ include file="adminheader.jsp" %>
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
@@ -74,17 +73,17 @@
                         <td>Address</td>
                         <td>Email ID</td>
                         <td>Mobile No</td>
-                        <th></th>
+                        <td></td>
                       </tr>
                       </thead>
                       <tbody>
+                      
                       	<c:forEach items="suppliers" var="supplier">
                       		<tr>
-                      			<td><c:out value="${supplier.supplier_name}"></c:out></td>
-                      			<td><c:out value="${supplier.address}"></c:out></td>
-                      			<td><c:out value="${supplier.emailid}"></c:out></td>
-                      			<td><c:out value="${supplier.mobileno}"></c:out></td>
-                      			<td><a class="btn btn-default" href="<c:url value="/supplierEdit"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-supplier-{supplier_id}"/>">Delete</a></td>
+                      			<td>${supplier.supplier_name }</td>
+                      			<td>${supplier.address }</td>
+                      			<td>${supplier.emailid }</td>
+                      			<td>${supplier.mobileno }</td>
                       		</tr>
                       	</c:forEach>
                       </tbody>

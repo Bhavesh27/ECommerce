@@ -22,7 +22,7 @@ public class User implements Serializable{
     @Column
 	private String password;
     @Column
-    private boolean isActive=true;
+    private boolean isActive=false;
     @Column
 	private int roleId=1;
     @Column(unique=true)

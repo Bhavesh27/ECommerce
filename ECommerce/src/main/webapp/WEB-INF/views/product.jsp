@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +55,43 @@
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
+            
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Add Product</h3>
+              </div>
+              <div class="panel-body">
+                <form:form action="addProduct" method="post" commandName="newProduct">
+                  <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Product Description</label>
+                    <input type="text" class="form-control" name="description" placeholder="Enter Product Description" value="" />
+                  </div>
+                 <!--  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" checked> Published
+                    </label>
+                  </div> -->
+                  <div class="form-group">
+                    <label>Author Name</label>
+                    <input type="text" class="form-control" name="author_name" placeholder="Enter Author Name" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" class="form-control" placeholder="Enter Price" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" class="form-control" placeholder="Enter Quantity" value="">
+                  </div>
+                  <input type="submit" class="btn btn-default" value="Submit">
+                </form:form>
+              </div>
+              </div>
+            
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
                 <h3 class="panel-title">Product</h3>
@@ -82,7 +120,7 @@
 	                        <td><c:out value="${product.price}"></c:out></td>
 	                        <td><c:out value="${product.author_name}"></c:out></td>
 	                        <td><c:out value="${product.quantity}"></c:out></td>
-	                        <td><a class="btn btn-default" href="<c:url value="/productEdit"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-product-{product_id}" />">Delete</a></td>
+	                        <td><a class="btn btn-default" href="<c:url value="/productEdit-${product.product_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-product-${product.product_id}" />">Delete</a></td>
 	                      </tr>
 	                     </c:forEach>
                    </tbody>

@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +20,8 @@
       <div class="container">
         <ol class="breadcrumb">
           <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
-          <li><a href="<c:url value="/product"/>">Product</a></li>
-          <li class="active">Edit Page</li>
+          <li><a href="<c:url value="/users"/>">Product</a></li>
+          <li class="active">User Edit Page</li>
         </ol>
       </div>
     </section>
@@ -59,37 +58,36 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Product Edit Page</h3>
+                <h3 class="panel-title">User Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form:form action="edit-product-{product_id}" method="post" commandName="updateProduct">
+                <form>
                   <div class="form-group">
-                    <label>Product Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="${product.name}">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" placeholder="User Name" value="About">
                   </div>
                   <div class="form-group">
-                    <label>Product Description</label>
-                    <input name="description" class="form-control" placeholder="Enter Product Description" value="${product.description}" />
+                    <label>User Email</label>
+                    <!-- <textarea name="editor1" class="form-control" placeholder="Page Body">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </textarea> -->
+                    <input type="text" class="form-control" placeholder="User Email" value="About">
                   </div>
-                 <!--  <div class="checkbox">
+                  <div class="checkbox">
                     <label>
-                      <input type="checkbox" checked> Published
+                      <input type="checkbox" checked> IsActive
                     </label>
-                  </div> -->
-                  <div class="form-group">
-                    <label>Author Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Author Name" value="${product.author_name}">
                   </div>
                   <div class="form-group">
-                    <label>Price</label>
-                    <input type="number" class="form-control" placeholder="Enter Price" value="${product.price}" >
+                    <label>Meta Tags</label>
+                    <input type="text" class="form-control" placeholder="Add Some Tags..." value="tag1, tag2">
                   </div>
                   <div class="form-group">
-                    <label>Quantity</label>
-                    <input type="number" class="form-control" placeholder="Enter Quantity" value="${product.quantity}">
+                    <label>Meta Description</label>
+                    <input type="text" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
                   </div>
                   <input type="submit" class="btn btn-default" value="Submit">
-                </form:form>
+                </form>
               </div>
               </div>
 

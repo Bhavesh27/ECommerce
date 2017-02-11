@@ -27,15 +27,15 @@ public class Supplier implements Serializable {
 	@Id
     @Column
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	int supplier_id;
+	public int supplier_id;
 	@Column
-	String supplier_name;
+	public String supplier_name;
 	@Column(unique=true)
-	String address;
+	public String address;
 	@Column(unique=true)
-	String emailid;
+	public String emailid;
 	@Column(unique=true)
-	long mobileno;
+	public long mobileno;
 	
 	//Mapping
 	

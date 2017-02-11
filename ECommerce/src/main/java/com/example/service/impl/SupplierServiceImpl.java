@@ -31,9 +31,9 @@ public class SupplierServiceImpl implements SupplierService {
 	}
 
 	@Override
-	public boolean deleteSupplier(int supplier_id) {
+	public void deleteSupplier(Supplier supplier) {
 		// TODO Auto-generated method stub
-		return supplierDao.deleteSupplier(supplier_id);
+		supplierDao.deleteSupplier(supplier);
 	}
 
 	@Override

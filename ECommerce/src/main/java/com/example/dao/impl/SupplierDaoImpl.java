@@ -17,6 +17,9 @@ public class SupplierDaoImpl implements SupplierDao{
 	@Autowired
 	SessionFactory sessionFactory;
 	
+	@Autowired
+	SupplierDao supplierDao;
+	
 	@Override
 	public void addSupplier(Supplier supplier) {
 		// TODO Auto-generated method stub
@@ -30,14 +33,14 @@ public class SupplierDaoImpl implements SupplierDao{
 	}
 
 	@Override
-	public boolean deleteSupplier(int supplier_id) {
+	public void deleteSupplier(Supplier supplier) {
 		// TODO Auto-generated method stub
-		 sessionFactory.getCurrentSession().delete(supplier_id);
-		 return false;
+		 //Supplier s = supplierDao.getSupplierById(supplier_id);
+		 sessionFactory.getCurrentSession().delete(supplier);
+		 //return false;
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<Supplier> getAllSuppliers() {
 		// TODO Auto-generated method stub
 		return (List<Supplier>) sessionFactory.getCurrentSession().createQuery("from Supplier").list();

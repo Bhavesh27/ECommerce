@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
@@ -85,8 +85,17 @@
 	                      		<td><c:out value="${user.email}"></c:out></td>
 	                      		<td><c:out value="${user.username}"></c:out></td>
 	                      		<td><c:out value="${user.mobileno}"></c:out></td>
-	                      		<td><c:out value="${user.isActive}"></c:out></td>
-	                      		<td><a class="btn btn-default" href="<c:url value="/"/>">Change Status</a> <a class="btn btn-danger" href="<c:url value="/delete-user-{id}"/>">Delete</a></td>
+	                      		<td> 
+	                      			<c:choose>
+	                      				<c:when test="${user.isActive()}">
+	                      					<c:out value="YES"></c:out>
+	                      				</c:when>
+	                      				<c:otherwise>
+	                      					<c:out value="NO"></c:out>
+	                      				</c:otherwise>
+	                      			</c:choose>
+	                      		</td> 
+	                      		<td><a class="btn btn-default" href="<c:url value="/change-user-status-${user.id}"/>">Change Status</a> <a class="btn btn-danger" href="<c:url value="/delete-user-${user.id}"/>">Delete</a></td>
                       		</tr>
                       	</c:forEach>
                       </tbody>

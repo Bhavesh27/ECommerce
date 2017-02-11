@@ -8,7 +8,7 @@ public interface ProductService {
 
 	public void addProduct(Product product);
 	public void updateProduct(Product product);
-	public boolean deleteProduct(int product_id);
+	public void deleteProduct(Product product);
 	public List<Product> getAllProducts();
 	public Product getProductById(int id);
 	

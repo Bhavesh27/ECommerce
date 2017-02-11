@@ -27,9 +27,9 @@ public class ProductServiceImpl implements ProductService {
 		productDao.updateProduct(product);
 	}
 
-	public boolean deleteProduct(int product_id) {
+	public void deleteProduct(Product product) {
 		// TODO Auto-generated method stub
-		return productDao.deleteProduct(product_id);
+		 productDao.deleteProduct(product);
 	}
 
 	public List<Product> getAllProducts() {

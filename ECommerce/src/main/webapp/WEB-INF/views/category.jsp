@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" 
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,12 +56,30 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Add Category</h3>
+              </div>
+              <div class="panel-body">
+                <form:form action="addCategory" method="post" commandName="newCategory">
+                  <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" class="form-control" name="category_name" placeholder="Enter Category Name" value="">
+                  </div>
+                  <div class="form-group">
+                    <label>Category Description</label>
+                    <input type="text" class="form-control" name="category_desc" placeholder="Enter Category Description" value="">
+                  </div>
+                  <input type="submit" class="btn btn-default" value="Submit">
+                </form:form>
+              </div>
+              </div>
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
                 <h3 class="panel-title">Product</h3>
               </div>
               <div class="panel-body">
                 <div class="row">
                       <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter Products...">
+                          <input class="form-control" type="text" placeholder="Filter Categories...">
                       </div>
                 </div>
                 <br>
@@ -81,7 +100,7 @@
 	                        <td><c:out value="${category.category_desc}"></c:out></td>
 	                        <%-- <td><c:out value="${product.author_name}"></c:out></td>
 	                        <td><c:out value="${product.quantity}"></c:out></td> --%>
-	                        <td><a class="btn btn-default" href="<c:url value="/categoryEdit"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-product-{product_id}" />">Delete</a></td>
+	                        <td><a class="btn btn-default" href="<c:url value="/categoryEdit"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-category-${category.category_id}" />">Delete</a></td>
 	                      </tr>
 	                     </c:forEach>
                    </tbody>

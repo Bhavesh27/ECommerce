@@ -8,7 +8,7 @@ public interface CategoryService {
 
 	public void addCategory(Category category);
 	public void updateCategory(Category category);
-	public boolean deleteCategory(int category_id);
+	public void deleteCategory(Category category);
 	public List<Category> getAllCategorys();
 	public Category getCategoryById(int category_id);
 	

@@ -17,6 +17,9 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	ProductDao productDao;
 
 	
 	public void addProduct(Product product) {
@@ -35,11 +38,11 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 
-	public boolean deleteProduct(int product_id) {
+	public void deleteProduct(Product product) {
 		// TODO Auto-generated method stub
-		
-		sessionFactory.getCurrentSession().delete(product_id);
-		return false;
+		//Product p = productDao.getProductById(product_id);
+		sessionFactory.getCurrentSession().delete(product);
+		//return false;
 	}
 
 	

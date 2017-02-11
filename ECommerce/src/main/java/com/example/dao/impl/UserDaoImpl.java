@@ -19,9 +19,6 @@ import com.example.model.User;
 public class UserDaoImpl implements UserDao {
 	
 	@Autowired
-	private UserDao userDao;
-	
-	@Autowired
 	private SessionFactory session;
 	
 	public void addUser(User user) {
@@ -50,22 +47,22 @@ public class UserDaoImpl implements UserDao {
 		session.getCurrentSession().update(user);
 	}
 
-	public boolean deleteUser(int userId) {
-		User u = userDao.getUser(userId);
-		session.getCurrentSession().delete(u);
-		return false;
+	public void deleteUser(User user) {
+		//User u = userDao.getUser(userId);
+		session.getCurrentSession().delete(user);
+		//return false;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-		return (List<User>) session.getCurrentSession().createQuery("from User").list();
+		return (List<User>) session.getCurrentSession().createQuery("from User where roleId=1").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAllActiveUsers() {
 		// TODO Auto-generated method stub
-		return (List<User>) session.getCurrentSession().createQuery("from User where isactive=true").list();
+		return (List<User>) session.getCurrentSession().createQuery("from User where isactive=true and roleId=1").list();
 	}
 	
 	
