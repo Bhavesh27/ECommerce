@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +24,11 @@
 	</div>
 	<!-- grow -->
 <!--content-->
-<div class="container">
-<div class="register">
-		  	  <form:form action="register" method="post" commandName="adduser"> 
+	<div class="container">
+	<div class="register">
+         <form:form action="register" commandName="adduser" enctype="multipart/form-data" method="POST" > 
 				 <div class="col-md-6 register-top-grid">
-					<h3>Personal infomation</h3>
+					<h3>Personal Information</h3>
 					 <div>
 						<span>Name</span>
 						<input type="text" name="name"> 
@@ -54,6 +55,11 @@
 								<span>Password</span>
 								<input type="password" name="password">
 							 </div>
+							   <div>
+								<span>Image</span>
+								<input type="file" name="image">
+							 </div>      
+							 <br />
 							 <input type="submit" value="submit">
 							
 					 </div>

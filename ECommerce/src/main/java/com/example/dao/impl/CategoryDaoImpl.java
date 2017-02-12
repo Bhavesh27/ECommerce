@@ -20,7 +20,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	@Autowired
 	CategoryDao categoryDao;
 
-	@Override
+	
 	public void addCategory(Category category) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().save(category);

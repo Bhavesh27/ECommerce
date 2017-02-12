@@ -1,5 +1,9 @@
 package com.example.controller;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 //import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +20,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.model.User;
 import com.example.service.UserService;
@@ -29,6 +34,8 @@ public class HelloWorldController {
 	
 	/*@Autowired
 	User user;*/
+	
+	Path path;
 	
 	
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
@@ -61,10 +68,27 @@ public class HelloWorldController {
 		return "Registration";
 	}
 
-	@RequestMapping(value= "/register", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute("adduser") User user){
+	@RequestMapping(value= "/register", method = {RequestMethod.GET,RequestMethod.POST})
+	public String addUser(@ModelAttribute("adduser") User user,HttpServletRequest request){
 		
 		userService.addUser(user);
+		
+		MultipartFile image = user.getImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		
+		path = Paths.get(rootDirectory + "/static/images/user" + user.getUsername() + ".png");
+		System.out.println(path.toString());
+		if(image != null && !image.isEmpty() )
+		{
+			try{
+				image.transferTo(new File(path.toString()));
+			}catch(Exception exception){
+				throw new RuntimeException("Product image Saved",exception);
+			}
+			
+		}
+		
+		
 		return "redirect:/login";
 		
 	}

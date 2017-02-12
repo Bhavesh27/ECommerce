@@ -20,19 +20,19 @@ public class SupplierDaoImpl implements SupplierDao{
 	@Autowired
 	SupplierDao supplierDao;
 	
-	@Override
+	
 	public void addSupplier(Supplier supplier) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().save(supplier);
 	}
 
-	@Override
+	
 	public void updateSupplier(Supplier supplier) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().update(supplier);
 	}
 
-	@Override
+	
 	public void deleteSupplier(Supplier supplier) {
 		// TODO Auto-generated method stub
 		 //Supplier s = supplierDao.getSupplierById(supplier_id);
@@ -46,7 +46,7 @@ public class SupplierDaoImpl implements SupplierDao{
 		return (List<Supplier>) sessionFactory.getCurrentSession().createQuery("from Supplier").list();
 	}
 
-	@Override
+	
 	public Supplier getSupplierById(int supplier_id) {
 		// TODO Auto-generated method stub
 		return sessionFactory.getCurrentSession().get(Supplier.class, supplier_id);
