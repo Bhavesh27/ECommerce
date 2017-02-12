@@ -76,16 +76,32 @@
                     </label>
                   </div> -->
                   <div class="form-group">
+                  	<label>Select Category</label>
+                  	<select class="form-control" name="category" placeholder="Select Category">
+				        <c:forEach items="${category}" var="categories">
+							<option value='${categories}'>${categories.category_name}</option>
+						</c:forEach>
+				    </select>
+                  </div>
+                  <div class="form-group">
                     <label>Author Name</label>
                     <input type="text" class="form-control" name="author_name" placeholder="Enter Author Name" value="">
                   </div>
                   <div class="form-group">
+                  	<label>Select Supplier</label>
+                  	<select class="form-control" name="supplier" >
+				        <c:forEach items="${suppliers}" var="supplier">
+							<option value='${supplier}'>${supplier.supplier_name}</option>
+						</c:forEach>
+				    </select>
+                  </div>
+                  <div class="form-group">
                     <label>Price</label>
-                    <input type="number" class="form-control" placeholder="Enter Price" value="">
+                    <input type="number" name="price" class="form-control" placeholder="Enter Price" value="" min="0" />
                   </div>
                   <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" class="form-control" placeholder="Enter Quantity" value="">
+                    <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity" value="" min="0">
                   </div>
                   <input type="submit" class="btn btn-default" value="Submit">
                 </form:form>
@@ -125,30 +141,6 @@
 	                     </c:forEach>
                    </tbody>
                    </table>   
-                      
-                      <!-- 
-                      <td>Home</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 12, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      <tr>
-                        <td>About</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Services</td>
-                        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Contact</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 14, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr> -->
               </div>
               </div>
 

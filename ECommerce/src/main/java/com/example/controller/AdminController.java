@@ -41,6 +41,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
+		
 		model.addAttribute("user", getPrincipal());
 		
 		List<User> users = userService.getAllActiveUsers();
@@ -101,6 +102,9 @@ public class AdminController {
 		
 		List<Product> products = productService.getAllProducts();
 		model.addAttribute("products", products);
+		
+		model.addAttribute("category", categoryService.getAllCategorys());
+		model.addAttribute("suppliers", supplierService.getAllSuppliers());
 		
 		model.addAttribute("newProduct", new Product());
 		
@@ -191,42 +195,27 @@ public class AdminController {
     	return "redirect:/category";
     }
     
-    @RequestMapping(value="/edit-category-{category_id}" , method = RequestMethod.GET)
-    public String editCategory(@PathVariable int category_id , ModelMap model)
+    
+    @RequestMapping(value="/categoryEdit-{category_id}",method = RequestMethod.GET)
+    public String categoryEdit(@PathVariable int category_id,ModelMap model)
     {
+    	
     	Category category = categoryService.getCategoryById(category_id);
     	model.addAttribute("category_id", category_id);
-    	model.addAttribute("update_category", category);
     	model.addAttribute("categoryName", category.getCategory_name());
-    	model.addAttribute("edit", true);
+    	model.addAttribute("category_desc", category.getCategory_desc());
     	
-    	List<User> users = userService.getAllActiveUsers();
-        model.addAttribute("users", users);
-        
-        List<Category> categories = categoryService.getAllCategorys();
-        model.addAttribute("categories", categories);
+    	model.addAttribute("updateCategory",category);
     	
-    	return "admin";
+    	return "categoryedit";
+    	
     }
     
     @RequestMapping(value="/edit-category-{category_id}" , method = RequestMethod.POST)
     public String updateCategory(@ModelAttribute("updateCategory") Category category)
     {
     	categoryService.updateCategory(category);
-    	return "redirect:/admin";
-    }
-    
-    
-    @RequestMapping(value="/categoryEdit-{category_id}",method = RequestMethod.GET)
-    public String categoryEdit(@PathVariable int category_id,ModelMap model)
-    {
-    	model.addAttribute("updateCategory", new Category());
-    	
-    	Category category = categoryService.getCategoryById(category_id);
-    	model.addAttribute("category",category);
-    	
-    	return "categoryedit";
-    	
+    	return "redirect:/category";
     }
     
     
@@ -241,28 +230,10 @@ public class AdminController {
     	List<Supplier> suppliers = supplierService.getAllSuppliers();
     	model.addAttribute("suppliers", suppliers);
     	
-    	System.out.println(suppliers.size());
-    	
-    	for(Supplier supplier :suppliers){
-    		
-        	System.out.println(supplier.address);
-        	System.out.println(supplier.emailid);
-        	System.out.println(supplier.mobileno);
-    		
-    	}
+    	model.addAttribute("newSupplier", new Supplier());
     	
     	return "supplier";
     }
-    
-    /*@RequestMapping(value="/Supplier" , method = RequestMethod.GET)
-    public String supplierPage(ModelMap model)
-    {
-    	model.addAttribute("user", getPrincipal());
-    	model.addAttribute("edit", false);
-    	model.addAttribute("new_supplier", new Supplier());
-    	model.addAttribute("suppliers", supplierService.getAllSuppliers());
-    	return "supplier";
-    }*/
     
     @RequestMapping(value="/delete-supplier-{supplier_id}" , method = RequestMethod.GET)
     public String deleteSupplier(@PathVariable int supplier_id)
@@ -272,21 +243,38 @@ public class AdminController {
     	return "redirect:/supplier";
     }
     
-    @RequestMapping(value="/newSupplier" , method = RequestMethod.POST)
-    public String addSupplier(@ModelAttribute("new_supplier") Supplier supplier)
+    @RequestMapping(value="/supplierEdit-{supplier_id}",method = RequestMethod.GET)
+    public String supplierEdit(@PathVariable int supplier_id,ModelMap model)
+    {
+    	
+    	Supplier supplier = supplierService.getSupplierById(supplier_id);
+    	model.addAttribute("supplier_id", supplier_id);
+    	model.addAttribute("supplierName", supplier.getSupplier_name());
+    	model.addAttribute("supplierAddress", supplier.getAddress());
+    	model.addAttribute("supplierEmailId", supplier.getEmailid());
+    	model.addAttribute("supplierMobileNo", supplier.getMobileno());
+    	
+    	model.addAttribute("updateSupplier",supplier);
+    	
+    	return "supplieredit";
+    	
+    }
+    
+    @RequestMapping(value="/addSupplier" , method = RequestMethod.POST)
+    public String addSupplier(@ModelAttribute("newSupplier") Supplier supplier)
     {
     	supplierService.addSupplier(supplier);
-    	return "redirect:/Supplier";
+    	return "redirect:/supplier";
     }
 	
-    @RequestMapping(value="/edit-supplier-{supplier_id}" , method = RequestMethod.GET)
+   /* @RequestMapping(value="/edit-supplier-{supplier_id}" , method = RequestMethod.GET)
     public String editSupplier(@PathVariable int supplier_id , ModelMap model)
     {
-    	model.addAttribute("edit", true);
+    	//model.addAttribute("edit", true);
     	model.addAttribute("update_supplier" , supplierService.getSupplierById(supplier_id));
     	model.addAttribute("suppliers", supplierService.getAllSuppliers());
     	return "supplier";
-    }
+    }*/
     
     @RequestMapping(value="/edit-supplier-{supplier_id}" , method = RequestMethod.POST)
     public String updateSupplier(@ModelAttribute("update_supplier") Supplier supplier)

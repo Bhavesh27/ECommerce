@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,32 +62,25 @@
                 <h3 class="panel-title">Supplier Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form>
+                <form:form action="edit-supplier-${supplier_id}" method="POST" commandName="updateSupplier">
                   <div class="form-group">
                     <label>Supplier Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Supplier Name" value="About">
+                    <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="${supplierName}" />
                   </div>
                   <div class="form-group">
                     <label>Supplier Address</label>
-                    <textarea name="editor1" class="form-control" placeholder="Enter Supplier Address">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </textarea>
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" checked> Verified
-                    </label>
+                    <input name="address" class="form-control" placeholder="Enter Supplier Address" value="${supplierAddress}" />
                   </div>
                   <div class="form-group">
-                    <label>Meta Tags</label>
-                    <input type="text" class="form-control" placeholder="Add Some Tags..." value="tag1, tag2">
+                    <label>Supplier Email Id</label>
+                    <input type="text" name="emailid" class="form-control" placeholder="Enter Supplier Email id" value="${supplierEmailId}" />
                   </div>
                   <div class="form-group">
-                    <label>Meta Description</label>
-                    <input type="text" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
+                    <label>Supplier Mobile No</label>
+                    <input type="text" name="mobileno" class="form-control" placeholder="Enter Supplier Mobile No" value="${supplierMobileNo}" />
                   </div>
-                  <input type="submit" class="btn btn-default" value="Submit">
-                </form>
+                  <input type="submit" class="btn btn-default" value="Update">
+                </form:form>
               </div>
               </div>
 

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,33 +62,18 @@
                 <h3 class="panel-title">User Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form>
+                <form:form action="edit-category-${category_id}" method="POST" commandName="updateCategory">
                   <div class="form-group">
-                    <label>User Name</label>
-                    <input type="text" class="form-control" placeholder="User Name" value="About">
-                  </div>
-                  <div class="form-group">
-                    <label>User Email</label>
-                    <!-- <textarea name="editor1" class="form-control" placeholder="Page Body">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </textarea> -->
-                    <input type="text" class="form-control" placeholder="User Email" value="About">
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" checked> IsActive
-                    </label>
+                    <label>Category Name</label>
+                    <input type="text" name="category_name" class="form-control" placeholder="Enter Category Name" value="${categoryName}">
                   </div>
                   <div class="form-group">
-                    <label>Meta Tags</label>
-                    <input type="text" class="form-control" placeholder="Add Some Tags..." value="tag1, tag2">
+                    <label>Category Description</label>
+                     <input name="category_desc" class="form-control" placeholder="Enter Category Description" value="${category_desc}" />
                   </div>
-                  <div class="form-group">
-                    <label>Meta Description</label>
-                    <input type="text" class="form-control" placeholder="Add Meta Description..." value="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et ">
-                  </div>
+                  
                   <input type="submit" class="btn btn-default" value="Submit">
-                </form>
+                </form:form>
               </div>
               </div>
 

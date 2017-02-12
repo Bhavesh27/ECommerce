@@ -100,7 +100,7 @@
 	                        <td><c:out value="${category.category_desc}"></c:out></td>
 	                        <%-- <td><c:out value="${product.author_name}"></c:out></td>
 	                        <td><c:out value="${product.quantity}"></c:out></td> --%>
-	                        <td><a class="btn btn-default" href="<c:url value="/categoryEdit"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-category-${category.category_id}" />">Delete</a></td>
+	                        <td><a class="btn btn-default" href="<c:url value="/categoryEdit-${category.category_id }"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-category-${category.category_id}" />">Delete</a></td>
 	                      </tr>
 	                     </c:forEach>
                    </tbody>

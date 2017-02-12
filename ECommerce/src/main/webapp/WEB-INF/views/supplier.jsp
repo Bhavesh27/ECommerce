@@ -1,5 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html lang="en">
   <head>
@@ -55,6 +56,34 @@
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
+            
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Add Supplier</h3>
+              </div>
+              <div class="panel-body">
+                <form:form action="addSupplier" method="POST" commandName="newSupplier">
+                  <div class="form-group">
+                    <label>Supplier Name</label>
+                    <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Supplier Address</label>
+                    <input name="address" class="form-control" placeholder="Enter Supplier Address" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Supplier Email ID</label>
+                    <input type="email" name="emailid" class="form-control" placeholder="Enter Email Id" value="" required />
+                  </div>
+                  <div class="form-group">
+                    <label>Enter Mobile No</label>
+                    <input type="number" name="mobileno" class="form-control" placeholder="Enter Mobile No" value="" required />
+                  </div>
+                  <input type="submit" class="btn btn-default" value="Submit">
+                </form:form>
+              </div>
+              </div>
+            
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
                 <h3 class="panel-title">Supplier</h3>
@@ -78,40 +107,16 @@
                       </thead>
                       <tbody>
                       
-                      	<c:forEach items="suppliers" var="supplier">
+                      	<c:forEach items="${suppliers}" var="supplier">
                       		<tr>
                       			<td>${supplier.supplier_name }</td>
                       			<td>${supplier.address }</td>
                       			<td>${supplier.emailid }</td>
                       			<td>${supplier.mobileno }</td>
+                      			<td><a class="btn btn-default" href="<c:url value="/supplierEdit-${supplier.supplier_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-supplier-${supplier.supplier_id}" />">Delete</a></td>
                       		</tr>
                       	</c:forEach>
                       </tbody>
-            
-                      <!-- <tr>
-                        <td>Blog Post 1</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 12, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Blog Post 2</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Blog Post 3</td>
-                        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Blog Post 4</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 14, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr> -->
                     </table>
               </div>
               </div>
