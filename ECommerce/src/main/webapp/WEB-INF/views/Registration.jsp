@@ -1,6 +1,6 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -31,15 +31,15 @@
 					<h3>Personal Information</h3>
 					 <div>
 						<span>Name</span>
-						<input type="text" name="name"> 
+						<input type="text" name="name" placeholder="Enter Name" required> 
 					 </div>
 					 <div>
 						<span>Email</span>
-						<input type="email" name="email"> 
+						<input type="email" name="email" placeholder="Enter Email" required> 
 					 </div>
 					 <div>
 						 <span>Mobile-No</span>
-						 <input type="tel" name="mobileno" maxlength="10" min="10"> 
+						 <input type="tel" name="mobileno" maxlength="10" min="10" placeholder="Enter Mobile No" required> 
 					 </div>
 					  <!--  <a class="news-letter" href="#">
 						 <label class="checkbox"><input type="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
@@ -49,11 +49,11 @@
 						    <h3>Login information</h3>
 							 <div>
 								<span>Username</span>
-								<input type="text" name="username">
+								<input type="text" name="username" placeholder="Enter Username" required>
 							 </div>
 							 <div>
 								<span>Password</span>
-								<input type="password" name="password">
+								<input type="password" name="password" placeholder="Enter Password" required>
 							 </div>
 							   <div>
 								<span>Image</span>
@@ -63,7 +63,35 @@
 							 <input type="submit" value="submit">
 							
 					 </div>
-					 <div class="clearfix"> </div>
+					 <div class="clearfix"> </div><br />
+					 <br/>
+					 <%-- <c:if test="${param.email != null}">
+					<div class="alert alert-danger">
+						<p>${emailMsg}</p>
+					</div>
+				</c:if>
+				<c:if test="${param.username != null}">
+					<div class="alert alert-success">
+						<p>${usernameMsg}</p>
+					</div>
+				</c:if>
+				<c:if test="${param.mobileno != null}">
+					<div class="alert alert-success">
+						<p>${mobilenoMsg}</p>
+					</div>
+				</c:if> --%>
+				<c:choose>
+					  <c:when test="${param.email != null}"> <div class="alert alert-danger">
+						<p>${emailMsg}</p>
+					</div> </c:when>
+					  <c:when test="${param.username != null}"> <div class="alert alert-success">
+						<p>${usernameMsg}</p>
+					</div> </c:when>
+					  <c:when test="${param.mobileno != null}"> <div class="alert alert-success">
+						<p>${mobilenoMsg}</p>
+					</div> </c:when>
+				</c:choose>
+					 
 				</form:form>
 			</div>
 </div>

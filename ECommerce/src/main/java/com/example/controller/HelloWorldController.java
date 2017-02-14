@@ -3,11 +3,13 @@ package com.example.controller;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 //import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -17,6 +19,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,7 +72,31 @@ public class HelloWorldController {
 	}
 
 	@RequestMapping(value= "/register", method = {RequestMethod.GET,RequestMethod.POST})
-	public String addUser(@ModelAttribute("adduser") User user,HttpServletRequest request){
+	public String addUser(@Valid @ModelAttribute("adduser") User user,HttpServletRequest request,BindingResult result,Model model){
+		
+		if(result.hasErrors()){
+			return "Registration";
+		}
+		
+		List<User> users = userService.getAllUsers();
+		
+		for(int i=0;i<users.size();i++)
+		{
+			if(user.getEmail().equals(users.get(i).getEmail())){
+				model.addAttribute("emailMsg", "Email Already Exists");
+				return "Registration";
+			}
+			
+			if(user.getUsername().equals(users.get(i).getUsername())){
+				model.addAttribute("usernameMsg", "Username Already Exists");
+				return "Registration";
+			}
+			
+			if(user.getMobileno().equals(users.get(i).getMobileno())){
+				model.addAttribute("mobilenoMsg", "MobileNo Already Exists");
+				return "Registration";
+			}
+		}
 		
 		userService.addUser(user);
 		
