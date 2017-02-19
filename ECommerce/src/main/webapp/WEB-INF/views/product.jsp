@@ -70,14 +70,9 @@
                     <label>Product Description</label>
                     <input type="text" class="form-control" name="description" placeholder="Enter Product Description" value="" />
                   </div>
-                 <!--  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" checked> Published
-                    </label>
-                  </div> -->
                   <div class="form-group">
                   	<label>Select Category</label>
-                  	<select class="form-control" name="category" placeholder="Select Category">
+                  	<select class="form-control" name="category" >
 				        <c:forEach items="${category}" var="categories">
 							<option value='${categories}'>${categories.category_name}</option>
 						</c:forEach>

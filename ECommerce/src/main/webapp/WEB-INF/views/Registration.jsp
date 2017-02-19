@@ -6,13 +6,9 @@
 <html>
 <head>
 <title>Register</title>
-
-
-<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet"  />
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet"  />
 	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet"   /> 
-<link href="static/css/style.css" rel="stylesheet"  />	
-
-
+	<link href="static/css/style.css" rel="stylesheet"  />	
 </head>
 <body>
  <%-- <%@ include file="header.jsp" %> --%>
@@ -84,10 +80,10 @@
 					  <c:when test="${param.email != null}"> <div class="alert alert-danger">
 						<p>${emailMsg}</p>
 					</div> </c:when>
-					  <c:when test="${param.username != null}"> <div class="alert alert-success">
+					  <c:when test="${param.username != null}"> <div class="alert alert-danger">
 						<p>${usernameMsg}</p>
 					</div> </c:when>
-					  <c:when test="${param.mobileno != null}"> <div class="alert alert-success">
+					  <c:when test="${param.mobileno != null}"> <div class="alert alert-danger">
 						<p>${mobilenoMsg}</p>
 					</div> </c:when>
 				</c:choose>

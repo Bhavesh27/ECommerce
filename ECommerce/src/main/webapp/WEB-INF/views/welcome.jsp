@@ -13,62 +13,6 @@
 </head>
 <body>
 	<c:import url="header.jsp" />
-	 <!-- Dear <strong>${user}</strong>, Welcome to Home Page. -->  
-<!--  <div class="banner">
-		<div class="container">
-			  <script src="static/js/responsiveslides.min.js"></script>
-  <script>
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	nav: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
-  </script> 
-			<div  id="top" class="callbacks_container">
-			<ul class="rslides" id="slider">
-			    <li>
-					
-						<div class="banner-text">
-							<h3>Lorem Ipsum is   </h3>
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
-						</div>
-				
-				</li>
-				<li>
-					
-						<div class="banner-text">
-							<h3>There are many  </h3>
-						<p>Popular belief Contrary to , Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
-												
-
-						</div>
-					
-				</li>
-				<li>
-						<div class="banner-text">
-							<h3>Sed ut perspiciatis</h3>
-						<p>Lorem Ipsum is not simply random text. Contrary to popular belief, It has roots in a piece of classical Latin literature from 45 BC.</p>
-						</div>
-					
-				</li>
-				<li>
-						<div class="banner-text">
-							<h3>Sed ut perspiciatis</h3>
-						<p>Lorem Ipsum is not simply random text. Contrary to popular belief, It has roots in a piece of classical Latin literature from 45 BC.</p>
-						</div>
-					
-				</li>
-			</ul>
-		</div>
-
-	</div>
-	</div>
- -->
-
    <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -84,9 +28,6 @@
       <img class="first-slide" src="static/images/ShowcaseV1.png" alt="First slide">
       <div class="container">
         <div class="carousel-caption">
-          <!-- <h1>Example headline.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
         </div>
       </div>
     </div>
@@ -94,9 +35,6 @@
       <img class="second-slide" src="static/images/ShowcaseV2.png" alt="Second slide" >
       <div class="container">
         <div class="carousel-caption">
-          <!-- <h1>Another example headline.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
         </div>
       </div>
     </div>
@@ -104,9 +42,6 @@
       <img class="second-slide" src="static/images/ShowcaseV3.png" alt="Third slide" >
       <div class="container">
         <div class="carousel-caption">
-          <!-- <h1>Another example headline.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
         </div>
       </div>
     </div>
