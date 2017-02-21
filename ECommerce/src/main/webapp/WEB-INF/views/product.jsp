@@ -37,21 +37,6 @@
               <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
               <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
             </div>
-
-            <!-- <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div> -->
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
@@ -72,11 +57,7 @@
                   </div>
                   <div class="form-group">
                   	<label>Select Category</label>
-                  	<select class="form-control" name="category" >
-				        <c:forEach items="${category}" var="categories">
-							<option value='${categories}'>${categories.category_name}</option>
-						</c:forEach>
-				    </select>
+				    <form:select class="form-control" path="category.category_id" items="${category }" itemValue="category_id" itemLabel="category_name" />
                   </div>
                   <div class="form-group">
                     <label>Author Name</label>
@@ -84,11 +65,7 @@
                   </div>
                   <div class="form-group">
                   	<label>Select Supplier</label>
-                  	<select class="form-control" name="supplier" >
-				        <c:forEach items="${suppliers}" var="supplier">
-							<option value='${supplier}'>${supplier.supplier_name}</option>
-						</c:forEach>
-				    </select>
+				    <form:select class="form-control" path="supplier.supplier_id" items="${suppliers }" itemValue="supplier_id" itemLabel="supplier_name"/>
                   </div>
                   <div class="form-group">
                     <label>Price</label>

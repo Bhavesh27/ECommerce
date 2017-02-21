@@ -36,8 +36,13 @@ public class AdminController {
 	@Autowired
 	SupplierService supplierService;
 	
+    @Autowired
+    Category category;
+    
+    @Autowired
+    Supplier supplier;
 	
-	//DashBoard
+    //DashBoard
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
@@ -134,6 +139,13 @@ public class AdminController {
     @RequestMapping(value="/addProduct", method = RequestMethod.POST)
     public String addNewProduct(@ModelAttribute("newProduct") Product product)
     {
+    	
+    	category=categoryService.getCategoryById(product.getCategory().getCategory_id());
+    	supplier=supplierService.getSupplierById(product.getSupplier().getSupplier_id());
+    	
+    	product.setCategory(category);
+    	product.setSupplier(supplier);
+    	
     	productService.addProduct(product);
     	return "redirect:/product";
     }
@@ -141,17 +153,32 @@ public class AdminController {
     @RequestMapping(value="/edit-product-{product_id}", method = RequestMethod.POST)
     public String editProduct (@ModelAttribute("updateProduct")Product product)
     {
+    	category=categoryService.getCategoryById(product.getCategory().getCategory_id());
+    	supplier=supplierService.getSupplierById(product.getSupplier().getSupplier_id());
+    	    	
+    	product.setCategory(category);
+    	product.setSupplier(supplier);
+    	
     	productService.updateProduct(product);
-    	return "product";
+    	
+    	return "redirect:/product";
     }
     
     @RequestMapping(value="/productEdit-{product_id}", method = RequestMethod.GET)
     public String productEdit (@PathVariable int product_id,ModelMap model)
     {
-    	model.addAttribute("updateProduct", new Product());
+    	
     	
     	Product product = productService.getProductById(product_id);
-    	model.addAttribute("product",product);
+    	model.addAttribute("product_id",product_id);
+    	model.addAttribute("product_name",product.getName());
+    	model.addAttribute("product_description",product.getDescription());
+    	model.addAttribute("product_author",product.getAuthor_name());
+    	model.addAttribute("product_price",product.getPrice());
+    	model.addAttribute("product_quantity",product.getQuantity());
+    	model.addAttribute("category",categoryService.getAllCategorys());
+    	model.addAttribute("suppliers",supplierService.getAllSuppliers());
+    	model.addAttribute("updateProduct", product);
     	return "productedit";
     }
     

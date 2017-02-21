@@ -39,21 +39,6 @@
               <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
               <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
             </div>
-
-            <!-- <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div> -->
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
@@ -62,31 +47,34 @@
                 <h3 class="panel-title">Product Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form:form action="edit-product-{product_id}" method="post" commandName="updateProduct">
+                <form:form action="edit-product-${product_id}" method="post" commandName="updateProduct">
                   <div class="form-group">
                     <label>Product Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="${product.name}">
+                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="${product_name}">
                   </div>
                   <div class="form-group">
                     <label>Product Description</label>
-                    <input name="description" class="form-control" placeholder="Enter Product Description" value="${product.description}" />
+                    <input name="description" class="form-control" placeholder="Enter Product Description" value="${product_description}" />
                   </div>
-                 <!--  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" checked> Published
-                    </label>
-                  </div> -->
+                  <div class="form-group">
+                  	<label>Select Category</label>
+				    <form:select class="form-control" path="category.category_id" items="${category}" itemValue="category_id" itemLabel="category_name" />
+                  </div>
                   <div class="form-group">
                     <label>Author Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Author Name" value="${product.author_name}">
+                    <input type="text" class="form-control" name="author_name" placeholder="Enter Author Name" value="${product_author}">
+                  </div>
+                  <div class="form-group">
+                  	<label>Select Supplier</label>
+				    <form:select class="form-control" path="supplier.supplier_id" items="${suppliers}" itemValue="supplier_id" itemLabel="supplier_name"/>
                   </div>
                   <div class="form-group">
                     <label>Price</label>
-                    <input type="number" class="form-control" placeholder="Enter Price" value="${product.price}" >
+                    <input type="number" name="price" class="form-control" placeholder="Enter Price" value="${product_price}" >
                   </div>
                   <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" class="form-control" placeholder="Enter Quantity" value="${product.quantity}">
+                    <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity" value="${product_quantity}">
                   </div>
                   <input type="submit" class="btn btn-default" value="Submit">
                 </form:form>

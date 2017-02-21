@@ -54,4 +54,10 @@ public class CategoryDaoImpl implements CategoryDao {
 		return sessionFactory.getCurrentSession().get(Category.class,category_id);
 	}
 
+	@Override
+	public Category getCategoryByName(String category_name) {
+		
+		return null;
+	}
+
 }

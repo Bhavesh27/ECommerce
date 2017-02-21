@@ -44,9 +44,10 @@ public class Product implements Serializable {
 	@JoinColumn(name = "category_id")
 	private Category category;
 	
-	@ManyToMany
-	@JoinTable(name="product_supplier",joinColumns={@JoinColumn(name="product_id")},inverseJoinColumns={@JoinColumn(name="supplier_id")})
-	private Set<Supplier> supplier;
+	@ManyToOne
+	//@JoinTable(name="product_supplier",joinColumns={@JoinColumn(name="product_id")},inverseJoinColumns={@JoinColumn(name="supplier_id")})
+	@JoinColumn(name="supplier_id")
+	private Supplier supplier;
 	
 	public int getProduct_id() {
 		return product_id;
@@ -96,11 +97,11 @@ public class Product implements Serializable {
 		this.category = category;
 	}
 
-	public Set<Supplier> getSupplier() {
+	public Supplier getSupplier() {
 		return supplier;
 	}
 
-	public void setSupplier(Set<Supplier> supplier) {
+	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
 	

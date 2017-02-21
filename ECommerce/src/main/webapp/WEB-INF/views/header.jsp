@@ -1,5 +1,6 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,9 +61,16 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Sign In</a></li>
-            <li><a href="../navbar-static-top/">Register</a></li>
-            <li><a href="./"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+          	<c:if test="${pageContext.request.userPrincipal.name == null }">
+	            <li><a href='<c:url value='/login'></c:url>'>Sign In</a></li>
+	            <li><a href='<c:url value='/register'></c:url>'>Register</a></li>
+	            <li><a href="./"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+            </c:if>
+            <c:if test="${pageContext.request.userPrincipal.name != null }">
+            	<li><a href='<c:url value='/home'></c:url>'>${pageContext.request.userPrincipal.name}</a></li>
+            	<li><a href='<c:url value='/logout'></c:url>'>Logout</a></li>
+            	<li><a href="./"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+            </c:if>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

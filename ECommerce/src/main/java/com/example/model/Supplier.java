@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -39,7 +40,7 @@ public class Supplier implements Serializable {
 	
 	//Mapping
 	
-	@ManyToMany(mappedBy = "supplier" , cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "supplier" , cascade=CascadeType.ALL)
 	private Set<Product> products;
 	
 	public int getSupplier_id() {

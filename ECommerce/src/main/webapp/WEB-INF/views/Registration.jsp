@@ -61,11 +61,12 @@
 					 </div>
 					 <div class="clearfix"> </div><br />
 					 <br/>
-					 <%-- <c:if test="${param.email != null}">
+					  <c:if test="${param.error != null}">
 					<div class="alert alert-danger">
-						<p>${emailMsg}</p>
+						<p>${Msg}</p>
 					</div>
 				</c:if>
+				<%--
 				<c:if test="${param.username != null}">
 					<div class="alert alert-success">
 						<p>${usernameMsg}</p>
@@ -76,17 +77,7 @@
 						<p>${mobilenoMsg}</p>
 					</div>
 				</c:if> --%>
-				<c:choose>
-					  <c:when test="${param.email != null}"> <div class="alert alert-danger">
-						<p>${emailMsg}</p>
-					</div> </c:when>
-					  <c:when test="${param.username != null}"> <div class="alert alert-danger">
-						<p>${usernameMsg}</p>
-					</div> </c:when>
-					  <c:when test="${param.mobileno != null}"> <div class="alert alert-danger">
-						<p>${mobilenoMsg}</p>
-					</div> </c:when>
-				</c:choose>
+				
 					 
 				</form:form>
 			</div>

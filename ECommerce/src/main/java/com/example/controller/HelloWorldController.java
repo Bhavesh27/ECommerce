@@ -83,17 +83,17 @@ public class HelloWorldController {
 		for(int i=0;i<users.size();i++)
 		{
 			if(user.getEmail().equals(users.get(i).getEmail())){
-				model.addAttribute("emailMsg", "Email Already Exists");
+				model.addAttribute("Msg", "Email Already Exists");
 				return "Registration";
 			}
 			
 			if(user.getUsername().equals(users.get(i).getUsername())){
-				model.addAttribute("usernameMsg", "Username Already Exists");
+				model.addAttribute("Msg", "Username Already Exists");
 				return "Registration";
 			}
 			
 			if(user.getMobileno().equals(users.get(i).getMobileno())){
-				model.addAttribute("mobilenoMsg", "MobileNo Already Exists");
+				model.addAttribute("Msg", "MobileNo Already Exists");
 				return "Registration";
 			}
 		}
