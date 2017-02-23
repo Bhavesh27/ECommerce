@@ -92,10 +92,6 @@ public class HelloWorldController {
 				return "Registration";
 			}
 			
-			if(user.getMobileno().equals(users.get(i).getMobileno())){
-				model.addAttribute("Msg", "MobileNo Already Exists");
-				return "Registration";
-			}
 		}
 		
 		userService.addUser(user);
@@ -116,7 +112,7 @@ public class HelloWorldController {
 		}
 		
 		
-		return "redirect:/login";
+		return "redirect:/userProfile";
 		
 	}
 

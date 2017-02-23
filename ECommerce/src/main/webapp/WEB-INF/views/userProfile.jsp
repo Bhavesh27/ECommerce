@@ -1,8 +1,11 @@
-<!doctype html>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!Doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>User Profile Page</title>
@@ -12,23 +15,15 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Animation library for notifications   -->
-    <!-- <link href="animate.min.css" rel="stylesheet"/> -->
+    <link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="light-bootstrap-dashboard.css" rel="stylesheet"/>
 
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <!-- <link href="demo.css" rel="stylesheet" /> -->
-
-
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <!-- <link href="pe-icon-7-stroke.css" rel="stylesheet" /> -->
+    
 </head>
 <body>
 
@@ -72,24 +67,8 @@
                                ${username}
                             </a>
                         </li>
-                        <!-- <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Dropdown
-                                    <b class="caret"></b>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li> -->
                         <li>
-                            <a href="#">
-                                Log out
+                            <a href='<c:url value='/logout' ></c:url>' >Log out
                             </a>
                         </li>
                     </ul>
@@ -106,14 +85,8 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                
                                     <div class="row">
-                                        <!-- <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div> -->
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Username</label>
@@ -127,18 +100,18 @@
                                             </div>
                                         </div>
                                     </div>
-
+									<form:form >
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter First Name" value="">
+                                                <input type="text" name="firstName" class="form-control" placeholder="Enter First Name" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Enter Last Name" value="">
+                                                <label>Last Name</label> 
+                                                <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name" value="" required>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +120,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Enter Address" value="">
+                                                <input type="text" name="address" class="form-control" placeholder="Enter Address" value="" required>
                                             </div>
                                         </div>
                                     </div>
@@ -156,35 +129,28 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>City</label>
-                                                <input type="text" class="form-control" placeholder="Enter City" value="">
+                                                <input type="text" name="city" class="form-control" placeholder="Enter City" value="" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Enter Country" value="">
+                                                <input type="text" name="country" class="form-control" placeholder="Enter Country" value="" required>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                                <label>Mobile No</label>
+                                                <input type="tel" name="mobileno" class="form-control" placeholder="Enter Mobile No" value="" required>
                                             </div>
-                                        </div> -->
+                                        </div>
                                     </div>
 
                                     <div class="row">
-                                        <!-- <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
-                                        </div> -->
                                     </div>
 
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
-                                
                             </div>
                         </div>
                     </div>
@@ -198,12 +164,12 @@
                                      <a href="#">
                                     <img class="avatar border-gray" src="#" alt="Upload Profile Picture" />
 
-                                      <h4 class="title">${name}<br />
-                                         <small>${username}</small>
+                                      <h4 class="title">${username}<br />
+                                         <small>${email}</small>
                                       </h4>
                                     </a>
                                 </div>
-                                <input type="file"  value="Upload Photo" />
+                                <input type="file"  value="Upload Photo" name="user_image" />
                             </div>
                             <hr>
                             <div class="text-center">
@@ -214,7 +180,7 @@
                             </div>
                         </div>
                     </div>
-				  </form>
+				  </form:form>
                 </div>
             </div>
         </div>

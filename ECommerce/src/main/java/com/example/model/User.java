@@ -7,9 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
-
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class User implements Serializable{
@@ -30,19 +27,14 @@ public class User implements Serializable{
     public int roleId=1;
     @Column(unique=true)
     public String email;
-    @Column(name="Mobile_No",unique=true)
+   /* @Column(name="Mobile_No",unique=true)
     public String mobileno;
     @Column(name="Name")
     public String name;
     @Transient
-    public MultipartFile image;
+    public MultipartFile image;*/
     
-    public MultipartFile getImage() {
-		return image;
-	}
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
+    
 	public int getRoleId() {
 		return roleId;
 	}
@@ -54,18 +46,6 @@ public class User implements Serializable{
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getMobileno() {
-		return mobileno;
-	}
-	public void setMobileno(String mobileno) {
-		this.mobileno = mobileno;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public boolean isActive() {
 		return isActive;
