@@ -12,7 +12,36 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/stylesheet.css" rel="stylesheet">
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <style type="text/css">
+	
+	.results tr[visible='false'],
+	
+	.no-result{
+	  display:none;
+	}
+	
+	.results tr[visible='true']{
+	  display:table-row;
+	}
+	.product_img {
+		margin: 15px;
+		margin-left: 30px;
+		outline: 2px solid #111111;
+		height: 200px;
+		width: 150px;
+	}
+	</style>
+	<script type="text/javascript">
+		var loadFile = function(event) {
+		    var reader = new FileReader();
+		    reader.onload = function(){
+		      var output = document.getElementById('output');
+		      output.src = reader.result;
+		    };
+		    reader.readAsDataURL(event.target.files[0]);
+		  };
+		
+		</script>
   </head>
   <body>
   	<c:import url="adminheader.jsp"></c:import>
@@ -46,8 +75,10 @@
               <div class="panel-heading main-color-bg">
                 <h3 class="panel-title">Product Edit Page</h3>
               </div>
+              
               <div class="panel-body">
                 <form:form action="edit-product-${product_id}" method="post" commandName="updateProduct">
+                <div class="col-md-9">
                   <div class="form-group">
                     <label>Product Name</label>
                     <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="${product_name}">
@@ -56,27 +87,38 @@
                     <label>Product Description</label>
                     <input name="description" class="form-control" placeholder="Enter Product Description" value="${product_description}" />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-6">
                   	<label>Select Category</label>
 				    <form:select class="form-control" path="category.category_id" items="${category}" itemValue="category_id" itemLabel="category_name" />
+                  </div>
+                  <div class="form-group col-md-6">
+                  	<label>Select Supplier</label>
+				    <form:select class="form-control" path="supplier.supplier_id" items="${suppliers}" itemValue="supplier_id" itemLabel="supplier_name"/>
                   </div>
                   <div class="form-group">
                     <label>Author Name</label>
                     <input type="text" class="form-control" name="author_name" placeholder="Enter Author Name" value="${product_author}">
                   </div>
-                  <div class="form-group">
-                  	<label>Select Supplier</label>
-				    <form:select class="form-control" path="supplier.supplier_id" items="${suppliers}" itemValue="supplier_id" itemLabel="supplier_name"/>
+                </div>
+                  <div class="col-md-3">
+                  	<img src="http://placehold.it/150x200" id="output" class="img-responsive img product_img" alt="UPLOAD PICTURE" height="200px"  width="150px" />
+                  	<input type="file" placeholder = "upload picture" class="button" id="product_image" name="product_image" onchange="loadFile(event)"/>
                   </div>
-                  <div class="form-group">
+                  <div class="col-md-12">
+                  <div class="form-group col-md-4">
                     <label>Price</label>
                     <input type="number" name="price" class="form-control" placeholder="Enter Price" value="${product_price}" >
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-4">
+                    <label>Discount</label>
+                    <input type="number" class="form-control" name="discount" placeholder="Enter Product Discount" value="" />
+                  </div>
+                  <div class="form-group col-md-4">
                     <label>Quantity</label>
                     <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity" value="${product_quantity}">
                   </div>
                   <input type="submit" class="btn btn-default" value="Submit">
+                  </div>
                 </form:form>
               </div>
               </div>

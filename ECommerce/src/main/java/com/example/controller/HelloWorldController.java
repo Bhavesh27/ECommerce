@@ -21,11 +21,14 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.model.User;
+import com.example.service.CategoryService;
+import com.example.service.ProductService;
 import com.example.service.UserService;
 
 @Controller
@@ -34,6 +37,12 @@ public class HelloWorldController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ProductService productService;
+	
+	@Autowired
+	CategoryService categoryService;
 	
 	/*@Autowired
 	User user;*/
@@ -59,6 +68,38 @@ public class HelloWorldController {
 		return "accessDenied";
 	}
 
+	@RequestMapping(value="/displayProduct/{categoryId}" , method = RequestMethod.GET)
+    public String displayProduct(ModelMap model , @PathVariable("categoryId") int categoryId )
+    {
+    	model.addAttribute("DisplayProduct", "activ");
+    	model.addAttribute("categories", categoryService.getAllCategorys());
+    	model.addAttribute("books",productService.getProductByCategory(categoryId));
+    	return "displayProduct";
+    }
+    
+    @RequestMapping(value="/allProduct" , method=RequestMethod.GET)
+    public String allProducts(ModelMap model)
+    {
+    	model.addAttribute("DisplayProduct","activ");
+    	model.addAttribute("categories", categoryService.getAllCategorys());
+    	model.addAttribute("books", productService.getAllProducts());
+    	return "displayProduct";
+    }
+	
+	@RequestMapping(value="/aboutUs", method = RequestMethod.GET)
+    public String aboutUsPage(ModelMap model)
+    {
+    	model.addAttribute("Aboutus", "activ");
+    	return "about_us";
+    }
+    
+    @RequestMapping(value="/contactUs", method = RequestMethod.GET)
+    public String contactUsPage(ModelMap model)
+    {
+    	model.addAttribute("Contactus", "activ");
+    	return "contact_us";
+    }
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
 		return "login";

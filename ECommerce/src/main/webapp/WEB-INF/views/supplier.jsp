@@ -11,7 +11,27 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/stylesheet.css" rel="stylesheet">
-    <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script type="text/javascript" src="static/js/table_filter.js"></script>
+     <style type="text/css">
+	
+	.results tr[visible='false'],
+	
+	.no-result{
+	  display:none;
+	}
+	
+	.results tr[visible='true']{
+	  display:table-row;
+	}
+	.product_img {
+		margin: 15px;
+		margin-left: 30px;
+		outline: 2px solid #111111;
+		height: 200px;
+		width: 150px;
+	}
+	</style>
   </head>
   <body>
  
@@ -91,11 +111,11 @@
               <div class="panel-body">
                 <div class="row">
                       <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter Suppliers...">
+                          <input class="search form-control" type="text" placeholder="Filter Suppliers...">
                       </div>
                 </div>
                 <br>
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover results">
                       <thead>
                       <tr>
                         <td>Name</td>

@@ -5,178 +5,144 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css"  />
-	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  type="text/javascript"  />
-	<link href="static/css/carousel.css"  rel="stylesheet" type="text/css" />
-	<link href="static/css/style.css"  rel="stylesheet" type="text/css" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" type="text/css"  />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="static/css/landing.css">
+	
 	<title>HOME page</title>
 </head>
 <body>
 	<c:import url="header.jsp" />
-   <!-- Carousel
-================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img class="first-slide" src="static/images/ShowcaseV1.png" alt="First slide">
-      <div class="container">
-        <div class="carousel-caption">
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img class="second-slide" src="static/images/ShowcaseV2.png" alt="Second slide" >
-      <div class="container">
-        <div class="carousel-caption">
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img class="second-slide" src="static/images/ShowcaseV3.png" alt="Third slide" >
-      <div class="container">
-        <div class="carousel-caption">
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img class="third-slide" src="static/images/ShowcaseV4.png" alt="Fourth slide" >
-      <div class="container">
-        <div class="carousel-caption">
-          <!-- <h1>One more for good measure.</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<!-- /.carousel -->
- 
- <!--content-->
-<div class="container">
-	<div class="cont">
-		<div class="content">
-			<div class="content-top-bottom">
-				<h2>Featured PRODUCTS</h2>
-				<div class="col-md-6 men">
-					<a href="#" class="b-link-stripe b-animate-go  thickbox" ><img class="img-responsive" src="static/images/image06.jpg" alt="" />
-						<div class="b-wrapper">
-							<h3 class="b-animate b-from-top top-in   b-delay03 ">
-								<span>TRIBECA LIVING</span>	
-							</h3>
+	<div class="container-fluid">
+	<div class="row">
+ <div class="col-md-12">
+			<div class="carousel slide" id="myCarousel" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-slide-to="0" data-target="#myCarousel">
+					</li>
+					<li data-slide-to="1" data-target="#myCarousel" class="active">
+					</li>
+					<li data-slide-to="2" data-target="#myCarousel">
+					</li>
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					<div class="item">
+						<img alt="Carousel Bootstrap First" src="http://lorempixel.com/output/sports-q-c-1600-500-1.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								First Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
 						</div>
-					</a>
-				</div>
-				<div class="col-md-6">
-					<div class="col-md1 ">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox" ><img class="img-responsive" src="static/images/image05.jpg" alt="" />
-							<div class="b-wrapper">
-											<h3 class="b-animate b-from-top top-in1   b-delay03 ">
-												<span>CLARISSA</span>	
-											</h3>
-										</div>
-						</a>
-						
 					</div>
-					<div class="col-md2">
-						<div class="col-md-6 men1">
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image04.jpg" alt="" />
-									<div class="b-wrapper">
-											<h3 class="b-animate b-from-top top-in2   b-delay03 ">
-												<span>COLORMATE</span>	
-											</h3>
-										</div>
-							</a>
-							
+					<div class="item active">
+						<img alt="Carousel Bootstrap Second" src="http://lorempixel.com/output/sports-q-c-1600-500-2.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Second Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
 						</div>
-						<div class="col-md-6 men2">
-							<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image03.jpg" alt="" />
-									<div class="b-wrapper">
-											<h3 class="b-animate b-from-top top-in2   b-delay03 ">
-												<span>HERLEQUIN</span>	
-											</h3>
-										</div>
-							</a>
-							
+					</div>
+					<div class="item">
+						<img alt="Carousel Bootstrap Third" src="http://lorempixel.com/output/sports-q-c-1600-500-3.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Third Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
 						</div>
-						<div class="clearfix"> </div>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="content-top">
-				<h1>NEW PRODUCTS</h1>
-				<div class="grid-in">
-					<div class="col-md-3 grid-top simpleCart_shelfItem">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image01.jpg" alt="" />
-							<div class="b-wrapper">
-								<h3 class="b-animate b-from-left    b-delay03 ">
-									<span>TRIBECA LIVING</span>
-									
-								</h3>
-							</div>
-						</a>
-				
-
-					<p><a href="single.html">TRIBECA LIVING</a></p>
-					<a href="#" class="item_add"><p class="number item_price"><i>$500.00 </i></p></a>
-					</div>
-					<div class="col-md-3 grid-top simpleCart_shelfItem">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image02.jpg" alt="" >
-							<div class="b-wrapper">
-											<h3 class="b-animate b-from-left    b-delay03 ">
-												<span>ESSENTIAL</span>	
-											</h3>
-										</div>
-						</a>
-					<p><a href="single.html">ESSENTIAL</a></p>
-					<a href="#" class="item_add"><p class="number item_price"><i>$500.00</i></p></a>
-					</div>
-					<div class="col-md-3 grid-top simpleCart_shelfItem">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image07.jpg" alt="" >
-							<div class="b-wrapper">
-											<h3 class="b-animate b-from-left    b-delay03 ">
-												<span>CLARISSA</span>	
-											</h3>
-										</div>
-						</a>
-					<p><a href="single.html">CLARISSA</a></p>
-					<a href="#" class="item_add"><p class="number item_price"><i>$500.00</i></p></a>
-					</div>
-					<div class="col-md-3 grid-top">
-						<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="static/images/image08.jpg" alt="" />
-							<div class="b-wrapper">
-											<h3 class="b-animate b-from-left    b-delay03 ">
-												<span>LITTLE HOME</span>	
-											</h3>
-										</div>
-						</a>
-					<p><a href="single.html">LITTLE HOME</a></p>
-					<a href="#" class="item_add"><p class="number item_price"><i>$500.00</i></p></a>
-					</div>
-							<div class="clearfix"> </div>
-				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> 
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+				</a>
 			</div>
 		</div>
-	<!----->
+		</div>
+		</div>
+		<div class="container-fluid">
+		<div class="row">
+			<h3>Deals of the Day</h3>
+		</div>
+		<div class="row">
+			<c:forEach items="${products }" var="product">
+				<div class="col-md-3 col-sm-4">
+				<div class="box">
+					<div class="row">
+						<div class="col-md-7 col-sm-8 col-xs-6">
+							<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+								<div class="flipper">
+									<div class="front">
+										<img src='<c:url value='/static/images/product/${product.product_name }.png'></c:url>' height='200px' width='150px'/>
+									</div>
+									<div class="back">
+										<div class="btn-group">
+											<a href="#"><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>ADD TO CART</a>
+											<a href="#"><span id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>ADD TO WISHLIST</a>
+											<a href="#"><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>BUY NOW</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5 col-sm-4 col-xs-6">
+							<div class="info">
+								<h4>${product.product_name }</h4>
+								<p>${product.author }</p>
+								<c:if test="${product.discount == 0 }">
+									<p>&#x20b9 ${product.price }</p>
+								</c:if>
+								<c:if test="${product.discount > 0 }">
+									<p><s>&#x20b9 ${product.price }</s></p>
+									<p style="font-family: 'Pacifico', cursive; color: #888899; font-size: 20px">${product.discount}% off</p>
+									<p>&#x20b9 ${product.price - product.discount * product.price / 100}</p>
+								</c:if>
+								<c:if test="${product.quantity  > 0}">
+									<p style="color:green">In stock</p>
+								</c:if>
+								<c:if test="${product.quantity == 0 }">
+									<p style="color:red"><del>Out of stock</del></p>	
+								</c:if>	
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</c:forEach>
+		</div>
+		<div class="row">
+			<h3>Best Sellers</h3>
+		</div>
+		<div class="row">
+			<h3>Latest Books</h3>
+		</div>
+		<div class="row">
+			<h3>Upto 40% off</h3>
+		</div>
 	</div>
-	<!---->
-</div>
+	<br>
+    
+    <br>
 	<a href="<c:url value="/logout" />">Logout</a>
 	<c:import url="footer.jsp" />
 </body>

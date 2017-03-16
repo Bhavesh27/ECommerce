@@ -1,4 +1,10 @@
 body {
 			min-height: 2000px;
 			padding-top: 0px;
+			
 		}
+		
+ .navbar-default{
+		margin-bottom:0px !important;
+		}
+	

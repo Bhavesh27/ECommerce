@@ -5,13 +5,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Category</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/stylesheet.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script type="text/javascript" src="static/js/table_filter.js"></script>
+     
+     <style type="text/css">
+	
+	.results tr[visible='false'],
+	
+	.no-result{
+	  display:none;
+	}
+	
+	.results tr[visible='true']{
+	  display:table-row;
+	}
+	.product_img {
+		margin: 15px;
+		margin-left: 30px;
+		outline: 2px solid #111111;
+		height: 200px;
+		width: 150px;
+	}
+	</style>
 </head>
 <body>
 	<c:import url="adminheader.jsp"></c:import>
@@ -36,21 +55,6 @@
               <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
               <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
             </div>
-
-            <!-- <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div> -->
           </div>
           <div class="col-md-9">
             <!-- Website Overview -->
@@ -79,11 +83,11 @@
               <div class="panel-body">
                 <div class="row">
                       <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter Categories...">
+                          <input class="search form-control" type="text" placeholder="Filter Categories...">
                       </div>
                 </div>
                 <br>
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover table-responsive results">
                       <thead>
                       	<tr>
 	                        <td>Name</td>
@@ -106,29 +110,7 @@
                    </tbody>
                    </table>   
                       
-                      <!-- 
-                      <td>Home</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 12, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      <tr>
-                        <td>About</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Services</td>
-                        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                        <td>Dec 13, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr>
-                      <tr>
-                        <td>Contact</td>
-                        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
-                        <td>Dec 14, 2016</td>
-                        <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
-                      </tr> -->
+                    
               </div>
               </div>
 
@@ -141,14 +123,11 @@
       <p>Copyright NerdsVille, &copy; 2017</p>
     </footer>
 
-  <!-- <script>
-     CKEDITOR.replace( 'editor1' );
- </script> -->
+  
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

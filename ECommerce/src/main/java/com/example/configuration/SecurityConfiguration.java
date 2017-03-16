@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     {
     	
     	auth.jdbcAuthentication().dataSource(dataSource)
-    	.usersByUsernameQuery("select username , password, isActive from User where username=?")
+    	.usersByUsernameQuery("select username, password, isActive from User where username=?")
     	.authoritiesByUsernameQuery("select u1.username , u2.role from User u1 , Roles u2 where u1.roleId=u2.user_role_id and u1.username=?");
     }
     
@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	  http.authorizeRequests()
-	  	.antMatchers("/", "/home").access("hasRole('USER')")
+	  	.antMatchers("/", "/home").permitAll()        //access("hasRole('USER')")
 	                                                            //	.antMatchers("/", "/registration").access("hasRole('USER')")
 	  	.antMatchers("/admin/**").access("hasRole('ADMIN')")
 	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")

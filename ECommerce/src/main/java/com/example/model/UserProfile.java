@@ -1,4 +1,4 @@
-package com.example.model;
+/*package com.example.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -75,7 +75,5 @@ public class UserProfile {
 	public void setUser_image(MultipartFile user_image) {
 		this.user_image = user_image;
 	}
-	
-	
-	
 }
+*/

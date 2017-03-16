@@ -8,7 +8,7 @@
 <title></title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/stylesheet.css" rel="stylesheet">
-     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    
 </head>
 <body>
 <nav class="navbar navbar-default">

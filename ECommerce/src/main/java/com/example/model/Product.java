@@ -13,8 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="Product")
@@ -37,6 +39,24 @@ public class Product implements Serializable {
 	public int quantity;
 	@Column
 	String author_name;
+	@Column
+    int discount=0;
+	
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+	@Transient
+	MultipartFile product_image;
+	
+	public MultipartFile getProduct_image() {
+		return product_image;
+	}
+	public void setProduct_image(MultipartFile product_image) {
+		this.product_image = product_image;
+	}
 	
 	//Mapping
 	

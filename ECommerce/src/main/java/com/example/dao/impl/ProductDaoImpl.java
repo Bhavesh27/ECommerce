@@ -57,6 +57,14 @@ public class ProductDaoImpl implements ProductDao {
 		
 		return sessionFactory.getCurrentSession().get(Product.class, id);
 	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> getProductByCategory(int categoryId) {
+		// TODO Auto-generated method stub
+		return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product  where category_id  ="+ categoryId).list();
+	}
 	
 	
 }

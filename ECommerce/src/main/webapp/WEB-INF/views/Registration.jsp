@@ -22,7 +22,7 @@
 <!--content-->
 	<div class="container">
 	<div class="register">
-         <form:form action="register" commandName="adduser" enctype="multipart/form-data" method="POST" > 
+         <form:form action="register" commandName="adduser" method="POST" > 
 				 <div class="col-md-6 register-top-grid">
 					<h3>Personal Information</h3>
 					 <div>
@@ -51,10 +51,10 @@
 								<span>Password</span>
 								<input type="password" name="password" placeholder="Enter Password" required>
 							 </div>
-							   <div>
+							  <!--  <div>
 								<span>Image</span>
 								<input type="file" name="image">
-							 </div>      
+							 </div> -->      
 							 <br />
 							 <input type="submit" value="submit">
 							
