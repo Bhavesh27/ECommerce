@@ -7,16 +7,21 @@
   <head>
    
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" />
-	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"   rel="stylesheet" />
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 	
+	<link href=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"   rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="static/css/header.css">
+	
+	<!-- <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script> -->
   </head>
   <body>
     <header>
     <div class="container">
     <div class="row">
       <div class="col-md-4" >
+      	<!-- <img src='static/images/Bookstore-logo.png' alt='Bookstore' height="100px" width="280px"/> -->
         <h3>BOOKS VILLA</h3>
       </div>
       <div class="col-md-6" style="float: left; padding-bottom: 1px">
@@ -34,46 +39,50 @@
     <nav class="navbar navbar-default" >
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">BOOKS VILLA</a>
+          </button> -->
+          <a class="navbar-brand" href='<c:url value='/home'></c:url>'>BOOKS VILLA</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
+            <li class="active"><a href='<c:url value='/home'></c:url>'>Home</a></li>
+            <li><a href='<c:url value='/aboutUs'></c:url>'>About</a></li>
+            <li><a href='<c:url value='/contactUs'></c:url>'>Contact</a></li>
+            <li class="dropdown"><a class="dropbtn" href='<c:url value='/allProduct'></c:url>'>Genre <span class="caret"></span></a>
+              <div class="dropdown-menu">
+              	<c:forEach items="${categories }" var="category">
+	              		<ul>
+	              			<li><a href='<c:url value='displayProduct-${category.category_id }'></c:url>'>${category.category_name}</a></li>
+	              		</ul>
+	  
+              	</c:forEach>
+ 
+            </div>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           	<c:if test="${pageContext.request.userPrincipal.name == null }">
 	            <li><a href='<c:url value='/login'></c:url>'>Sign In</a></li>
-	            <li><a href='<c:url value='/register'></c:url>'>Register</a></li>
-	            <li><a href="./"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+	            <li><a href='<c:url value='/Registration'></c:url>'>Register</a></li>
+	            <li><a href=""><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name != null }">
-            	<li><a href='<c:url value='/home'></c:url>'>${pageContext.request.userPrincipal.name}</a></li>
+            	<li class="${Contactus } dropdown"><a class="dropbtn" href='<c:url value='/home'></c:url>'>${pageContext.request.userPrincipal.name} <span class="caret"></span></a>
+			       	<ul class="dropdown-menu" style="width:150px">
+			       		<li><a href='<c:url value='/account?username=${user}'></c:url>'>your account</a></li>
+			       		<li><a>your orders</a></li>
+			       		<li><a>your cart</a></li>
+			       	</ul>
+			     </li>
+            	<li><a href='<c:url value='/home'></c:url>' style="padding-bottom: 13px; padding-top: 13px"><img src='<c:url value='/static/images/user/${pageContext.request.userPrincipal.name}.png'></c:url>' height='25' width='25' class="img img-rounded"/></a></li>
             	<li><a href='<c:url value='/logout'></c:url>'>Logout</a></li>
-            	<li><a href="./"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+            	<li><a href=""><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
             </c:if>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
-    </nav>
-  </body>
-</html>
+    </nav> 

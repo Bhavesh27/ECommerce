@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.model.User;
@@ -53,6 +54,8 @@ public class HelloWorldController {
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
+		model.addAttribute("categories", categoryService.getAllCategorys());
+		System.out.println("dropdwown");
 		return "welcome";
 	}
 	
@@ -67,6 +70,25 @@ public class HelloWorldController {
 		model.addAttribute("user", getPrincipal());
 		return "accessDenied";
 	}
+	
+	@RequestMapping(value="/account" , method = RequestMethod.GET)
+    public String youtAccount(@RequestParam("username") String username , ModelMap model)
+    {
+    	model.addAttribute("categories", categoryService.getAllCategorys());
+    	User user = userService.getUserByUsername(getPrincipal());
+    	model.addAttribute("updateUser", user);
+    	
+    	return "userDetails";
+    }
+    
+    @RequestMapping(value="/updatingAccount-{user_id}" , method = RequestMethod.POST)
+    public String updateAccountDetails(@ModelAttribute("updateUser") User user , ModelMap model)
+    {
+    	user.setActive(true);
+    	userService.updateUser(user);
+    	model.addAttribute("msg", "Details have been successsfully updated");
+    	return "redirect:/home";
+    }
 
 	@RequestMapping(value="/displayProduct/{categoryId}" , method = RequestMethod.GET)
     public String displayProduct(ModelMap model , @PathVariable("categoryId") int categoryId )

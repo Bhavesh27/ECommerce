@@ -13,5 +13,6 @@ public interface UserDao {
 	public void deleteUser(User user);
 	public List<User> getAllUsers();
 	public List<User> getAllActiveUsers();
+	public User getUserByUsername(String username);
 	
 }

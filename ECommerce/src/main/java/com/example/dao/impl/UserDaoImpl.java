@@ -64,6 +64,12 @@ public class UserDaoImpl implements UserDao {
 		// TODO Auto-generated method stub
 		return (List<User>) session.getCurrentSession().createQuery("from User where isactive=true and roleId=1").list();
 	}
+
+	@Override
+	public User getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
