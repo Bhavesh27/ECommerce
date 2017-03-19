@@ -1,4 +1,4 @@
-<%-- <%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -26,21 +26,21 @@
     
 </head>
 <body>
-
+<c:import url="header.jsp"></c:import>
 <div class="wrapper">
         <nav class="navbar navbar-default navbar-fixed"> 
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                    <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
+                    </button> -->
                     <a class="navbar-brand" href="#">User Profile</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
+                    <!-- <ul class="nav navbar-nav navbar-left">
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-dashboard"></i>
@@ -59,7 +59,7 @@
                                 <li><a href="#">Notification 4</a></li>
                               </ul>
                         </li>
-                    </ul>
+                    </ul> -->
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -67,10 +67,10 @@
                                ${username}
                             </a>
                         </li>
-                        <li>
+                        <%-- <li>
                             <a href='<c:url value='/logout' ></c:url>' >Log out
                             </a>
-                        </li>
+                        </li> --%>
                     </ul>
                 </div>
             </div>
@@ -222,30 +222,12 @@
 
 
 <!--   Core JS Files   -->
-    <script src="jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="bootstrap.min.js" type="text/javascript"></script>
-
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<!-- <script src="assets/js/bootstrap-checkbox-radio-switch.js"></script> -->
-
-	<!--  Charts Plugin -->
-	<!-- <script src="assets/js/chartist.min.js"></script> -->
-
-    <!--  Notifications Plugin    -->
-   <!--  <script src="assets/js/bootstrap-notify.js"></script> -->
-
-    <!--  Google Maps Plugin    -->
-   <!--  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<!-- <script src="assets/js/light-bootstrap-dashboard.js"></script> -->
-
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<!-- <script src="assets/js/demo.js"></script> -->
+    <!-- <script src="jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="bootstrap.min.js" type="text/javascript"></script> -->
+<c:import url="footer.jsp"></c:import>
 
 </body>
 
     
 
 </html>
- --%>

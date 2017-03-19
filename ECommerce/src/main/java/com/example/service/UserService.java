@@ -15,5 +15,6 @@ public interface UserService {
 	public boolean isUserExist(User user);
 	public void deleteAllUsers();
 	public List<User> getAllActiveUsers();
+	public User getUserByUsername(String username);
 
 }

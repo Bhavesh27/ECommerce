@@ -12,8 +12,6 @@ import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
-
-
 @Entity
 @Table
 @Component

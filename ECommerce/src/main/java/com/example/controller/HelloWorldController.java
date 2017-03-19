@@ -78,7 +78,7 @@ public class HelloWorldController {
     	User user = userService.getUserByUsername(getPrincipal());
     	model.addAttribute("updateUser", user);
     	
-    	return "userDetails";
+    	return "userProfile";
     }
     
     @RequestMapping(value="/updatingAccount-{user_id}" , method = RequestMethod.POST)

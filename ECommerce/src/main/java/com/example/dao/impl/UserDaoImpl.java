@@ -68,7 +68,9 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getUserByUsername(String username) {
 		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = session.getCurrentSession().createCriteria(User.class);
+		criteria.add(Restrictions.like("username", username));
+		return (User) criteria.uniqueResult();
 	}
 	
 	
