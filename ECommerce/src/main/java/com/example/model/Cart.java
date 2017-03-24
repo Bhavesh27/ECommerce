@@ -28,7 +28,7 @@ public class Cart {
 	private String productName;
 	
 	@Column
-	private int price;
+	private double price;
 	
 	@Column
 	private int quantity;
@@ -69,8 +69,8 @@ public class Cart {
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setPrice(double d) {
+		this.price = d;
 	}
 	public int getQuantity() {
 		return quantity;
