@@ -16,7 +16,6 @@ public class SupplierServiceImpl implements SupplierService {
 	
 	@Autowired
 	SupplierDao supplierDao;
-	
 
 	@Override
 	public void addSupplier(Supplier supplier) {

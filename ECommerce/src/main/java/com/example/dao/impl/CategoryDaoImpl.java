@@ -27,36 +27,34 @@ public class CategoryDaoImpl implements CategoryDao {
 		
 	}
 
-	@Override
+
 	public void updateCategory(Category category) {
 		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().update(category);
 	}
 
-	@Override
+
 	public void deleteCategory(Category category) {
 		// TODO Auto-generated method stub
-		//Category c = categoryDao.getCategoryById(category_id);
 		sessionFactory.getCurrentSession().delete(category);
-		//return false;
 	}
 
-	@Override
+
 	@SuppressWarnings("unchecked")
 	public List<Category> getAllCategorys() {
 		// TODO Auto-generated method stub
 		return (List<Category>)sessionFactory.getCurrentSession().createQuery("from Category").list();
 	}
 
-	@Override
+
 	public Category getCategoryById(int category_id) {
 		// TODO Auto-generated method stub
 		return sessionFactory.getCurrentSession().get(Category.class,category_id);
 	}
 
-	@Override
+
 	public Category getCategoryByName(String category_name) {
-		
+		// TODO Auto-generated method stub
 		return null;
 	}
 

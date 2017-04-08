@@ -59,19 +59,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<User> getAllActiveUsers() {
 		// TODO Auto-generated method stub
 		return (List<User>) session.getCurrentSession().createQuery("from User where isactive=true and roleId=1").list();
 	}
 
-	@Override
 	public User getUserByUsername(String username) {
 		// TODO Auto-generated method stub
 		Criteria criteria = session.getCurrentSession().createCriteria(User.class);
 		criteria.add(Restrictions.like("username", username));
 		return (User) criteria.uniqueResult();
-	}
-	
-	
+	}	
 }

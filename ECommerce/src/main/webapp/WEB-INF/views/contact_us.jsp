@@ -6,9 +6,9 @@
 				<img src="static/images/bookstore-logo_1x.jpg" alt="Bookstore"/>
 			</div>
 			<div class="col-md-8">
-				<form:form action="">
-				
-				</form:form>
+ 				<!-- <form:form action="">
+ 				
+				</form:form> -->
 			</div>
 		</div>
 	</div>

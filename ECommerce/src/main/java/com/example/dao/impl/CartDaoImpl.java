@@ -3,71 +3,61 @@ package com.example.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.dao.CartDao;
 import com.example.model.Cart;
 
+@Repository(value="cartDao")
+@Transactional
 public class CartDaoImpl implements CartDao {
 
 	@Autowired
-	private SessionFactory sessionFactory;
+	SessionFactory sessionFactory;
 	
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Cart> list() {
-		// TODO Auto-generated method stub
-		List<Cart> list = (List<Cart>) sessionFactory.getCurrentSession().createCriteria(Cart.class)
-				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+	
 
-		return list;
+	@Override
+	public Cart getById(int id) {
+		// TODO Auto-generated method stub
+		return (Cart) sessionFactory.getCurrentSession().get(Cart.class, id);
 	}
 
 	@Override
-	public Cart get(String id) {
+	public void Update(Cart cart) {
 		// TODO Auto-generated method stub
-		String hql = "from Cart where userID=" + "'" + id + "'  and status = " + "'N'";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-
-		@SuppressWarnings("unchecked")
-		List<Cart> list = (List<Cart>) query.list();
-
-		if (list != null && !list.isEmpty()) {
-			return list.get(0);
-		}
-
-		return null;
+		sessionFactory.getCurrentSession().update(cart);
 	}
 
 	@Override
-	public void saveOrUpdate(Cart Cart) {
+	public void delete(Cart cart) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().saveOrUpdate(Cart);
-		
+		sessionFactory.getCurrentSession().delete(cart);
 	}
 
 	@Override
-	public String delete(int id) {
-		// TODO Auto-generated method stub
-		Cart cart = new Cart();
-		cart.setId(id);
-		try {
-			sessionFactory.getCurrentSession().delete(cart);
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			//return e.getMessage();
-
-		}
-		return null;
-	}
-
-	@Override
-	public int getTotalAmount(String id) {
+	public int getTotalAmount(int id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void addToCart(Cart cart) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(cart);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Cart> list(String username) {
+		// TODO Auto-generated method stub
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Cart.class);
+		criteria.add(Restrictions.like("username", username));
+		return (List<Cart>) criteria.list();
 	}
 
 }

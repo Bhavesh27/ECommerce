@@ -2,7 +2,9 @@ package com.example.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,6 +66,16 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> getProductByCategory(int categoryId) {
 		// TODO Auto-generated method stub
 		return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product  where category_id  ="+ categoryId).list();
+	}
+
+
+	@Override
+	public Product getProductByName(String productName) {
+		// TODO Auto-generated method stub
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		criteria.add(Restrictions.eq("product_name",productName));
+		Product product = (Product)criteria.uniqueResult();
+		return product;
 	}
 	
 	

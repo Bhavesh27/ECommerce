@@ -1,28 +1,37 @@
 package com.example.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
+
 @Entity
-@Table
+@Table(name="Cart")
 @Component
-public class Cart {
+public class Cart implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Transient
-	private int total;
+	@Column
+	private double total;
+	
+	@Column
+	public String username;
 	
 	@Column
 	private String productName;
@@ -36,10 +45,14 @@ public class Cart {
 	@Column
 	private char status;
 	
+	@Column
+	String authorName;
+	
+	
 	//Mapping
 	
-	@ManyToOne
-	@JoinColumn(name = "USERID",referencedColumnName="ID")
+	/*@ManyToOne
+	@JoinColumn(name = "user_id",referencedColumnName="id")
 	private User user;
 	
 	public User getUser() {
@@ -47,12 +60,31 @@ public class Cart {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}*/
+	
+	public String getUsername() {
+		return username;
 	}
-	public int getTotal() {
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getAuthorName() {
+		return authorName;
+	}
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	public int getId() {
 		return id;
@@ -66,12 +98,7 @@ public class Cart {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(double d) {
-		this.price = d;
-	}
+	
 	public int getQuantity() {
 		return quantity;
 	}

@@ -6,10 +6,11 @@ import com.example.model.Cart;
 
 public interface CartDao {
 
-	public List<Cart> list();
-	public Cart get(String id);
-	public void saveOrUpdate(Cart Cart);
-	public String delete(int id);
-	public int getTotalAmount(String id);
+	public List<Cart> list(String username);
+	public Cart getById(int id);
+	public void Update(Cart Cart);
+	public void delete(Cart cart);
+	public int getTotalAmount(int id);
+	public void addToCart(Cart cart);
 	
 }

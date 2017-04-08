@@ -73,7 +73,7 @@
             <c:if test="${pageContext.request.userPrincipal.name != null }">
             	<li class="${Contactus } dropdown"><a class="dropbtn" href='<c:url value='/home'></c:url>'>${pageContext.request.userPrincipal.name} <span class="caret"></span></a>
 			       	<ul class="dropdown-menu" style="width:150px">
-			       		<li><a href='<c:url value='/account?username=${user}'></c:url>'>your account</a></li>
+			       		<li><a href='<c:url value=''></c:url>'>your account</a></li>         <%-- /account?username=${user} --%>
 			       		<li><a>your orders</a></li>
 			       		<li><a>your cart</a></li>
 			       	</ul>

@@ -163,71 +163,20 @@
                                 <div class="author">
                                      <a href="#">
                                     <img class="avatar border-gray" src="#" alt="Upload Profile Picture" />
-
-                                      <h4 class="title">${username}<br />
-                                         <small>${email}</small>
-                                      </h4>
-                                    </a>
+                                      <h4 class="title">${username}<br /><small>${email}</small></h4>
+                                     </a>
                                 </div>
                                 <input type="file"  value="Upload Photo" name="user_image" />
                             </div>
                             <hr>
-                            <!-- <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                            </div> -->
                         </div>
                     </div>
 				  </form:form>
                 </div>
             </div>
         </div>
-
-
-        <!-- <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer> -->
-
     </div>
-
-
-<!--   Core JS Files   -->
-    <!-- <script src="jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="bootstrap.min.js" type="text/javascript"></script> -->
 <c:import url="footer.jsp"></c:import>
 
 </body>
-
-    
-
 </html>
