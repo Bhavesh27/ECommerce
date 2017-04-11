@@ -43,7 +43,7 @@ public class User implements Serializable{
     public String name;
     
     @Column(name="Address")
-    String address;
+    public String address;
     
     @Transient
     public MultipartFile image;
@@ -104,4 +104,11 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 }

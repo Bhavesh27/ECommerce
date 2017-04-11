@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -31,6 +32,7 @@ import com.example.model.User;
 import com.example.service.CategoryService;
 import com.example.service.ProductService;
 import com.example.service.UserService;
+import com.google.gson.Gson;
 
 @Controller
 public class HelloWorldController {
@@ -81,22 +83,51 @@ public class HelloWorldController {
     	return "userProfile";
     }
     
-    @RequestMapping(value="/updatingAccount-{user_id}" , method = RequestMethod.POST)
-    public String updateAccountDetails(@ModelAttribute("updateUser") User user , ModelMap model)
+    @RequestMapping(value="/updatingAccount-{id}" , method = RequestMethod.POST)
+    public String updateAccountDetails(@ModelAttribute("updateUser") User user , ModelMap model, HttpServletRequest request)
     {
     	user.setActive(true);
+    		
     	userService.updateUser(user);
+    	
+    	MultipartFile image = user.getImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		
+		path = Paths.get(rootDirectory + "/static/images/user" + user.getUsername() + ".png");
+		System.out.println(path.toString());
+		if(image != null && !image.isEmpty() )
+		{
+			try{
+				image.transferTo(new File(path.toString()));
+			}catch(Exception exception){
+				throw new RuntimeException("Product image Saved",exception);
+			}
+			
+		}
     	model.addAttribute("msg", "Details have been successsfully updated");
     	return "redirect:/home";
     }
 
-	@RequestMapping(value="/displayProduct/{categoryId}" , method = RequestMethod.GET)
+	@RequestMapping(value="/displayProduct-{categoryId}" , method = RequestMethod.GET)
     public String displayProduct(ModelMap model , @PathVariable("categoryId") int categoryId )
     {
     	model.addAttribute("DisplayProduct", "activ");
     	model.addAttribute("categories", categoryService.getAllCategorys());
     	model.addAttribute("books",productService.getProductByCategory(categoryId));
     	return "displayProduct";
+    }
+	
+	@RequestMapping(value="/SearchController" , method = RequestMethod.GET)
+    public void searchProduct(ModelMap model,@RequestParam("term") String productName, HttpServletResponse resp)
+    {
+    	List<String> list = productService.getProductListByName(productName);
+    	String json = new Gson().toJson(list);
+    	try {
+			resp.getWriter().write(json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     @RequestMapping(value="/allProduct" , method=RequestMethod.GET)

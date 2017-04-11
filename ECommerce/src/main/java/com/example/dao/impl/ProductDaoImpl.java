@@ -1,5 +1,6 @@
 package com.example.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -76,6 +77,22 @@ public class ProductDaoImpl implements ProductDao {
 		criteria.add(Restrictions.eq("product_name",productName));
 		Product product = (Product)criteria.uniqueResult();
 		return product;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getProductListByName(String productName) {
+		// TODO Auto-generated method stub
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		criteria.add(Restrictions.like("name",productName+"%"));
+		List<Product> products = (List<Product>)criteria.list();
+		List<String> productsName = new ArrayList<>();
+		for(Product product:products){
+			productsName.add(product.getName());
+			System.out.println(product.getName());
+		}
+		 return productsName;
 	}
 	
 	

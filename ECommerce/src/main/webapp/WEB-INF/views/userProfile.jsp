@@ -2,16 +2,15 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!Doctype html>
 <html lang="en">
 <head>
 	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<!-- 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />-->
 
 	<title>User Profile Page</title>
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+<!-- 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" /> -->
 
 
     <!-- Bootstrap core CSS     -->
@@ -86,94 +85,96 @@
                             </div>
                             <div class="content">
                                 
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="${username}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Email Id</label>
-                                                <input type="email" class="form-control" placeholder="Email" value="${email}" >
-                                            </div>
-                                        </div>
-                                    </div>
-									<form:form >
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" name="firstName" class="form-control" placeholder="Enter First Name" value="" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label> 
-                                                <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name" value="" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" name="address" class="form-control" placeholder="Enter Address" value="" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" name="city" class="form-control" placeholder="Enter City" value="" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" name="country" class="form-control" placeholder="Enter Country" value="" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Mobile No</label>
-                                                <input type="tel" name="mobileno" class="form-control" placeholder="Enter Mobile No" value="" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                    </div>
-
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
-                                    <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="Upload Profile Picture"/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="#" alt="Upload Profile Picture" />
-                                      <h4 class="title">${username}<br /><small>${email}</small></h4>
-                                     </a>
-                                </div>
-                                <input type="file"  value="Upload Photo" name="user_image" />
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-				  </form:form>
-                </div>
-            </div>
+                                    
+									<form:form  action="updatingAccount-${updateUser.id}" enctype="multipart/form-data" commandName="updateUser" method="POST">
+										<div class="row">
+										
+											<input type="hidden" name="password" value="${updateUser.password }">
+	                                        <div class="col-md-3">
+	                                            <div class="form-group">
+	                                                <label>Username</label>
+	                                                <input type="text" name="username" class="form-control" placeholder="username" value="${updateUser.username}">
+	                                                
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-4">
+	                                            <div class="form-group">
+	                                                <label>Email Id</label>
+	                                                <input type="email" name="email" class="form-control" placeholder="email" value="${updateUser.email}" >
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    <div class="row">
+	                                        <div class="col-md-6">
+	                                            <div class="form-group">
+	                                                <label>First Name</label>
+	                                                <input type="text" name="name" class="form-control" placeholder="Enter Name" value="${updateUser.name}" required>
+	                                            </div>
+	                                        </div>
+	                                        <!-- <div class="col-md-6">
+	                                            <div class="form-group">
+	                                                <label>Last Name</label> 
+	                                                <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name" value="" required>
+	                                            </div>
+	                                        </div> -->
+	                                    </div>
+	
+	                                    <div class="row">
+	                                        <div class="col-md-12">
+	                                            <div class="form-group">
+	                                                <label>Address</label>
+	                                                <input type="text" name="address" class="form-control" placeholder="Enter Address" value="${updateUser.address}" required>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	
+	                                    <div class="row">
+	                                        <!-- <div class="col-md-4">
+	                                            <div class="form-group">
+	                                                <label>City</label>
+	                                                <input type="text" name="city" class="form-control" placeholder="Enter City" value="" required>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-4">
+	                                            <div class="form-group">
+	                                                <label>Country</label>
+	                                                <input type="text" name="country" class="form-control" placeholder="Enter Country" value="" required>
+	                                            </div>
+	                                        </div> -->
+	                                        <div class="col-md-4">
+	                                            <div class="form-group">
+	                                                <label>Mobile No</label>
+	                                                <input type="tel" name="mobileno" class="form-control" placeholder="Enter Mobile No" value="${updateUser.mobileno}" required>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	
+	                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+	                                    <div class="clearfix"></div>
+                            
+					                    <div class="col-md-4">
+					                        <div class="card card-user">
+					                            <div class="image">
+					                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="Upload Profile Picture"/>
+					                            </div>
+					                            <div class="content">
+					                                <div class="author">
+					                                     <a href="#">
+					                                     <img class="avatar border-gray" src="#" alt="Upload Profile Picture" />
+					                                      ${updateUser.username}<br><small>${updateUser.email}</small>
+					                                     </a>
+					                                </div>
+					                                <input type="file"  value="Upload Photo" name="image" />
+					                            </div>
+					                            <hr>
+					                        </div>
+					                    </div>
+				  					</form:form>
+				  				</div>
+                 			</div>
+               			</div>
+             		</div>
+            	</div>
         </div>
     </div>
 <c:import url="footer.jsp"></c:import>

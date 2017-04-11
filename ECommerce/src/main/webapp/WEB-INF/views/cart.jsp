@@ -39,10 +39,10 @@ h4:after {
 					<p>${product.name}</p>
 				</div>
 				<div class="col-md-2">
-					<p>${product.author_name }</p>
+					<p>${product.authorName }</p>
 				</div>
 				<div class="col-md-2">
-					<p>${product.total_price }</p>
+					<p>${product.total }</p>
 					<c:set var="sub_total" value="${sub_total + product.total_price }"></c:set>
 					
 				</div>
@@ -50,7 +50,7 @@ h4:after {
 					<p><input type="number" class="form-control" value="${product.quantity}"/></p>
 				</div>
 				<div class="col-md-1">
-					<a href='<c:url value='remove-cart-${product.cart_id}'></c:url>'><i class="fa fa-times" aria-hidden="true" style="font-size:20px; color:#e60000"></i></a>
+					<a href='<c:url value='remove-cart-${product.id}'></c:url>'><i class="fa fa-times" aria-hidden="true" style="font-size:20px; color:#e60000"></i></a>
 				</div>
 			</div>
 		</div>
