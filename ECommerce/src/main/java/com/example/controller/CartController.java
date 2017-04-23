@@ -47,7 +47,7 @@ public class CartController {
 		
 	}
 	
-	@RequestMapping(value = "/addcart", method = RequestMethod.POST)
+	@RequestMapping(value = "/addCart", method = RequestMethod.GET)
 	public String addToCart(@RequestParam("productName") String productName,ModelMap model){
 		
 		if(getPrincipal() == "anonymousUser" || getPrincipal() == null )
@@ -107,8 +107,11 @@ public class CartController {
 		{
 			cart.setStatus('N');
 		}
+		cart.setUsername(getPrincipal());
+		model.addAttribute("username", getPrincipal());
+		cart.setAuthorName(product.getAuthor_name());
 		cartDAO.addToCart(cart);
-		return "cart";
+		return "redirect:/cart";
 		
 	}	
 	

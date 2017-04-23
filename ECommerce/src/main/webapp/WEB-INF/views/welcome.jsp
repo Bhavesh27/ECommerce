@@ -89,11 +89,11 @@
 							<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 								<div class="flipper">
 									<div class="front">
-										<img src='<c:url value='/static/images/product/${product.product_name }.png'></c:url>' height='200px' width='150px'/>
+										<img src='<c:url value='/static/images/product/${product.name}.png'></c:url>' height='200px' width='150px'/>
 									</div>
 									<div class="back">
 										<div class="btn-group">
-											<a href="#"><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>ADD TO CART</a>
+											<a href='<c:url value='/addCart?productName=${product.name}'></c:url>'><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>ADD TO CART</a>
 											<a href="#"><span id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>ADD TO WISHLIST</a>
 											<a href="#"><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>BUY NOW</a>
 										</div>
@@ -103,8 +103,8 @@
 						</div>
 						<div class="col-md-5 col-sm-4 col-xs-6">
 							<div class="info">
-								<h4>${product.product_name }</h4>
-								<p>${product.author }</p>
+								<h4>${product.name }</h4>
+								<p>${product.author_name }</p>
 								<c:if test="${product.discount == 0 }">
 									<p>&#x20b9 ${product.price }</p>
 								</c:if>

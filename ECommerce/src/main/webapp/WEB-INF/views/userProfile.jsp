@@ -23,6 +23,37 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     
+    <style type="text/css">
+	
+	.results tr[visible='false'],
+	
+	.no-result{
+	  display:none;
+	}
+	
+	.results tr[visible='true']{
+	  display:table-row;
+	}
+	.product_img {
+		margin: 15px;
+		margin-left: 30px;
+		outline: 2px solid #111111;
+		height: 200px;
+		width: 150px;
+	}
+	</style>
+	<script type="text/javascript">
+		var loadFile = function(event) {
+		    var reader = new FileReader();
+		    reader.onload = function(){
+		      var output = document.getElementById('output');
+		      output.src = reader.result;
+		    };
+		    reader.readAsDataURL(event.target.files[0]);
+		  };
+		
+		</script>
+    
 </head>
 <body>
 <c:import url="header.jsp"></c:import>
@@ -39,42 +70,20 @@
                     <a class="navbar-brand" href="#">User Profile</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <!-- <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret"></b>
-                                    <span class="notification">5</span>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                              </ul>
-                        </li>
-                    </ul> -->
-
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="">
                                ${username}
                             </a>
                         </li>
-                        <%-- <li>
+                        <li>
                             <a href='<c:url value='/logout' ></c:url>' >Log out
                             </a>
-                        </li> --%>
+                        </li> 
                     </ul>
                 </div>
             </div>
         </nav>
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -83,93 +92,67 @@
                             <div class="header">
                                 <h4 class="title">Edit Profile</h4>
                             </div>
-                            <div class="content">
-                                
-                                    
+                            <div class="content col-md-12">
+                            	<div class="col-md-3"></div>
+                            	<div class="col-md-9">
 									<form:form  action="updatingAccount-${updateUser.id}" enctype="multipart/form-data" commandName="updateUser" method="POST">
 										<div class="row">
-										
-											<input type="hidden" name="password" value="${updateUser.password }">
-	                                        <div class="col-md-3">
-	                                            <div class="form-group">
-	                                                <label>Username</label>
-	                                                <input type="text" name="username" class="form-control" placeholder="username" value="${updateUser.username}">
-	                                                
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-md-4">
-	                                            <div class="form-group">
-	                                                <label>Email Id</label>
-	                                                <input type="email" name="email" class="form-control" placeholder="email" value="${updateUser.email}" >
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	                                    <div class="row">
-	                                        <div class="col-md-6">
-	                                            <div class="form-group">
-	                                                <label>First Name</label>
-	                                                <input type="text" name="name" class="form-control" placeholder="Enter Name" value="${updateUser.name}" required>
-	                                            </div>
-	                                        </div>
-	                                        <!-- <div class="col-md-6">
-	                                            <div class="form-group">
-	                                                <label>Last Name</label> 
-	                                                <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name" value="" required>
-	                                            </div>
-	                                        </div> -->
-	                                    </div>
-	
-	                                    <div class="row">
-	                                        <div class="col-md-12">
-	                                            <div class="form-group">
-	                                                <label>Address</label>
-	                                                <input type="text" name="address" class="form-control" placeholder="Enter Address" value="${updateUser.address}" required>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	
-	                                    <div class="row">
-	                                        <!-- <div class="col-md-4">
-	                                            <div class="form-group">
-	                                                <label>City</label>
-	                                                <input type="text" name="city" class="form-control" placeholder="Enter City" value="" required>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-md-4">
-	                                            <div class="form-group">
-	                                                <label>Country</label>
-	                                                <input type="text" name="country" class="form-control" placeholder="Enter Country" value="" required>
-	                                            </div>
-	                                        </div> -->
-	                                        <div class="col-md-4">
-	                                            <div class="form-group">
-	                                                <label>Mobile No</label>
-	                                                <input type="tel" name="mobileno" class="form-control" placeholder="Enter Mobile No" value="${updateUser.mobileno}" required>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-	
-	                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
-	                                    <div class="clearfix"></div>
-                            
-					                    <div class="col-md-4">
-					                        <div class="card card-user">
-					                            <div class="image">
-					                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="Upload Profile Picture"/>
-					                            </div>
-					                            <div class="content">
-					                                <div class="author">
-					                                     <a href="#">
-					                                     <img class="avatar border-gray" src="#" alt="Upload Profile Picture" />
-					                                      ${updateUser.username}<br><small>${updateUser.email}</small>
-					                                     </a>
-					                                </div>
-					                                <input type="file"  value="Upload Photo" name="image" />
-					                            </div>
-					                            <hr>
-					                        </div>
-					                    </div>
-				  					</form:form>
+											<div>
+											<input type="hidden" name="password" value="${updateUser.password}">
+		                                        <div class="col-md-3">
+		                                            <div class="form-group">
+		                                                <label>Username</label>
+		                                                <input type="text" name="username" class="form-control" placeholder="username" value="${updateUser.username}">
+		                                            </div>
+		                                        </div>
+		                                        <div class="col-md-4">
+		                                            <div class="form-group">
+		                                                <label>Email Id</label>
+		                                                <input type="email" name="email" class="form-control" placeholder="email" value="${updateUser.email}" >
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                    <div class="row">
+		                                        <div class="col-md-6">
+		                                            <div class="form-group">
+		                                                <label>Name</label>
+		                                                <input type="text" name="name" class="form-control" placeholder="Enter Name" value="${updateUser.name}" required>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                    <div class="">
+		                                    	<div class="col-md-4">
+						                        <div class="card card-user">
+						                            <div class="image">
+						                                <img src="http://placehold.it/150x200" id="output" class="img-responsive img product_img" alt="UPLOAD PICTURE" height="200px"  width="150px" />
+						                                <input type="file"  value="Upload Photo" name="image" onchange="loadFile(event)"/>
+						                            </div>
+						               
+						                        </div>
+						                    </div>
+		                                    </div>
+		                                    </div>
+		                                    <div class="row">
+		                                        <div class="col-md-12">
+		                                            <div class="form-group">
+		                                                <label>Address</label>
+		                                                <input type="text" name="address" class="form-control" placeholder="Enter Address" value="${updateUser.address}" required>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                    <div class="row">
+		                                        <div class="col-md-4">
+		                                            <div class="form-group">
+		                                                <label>Mobile No</label>
+		                                                <input type="tel" name="mobileno" class="form-control" placeholder="Enter Mobile No" value="${updateUser.mobileno}" required>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+		                                    <div class="clearfix"></div>
+					  					</form:form>
+				  					</div>
+				  					<div class="col-md-3"></div>
 				  				</div>
                  			</div>
                			</div>

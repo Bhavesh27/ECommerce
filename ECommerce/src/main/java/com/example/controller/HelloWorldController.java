@@ -57,7 +57,9 @@ public class HelloWorldController {
 	public String homePage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		model.addAttribute("categories", categoryService.getAllCategorys());
-		System.out.println("dropdwown");
+		model.addAttribute("products", productService.getAllProducts());
+		model.addAttribute("Home", "activ");
+		//System.out.println("dropdwown");
 		return "welcome";
 	}
 	

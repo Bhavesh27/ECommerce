@@ -77,7 +77,7 @@
               </div>
               
               <div class="panel-body">
-                <form:form action="edit-product-${product_id}" method="post" commandName="updateProduct">
+                <form:form action="edit-product-${product_id}" method="post" commandName="updateProduct" enctype="multipart/form-data">
                 <div class="col-md-9">
                   <div class="form-group">
                     <label>Product Name</label>
@@ -102,7 +102,7 @@
                 </div>
                   <div class="col-md-3">
                   	<img src="http://placehold.it/150x200" id="output" class="img-responsive img product_img" alt="UPLOAD PICTURE" height="200px"  width="150px" />
-                  	<input type="file" placeholder = "upload picture" class="button" id="product_image" name="product_image" onchange="loadFile(event)"/>
+                  	<input type="file" placeholder ="upload picture" class="button" id="product_image" name="product_image" onchange="loadFile(event)"/>
                   </div>
                   <div class="col-md-12">
                   <div class="form-group col-md-4">
@@ -111,13 +111,13 @@
                   </div>
                   <div class="form-group col-md-4">
                     <label>Discount</label>
-                    <input type="number" class="form-control" name="discount" placeholder="Enter Product Discount" value="" />
+                    <input type="number" class="form-control" name="discount" placeholder="Enter Product Discount" value="${product_discount}" />
                   </div>
                   <div class="form-group col-md-4">
                     <label>Quantity</label>
                     <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity" value="${product_quantity}">
                   </div>
-                  <input type="submit" class="btn btn-default" value="Submit">
+                  <input type="submit" class="btn btn-default" value="Update Details">
                   </div>
                 </form:form>
               </div>

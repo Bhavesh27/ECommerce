@@ -1,6 +1,11 @@
 package com.example.controller;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.model.Category;
 import com.example.model.Product;
@@ -41,6 +47,8 @@ public class AdminController {
     
     @Autowired
     Supplier supplier;
+    
+    Path path;
 	
     //DashBoard
 	
@@ -156,7 +164,7 @@ public class AdminController {
     }
     
     @RequestMapping(value="/edit-product-{product_id}", method = RequestMethod.POST)
-    public String editProduct (@ModelAttribute("updateProduct")Product product)
+    public String editProduct (@ModelAttribute("updateProduct")Product product,HttpServletRequest request)
     {
     	category=categoryService.getCategoryById(product.getCategory().getCategory_id());
     	supplier=supplierService.getSupplierById(product.getSupplier().getSupplier_id());
@@ -165,6 +173,22 @@ public class AdminController {
     	product.setSupplier(supplier);
     	
     	productService.updateProduct(product);
+    	MultipartFile image = product.getProduct_image();
+    	String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+    	
+    	path = Paths.get(rootDirectory + "/static/images/product/" + product.getName()+".png");
+    	System.out.println(path);
+    	if(image != null && !image.isEmpty())
+    	{
+    		try
+    		{
+    			image.transferTo(new File(path.toString()));
+    		}
+    		catch(Exception e)
+    		{
+    			e.printStackTrace();
+    		}
+    	}
     	
     	return "redirect:/product";
     }
@@ -180,6 +204,7 @@ public class AdminController {
     	model.addAttribute("product_description",product.getDescription());
     	model.addAttribute("product_author",product.getAuthor_name());
     	model.addAttribute("product_price",product.getPrice());
+    	model.addAttribute("product_discount",product.getDiscount());
     	model.addAttribute("product_quantity",product.getQuantity());
     	model.addAttribute("category",categoryService.getAllCategorys());
     	model.addAttribute("suppliers",supplierService.getAllSuppliers());

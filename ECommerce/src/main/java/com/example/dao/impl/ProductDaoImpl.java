@@ -74,7 +74,7 @@ public class ProductDaoImpl implements ProductDao {
 	public Product getProductByName(String productName) {
 		// TODO Auto-generated method stub
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
-		criteria.add(Restrictions.eq("product_name",productName));
+		criteria.add(Restrictions.eq("name",productName));
 		Product product = (Product)criteria.uniqueResult();
 		return product;
 	}

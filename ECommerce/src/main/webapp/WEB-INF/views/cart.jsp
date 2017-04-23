@@ -33,17 +33,17 @@ h4:after {
 		<div class="product">
 			<div class="row">
 				<div class="col-md-2">
-					<img src='<c:url value='/static/images/product/${product.name}.png'></c:url>' width=100px height=100px/>
+					<img src='<c:url value='/static/images/product/${product.productName}.png'></c:url>' width=100px height=100px/>
 				</div>
 				<div class="col-md-3">
-					<p>${product.name}</p>
+					<p>${product.productName}</p>
 				</div>
 				<div class="col-md-2">
 					<p>${product.authorName }</p>
 				</div>
 				<div class="col-md-2">
 					<p>${product.total }</p>
-					<c:set var="sub_total" value="${sub_total + product.total_price }"></c:set>
+					<c:set var="sub_total" value="${sub_total + product.total}"></c:set>
 					
 				</div>
 				<div class="col-md-2">
