@@ -74,7 +74,7 @@
 			       		<li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'>your cart</a></li>
 			       	</ul>
 			     </li>
-            	<li><a href='<c:url value='/home'></c:url>' style="padding-bottom: 13px; padding-top: 13px"><img src='<c:url value='/static/images/user/${pageContext.request.userPrincipal.name}.png'></c:url>' height='25' width='25' class="img img-rounded"/></a></li>
+            	<li><a href='<c:url value='/home'></c:url>' style="padding-bottom: 13px; padding-top: 13px"><img src='<c:url value='/static/images/user/${pageContext.request.userPrincipal.name}.png'></c:url>' height='25px' width='25px' class="img img-rounded"/></a></li>
             	<li><a href='<c:url value='/logout'></c:url>'>Logout</a></li>
             	<li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
             </c:if>

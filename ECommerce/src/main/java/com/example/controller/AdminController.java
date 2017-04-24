@@ -150,7 +150,7 @@ public class AdminController {
     }*/
     
     @RequestMapping(value="/addProduct", method = RequestMethod.POST)
-    public String addNewProduct(@ModelAttribute("newProduct") Product product)
+    public String addNewProduct(@ModelAttribute("newProduct") Product product,HttpServletRequest request)
     {
     	
     	category=categoryService.getCategoryById(product.getCategory().getCategory_id());
@@ -160,6 +160,23 @@ public class AdminController {
     	product.setSupplier(supplier);
     	
     	productService.addProduct(product);
+    	MultipartFile image = product.getProduct_image();
+    	String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+    	
+    	path = Paths.get(rootDirectory + "/static/images/product/" + product.getName()+".png");
+    	System.out.println(path);
+    	if(image != null && !image.isEmpty())
+    	{
+    		try
+    		{
+    			image.transferTo(new File(path.toString()));
+    		}
+    		catch(Exception e)
+    		{
+    			e.printStackTrace();
+    		}
+    	}
+    	
     	return "redirect:/product";
     }
     

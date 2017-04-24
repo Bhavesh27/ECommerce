@@ -95,7 +95,7 @@ public class HelloWorldController {
     	MultipartFile image = user.getImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
-		path = Paths.get(rootDirectory + "/static/images/user" + user.getUsername() + ".png");
+		path = Paths.get(rootDirectory + "/static/images/user/" + user.getUsername() + ".png");
 		System.out.println(path.toString());
 		if(image != null && !image.isEmpty() )
 		{
@@ -195,7 +195,7 @@ public class HelloWorldController {
 		MultipartFile image = user.getImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 		
-		path = Paths.get(rootDirectory + "/static/images/user" + user.getUsername() + ".png");
+		path = Paths.get(rootDirectory + "/static/images/user/" + user.getUsername() + ".png");
 		System.out.println(path.toString());
 		if(image != null && !image.isEmpty() )
 		{

@@ -42,7 +42,7 @@ h4:after {
 					<p>${product.authorName }</p>
 				</div>
 				<div class="col-md-2">
-					<p>${product.total }</p>
+					<p>${product.price }</p>
 					<c:set var="sub_total" value="${sub_total + product.total}"></c:set>
 					
 				</div>
