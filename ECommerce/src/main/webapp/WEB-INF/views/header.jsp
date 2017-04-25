@@ -16,6 +16,12 @@
 	<link rel="stylesheet" href="static/css/header.css">
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="static/js/autocompleter.js"></script>
+    <style type="text/css">
+    	#icon{
+    	height:30px;
+    	width:40px;
+    	}
+    </style>
   
   </head>
   <body>
@@ -74,7 +80,7 @@
 			       		<li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'>your cart</a></li>
 			       	</ul>
 			     </li>
-            	<li><a href='<c:url value='/home'></c:url>' style="padding-bottom: 13px; padding-top: 13px"><img src='<c:url value='/static/images/user/${pageContext.request.userPrincipal.name}.png'></c:url>' height='25px' width='25px' class="img img-rounded"/></a></li>
+            	<li><a href='<c:url value='/account?username=${pageContext.request.userPrincipal.name}'></c:url>' style="padding-bottom: 13px; padding-top: 13px"><img id="icon" src='<c:url value='/static/images/user/${pageContext.request.userPrincipal.name}.png'></c:url>' class="img img-rounded"/></a></li>
             	<li><a href='<c:url value='/logout'></c:url>'>Logout</a></li>
             	<li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
             </c:if>

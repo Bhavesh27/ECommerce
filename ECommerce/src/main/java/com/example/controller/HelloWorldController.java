@@ -109,37 +109,6 @@ public class HelloWorldController {
     	model.addAttribute("msg", "Details have been successsfully updated");
     	return "redirect:/home";
     }
-
-	@RequestMapping(value="/displayProduct-{categoryId}" , method = RequestMethod.GET)
-    public String displayProduct(ModelMap model , @PathVariable("categoryId") int categoryId )
-    {
-    	model.addAttribute("DisplayProduct", "activ");
-    	model.addAttribute("categories", categoryService.getAllCategorys());
-    	model.addAttribute("books",productService.getProductByCategory(categoryId));
-    	return "displayProduct";
-    }
-	
-	@RequestMapping(value="/SearchController" , method = RequestMethod.GET)
-    public void searchProduct(ModelMap model,@RequestParam("term") String productName, HttpServletResponse resp)
-    {
-    	List<String> list = productService.getProductListByName(productName);
-    	String json = new Gson().toJson(list);
-    	try {
-			resp.getWriter().write(json);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
-    @RequestMapping(value="/allProduct" , method=RequestMethod.GET)
-    public String allProducts(ModelMap model)
-    {
-    	model.addAttribute("DisplayProduct","activ");
-    	model.addAttribute("categories", categoryService.getAllCategorys());
-    	model.addAttribute("books", productService.getAllProducts());
-    	return "displayProduct";
-    }
 	
 	@RequestMapping(value="/aboutUs", method = RequestMethod.GET)
     public String aboutUsPage(ModelMap model)

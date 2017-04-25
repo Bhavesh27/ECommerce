@@ -58,5 +58,6 @@ h4:after {
 	<div class="ng-well" style="float:right; margin-right: 100px">
 		<pre>Sub Total	: ${sub_total }</pre>
 	</div>
+	<button>Continue Shopping</button>
 </div>
 <%@ include file="footer.jsp"  %>
