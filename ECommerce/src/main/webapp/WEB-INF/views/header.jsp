@@ -21,6 +21,7 @@
     	height:30px;
     	width:40px;
     	}
+    	.ui-helper-hidden-accessible { display:none; }
     </style>
   
   </head>
@@ -36,7 +37,7 @@
         <div class="input-group ui-widget" style="padding-top: 12px" >
           <input type="text" class="form-control" name="search" id="search" placeholder="search"  />
           <span class="input-group-addon">
-            <a href="#"><i class="fa fa-search"></i></a>
+            <a href='<c:url value='/product?name=<%= request.getParameter("search") %>' style="color:#4CAF50"></c:url>'><i class="fa fa-search"></i></a>
           </span>
         </div>
       </div>

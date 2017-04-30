@@ -52,13 +52,18 @@ public class ProductDaoImpl implements ProductDao {
 	@SuppressWarnings("unchecked")
 	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
-		return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product").list();
+		//return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product").list();
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		return (List<Product>) criteria.list();
 	}
 
 	
 	public Product getProductById(int id) {
 		
-		return sessionFactory.getCurrentSession().get(Product.class, id);
+		//return sessionFactory.getCurrentSession().get(Product.class, id);
+		Criteria criteria  = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		criteria.add(Restrictions.like("product_id", id));
+		return (Product)criteria.uniqueResult();
 	}
 
 
@@ -66,7 +71,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> getProductByCategory(int categoryId) {
 		// TODO Auto-generated method stub
-		return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product  where category_id  ="+ categoryId).list();
+		//return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product  where category_id  ="+ categoryId).list();
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		criteria.add(Restrictions.like("category_id", categoryId));
+		return (List<Product>) criteria.list();
 	}
 
 
