@@ -1,15 +1,19 @@
 package com.example.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -66,6 +70,17 @@ public class Product implements Serializable {
 	//@JoinTable(name="product_supplier",joinColumns={@JoinColumn(name="product_id")},inverseJoinColumns={@JoinColumn(name="supplier_id")})
 	@JoinColumn(name="supplier_id")
 	private Supplier supplier;
+	
+	@OneToMany(mappedBy="product",cascade=CascadeType.ALL)
+    private Set<Cart> cart;
+	
+	public Set<Cart> getCart() {
+		return cart;
+	}
+	public void setCart(Set<Cart> cart) {
+		this.cart = cart;
+	}
+	
 	
 	public int getProduct_id() {
 		return product_id;

@@ -71,7 +71,7 @@ public class CartController {
     		{
     			int j=1; //variable created to increase the quantity of product in cart by 1
     			
-    			Cart cart = cartDAO.getById(list.get(i).getId());
+    			Cart cart = cartDAO.getById(list.get(i).getCart_id());
     			if(cart.getQuantity() == product.getQuantity())
     			{
     				j=0;

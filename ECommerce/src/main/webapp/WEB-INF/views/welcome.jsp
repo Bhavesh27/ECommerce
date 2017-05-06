@@ -94,8 +94,8 @@
 									<div class="back">
 										<div class="btn-group">
 											<a href='<c:url value='/addCart?productName=${product.name}'></c:url>'><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>ADD TO CART</a>
-											<a href='<c:url value='/addWishlistItem?book=${product.product_name }'></c:url>'><span id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>ADD TO WISHLIST</a>
-											<a href='<c:url value='/descriptionPage?book=${product.product_name }'></c:url>'><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>BUY NOW</a>
+											<a href='<c:url value='/addWishlistItem?book=${product.name }'></c:url>'><span id="icon"><i class="fa fa-heart" aria-hidden="true"></i></span>ADD TO WISHLIST</a>
+											<a href="#"><span id="icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>BUY NOW</a>
 										</div>
 									</div>
 								</div>

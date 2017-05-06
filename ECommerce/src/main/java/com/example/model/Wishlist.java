@@ -16,7 +16,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Wishlist implements Serializable {
 	
-	 @Id
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
 	 @Column
 	 @GeneratedValue(strategy = GenerationType.AUTO)
 	 int wishlist_id;

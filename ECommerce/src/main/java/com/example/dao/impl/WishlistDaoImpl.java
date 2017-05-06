@@ -39,6 +39,7 @@ public class WishlistDaoImpl implements WishlistDao {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Wishlist> getWishlistItems(String username) {
 		// TODO Auto-generated method stub

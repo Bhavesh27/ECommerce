@@ -71,10 +71,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> getProductByCategory(int categoryId) {
 		// TODO Auto-generated method stub
-		return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product  where category_id  ="+ categoryId).list();
-		/*Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		//return (List<Product>) sessionFactory.getCurrentSession().createQuery("from Product  where category_id  ="+ categoryId).list();
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
 		criteria.add(Restrictions.like("category_id", categoryId));
-		return (List<Product>) criteria.list();*/
+		return (List<Product>) criteria.list();
 	}
 
 
@@ -95,7 +95,7 @@ public class ProductDaoImpl implements ProductDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
 		criteria.add(Restrictions.like("name",productName+"%"));
 		List<Product> products = (List<Product>)criteria.list();
-		List<String> productsName = new ArrayList<>();
+		List<String> productsName = new ArrayList<String>();
 		for(Product product:products){
 			productsName.add(product.getName());
 			System.out.println(product.getName());

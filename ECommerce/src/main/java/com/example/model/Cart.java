@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -25,7 +26,7 @@ public class Cart implements Serializable {
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private int cart_id;
 	
 	@Column
 	private double total;
@@ -34,6 +35,7 @@ public class Cart implements Serializable {
 	public String username;
 	
 	@Column
+	
 	private String productName;
 	
 	@Column
@@ -51,16 +53,26 @@ public class Cart implements Serializable {
 	
 	//Mapping
 	
-	/*@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "user_id",referencedColumnName="id")
 	private User user;
 	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "productId",referencedColumnName="product_id")
+	private Product product;
+	
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
-	}*/
+	}
 	
 	public String getUsername() {
 		return username;
@@ -86,11 +98,12 @@ public class Cart implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public int getId() {
-		return id;
+	
+	public int getCart_id() {
+		return cart_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
 	}
 	public String getProductName() {
 		return productName;

@@ -1,12 +1,17 @@
 package com.example.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -48,7 +53,16 @@ public class User implements Serializable{
     @Transient
     public MultipartFile image;
     
+    @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+    private Set<Cart> cart;
     
+    
+	public Set<Cart> getCart() {
+		return cart;
+	}
+	public void setCart(Set<Cart> cart) {
+		this.cart = cart;
+	}
 	public String getMobileno() {
 		return mobileno;
 	}
