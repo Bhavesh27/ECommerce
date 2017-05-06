@@ -34,12 +34,14 @@
         <h3>BOOKS VILLA</h3>
       </div>
       <div class="col-md-6 search-container" style="float: left; padding-bottom: 1px">
+      <form:form action="product" method="GET">
         <div class="input-group ui-widget" style="padding-top: 12px" >
           <input type="text" class="form-control" name="search" id="search" placeholder="search"  />
           <span class="input-group-addon">
-            <a href='<c:url value='/product?name=<%= request.getParameter("search") %>' style="color:#4CAF50"></c:url>'><i class="fa fa-search"></i></a>
+            <button style="color:#4CAF50"><i class="fa fa-search"></i></button>
           </span>
         </div>
+        </form:form>
       </div>
     </div>
   </div>

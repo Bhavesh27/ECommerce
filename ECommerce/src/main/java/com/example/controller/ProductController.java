@@ -57,4 +57,14 @@ public class ProductController {
     	return "displayProduct";
     }
 	
+    @RequestMapping(value="/descriptionPage" , method = RequestMethod.GET)
+    public String toDescriptionPage(@RequestParam("book") String book , ModelMap model)
+      {
+        	model.addAttribute("user", getPrincipal());
+        	model.addAttribute("book",productDao.getProductByName(book));
+        	model.addAttribute("categories", categoryDao.getAllCategory());
+        	return "productPage";
+      }
+    
+    
 }
