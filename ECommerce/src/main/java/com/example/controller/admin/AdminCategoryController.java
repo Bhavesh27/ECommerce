@@ -34,44 +34,42 @@ public class AdminCategoryController extends HelloWorldController {
 		
 	}
     
-    @RequestMapping(value="/addCategory", method = RequestMethod.POST)
+    @RequestMapping(value="/admin/categorys/add", method = RequestMethod.POST)
     public String addCategory (@ModelAttribute("newCategory") Category category)
     {
     	categoryService.addCategory(category);
-    	return "redirect:/category";
+    	return "redirect:/admin/categorys/category";
     }
     
-    @RequestMapping(value="/delete-category-{category_id}", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/categorys/delete/{category_id}", method = RequestMethod.GET)
     public String deleteCategory(@PathVariable int category_id)
     {
     	Category category = categoryService.getCategoryById(category_id);
     	categoryService.deleteCategory(category);
-    	return "redirect:/category";
+    	return "redirect:/admin/categorys/category";
     }
     
     
-    @RequestMapping(value="/categoryEdit-{category_id}",method = RequestMethod.GET)
+    @RequestMapping(value="/admin/categorys/edit/{category_id}",method = RequestMethod.GET)
     public String categoryEdit(@PathVariable int category_id,ModelMap model)
     {
     	
     	Category category = categoryService.getCategoryById(category_id);
-    	model.addAttribute("category_id", category_id);
+    	/*model.addAttribute("category_id", category_id);
     	model.addAttribute("categoryName", category.getCategory_name());
-    	model.addAttribute("category_desc", category.getCategory_desc());
+    	model.addAttribute("category_desc", category.getCategory_desc());*/
     	
-    	model.addAttribute("updateCategory",category);
+    	model.addAttribute("updCategory",category);
     	
-    	return "categoryedit";
+    	return "admin/categorys/categoryedit";
     	
     }
     
-    @RequestMapping(value="/edit-category-{category_id}" , method = RequestMethod.POST)
+    @RequestMapping(value="/admin/categorys/edit/{category_id}" , method = RequestMethod.POST)
     public String updateCategory(@ModelAttribute("updateCategory") Category category)
     {
     	categoryService.updateCategory(category);
-    	return "redirect:/category";
+    	return "redirect:/admin/categorys/category";
     }
-	
-	
 	
 }

@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,6 +52,16 @@ public class WishlistController {
 	 	   		return "redirect:/login";
 	 	   	}
 	 			
+	 		List<Wishlist> wishlist1 = wishlistDao.getWishlistItems(getPrincipal());		
+	 		for(Wishlist list : wishlist1)		
+	 			{		
+		 			if(list.getProduct_name().equals(book))		
+	 					{			
+		 				    model.addAttribute("username", getPrincipal());		
+	 		 	 			return "redirect:/wishlist";		
+	 		 	 		}		
+	 			}
+	 		
 	 	 	System.out.println(book);
 	 		Product product = productService.getProductByName(book);
 	 		Wishlist wishlist = new Wishlist();

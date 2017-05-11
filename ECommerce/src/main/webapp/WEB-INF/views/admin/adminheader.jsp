@@ -24,11 +24,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<c:url value="/admin"/>" >Dashboard</a></li>
-            <li><a href="<c:url value="/product"/>" >Product</a></li>
-            <li><a href="<c:url value="/supplier"/>" >Supplier</a></li>
-            <li><a href="<c:url value="/users" />" >Users</a></li>
-            <li><a href="<c:url value="/category" />" >Category</a></li>
+            <li class="active"><a href="<c:url value="/admin/dashboard"/>" >Dashboard</a></li>
+            <li><a href="<c:url value="/admin/products/product"/>" >Product</a></li>
+            <li><a href="<c:url value="/admin/suppliers/supplier"/>" >Supplier</a></li>
+            <li><a href="<c:url value="/admin/users/user" />" >Users</a></li>
+            <li><a href="<c:url value="/admin/categorys/category" />" >Category</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, ${user}</a></li>

@@ -18,7 +18,7 @@ import com.example.service.ProductService;
 import com.google.gson.Gson;
 
 @Controller
-public class ProductController {
+public class ProductController extends HelloWorldController {
 	
 	@Autowired
 	ProductService productService;
@@ -57,4 +57,13 @@ public class ProductController {
     	return "displayProduct";
     }
 	
+    @RequestMapping(value="/descriptionPage" , method = RequestMethod.GET)		
+    public String toDescriptionPage(@RequestParam("book") String book , ModelMap model)		
+      {		
+          	model.addAttribute("user", getPrincipal());		
+           	model.addAttribute("book",productService.getProductByName(book));		
+           	model.addAttribute("categories", categoryService.getAllCategorys());		
+           	return "productPage";		
+       }
+    
 }
