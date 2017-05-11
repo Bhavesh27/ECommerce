@@ -15,6 +15,7 @@
   </head>
   <body>
   	<c:import url="adminheader.jsp"></c:import>
+  	<c:url var="adminBaseUrl" value="/admin/" />
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
@@ -28,12 +29,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
+              <a href="<c:url value="/admin/dashboard"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">12</span></a>
-              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
-              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products }</span></a>
+              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers }</span></a>
+              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users }</span></a>
+              <a href="<c:url value="/admin/categorys/category"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Categorys <span class="badge">${categories}</span></a>
             </div>
 
             <!-- <div class="well">
@@ -60,33 +62,33 @@
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span>${users } </h2>
                     <h4>Users</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
+                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> ${products }</h2>
                     <h4>Products</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 33</h2>
+                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> ${suppliers }</h2>
                     <h4>Supplier</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
-                    <h4>Visitors</h4>
+                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> ${categories}</h2>
+                    <h4>Categorys</h4>
                   </div>
-                </div>
+                </div>z
               </div>
               </div>
 
               <!-- Latest Users -->
-              <div class="panel panel-default">
+             <%--  <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Latest Users</h3>
                 </div>
@@ -107,14 +109,14 @@
                       		<td><c:out value="${user1.email}"></c:out></td>
                       		<td><c:out value="${user1.username}"></c:out></td>
                       		<td><c:out value="${user1.mobileno}"></c:out></td>
-                      		<%-- <td><a class="btn btn-default" href="edit-user-${user1.id }">Edit</a></td>
-                      		<td><a class="btn btn-danger" href="delete-user-${user1.id }">Delete</a></td> --%>
+                      		<td><a class="btn btn-default" href="edit-user-${user1.id }">Edit</a></td>
+                      		<td><a class="btn btn-danger" href="delete-user-${user1.id }">Delete</a></td>
                       	</tr>
                       	</c:forEach>
                       </tbody>
                     </table>
                 </div>
-              </div>
+              </div> --%>
           </div>
         </div>
       </div>

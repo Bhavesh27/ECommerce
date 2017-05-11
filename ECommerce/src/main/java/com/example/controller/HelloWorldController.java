@@ -54,7 +54,7 @@ public class HelloWorldController {
 	
 	
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public String homePage(ModelMap model) {
+	private String homePage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		model.addAttribute("categories", categoryService.getAllCategorys());
 		model.addAttribute("products", productService.getAllProducts());
@@ -64,19 +64,19 @@ public class HelloWorldController {
 	}
 	
 	@RequestMapping(value = "/db", method = RequestMethod.GET)
-	public String dbaPage(ModelMap model) {
+	private String dbaPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "dba";
 	}
 
 	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-	public String accessDeniedPage(ModelMap model) {
+	private String accessDeniedPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "accessDenied";
 	}
 	
 	@RequestMapping(value="/account" , method = RequestMethod.GET)
-    public String youtAccount(@RequestParam("username") String username , ModelMap model)
+	private String youtAccount(@RequestParam("username") String username , ModelMap model)
     {
     	model.addAttribute("categories", categoryService.getAllCategorys());
     	User user = userService.getUserByUsername(getPrincipal());
@@ -86,7 +86,7 @@ public class HelloWorldController {
     }
     
     @RequestMapping(value="/updatingAccount-{id}" , method = RequestMethod.POST)
-    public String updateAccountDetails(@ModelAttribute("updateUser") User user , ModelMap model, HttpServletRequest request)
+    private String updateAccountDetails(@ModelAttribute("updateUser") User user , ModelMap model, HttpServletRequest request)
     {
     	user.setActive(true);
     		
@@ -111,33 +111,33 @@ public class HelloWorldController {
     }
 	
 	@RequestMapping(value="/aboutUs", method = RequestMethod.GET)
-    public String aboutUsPage(ModelMap model)
+	private String aboutUsPage(ModelMap model)
     {
     	model.addAttribute("Aboutus", "activ");
     	return "about_us";
     }
     
     @RequestMapping(value="/contactUs", method = RequestMethod.GET)
-    public String contactUsPage(ModelMap model)
+    private String contactUsPage(ModelMap model)
     {
     	model.addAttribute("Contactus", "activ");
     	return "contact_us";
     }
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
+	private String loginPage() {
 		return "login";
 	}
 
 	@RequestMapping(value = "/Registration", method = RequestMethod.GET)
-	public String registrationPage(Model model) {
+	private String registrationPage(Model model) {
 		
 		model.addAttribute("adduser", new User());
 		return "Registration";
 	}
 
 	@RequestMapping(value= "/register", method = {RequestMethod.GET,RequestMethod.POST})
-	public String addUser(@Valid @ModelAttribute("adduser") User user,HttpServletRequest request,BindingResult result,Model model){
+	private String addUser(@Valid @ModelAttribute("adduser") User user,HttpServletRequest request,BindingResult result,Model model){
 		
 		if(result.hasErrors()){
 			return "Registration";
@@ -191,7 +191,7 @@ public class HelloWorldController {
 	}*/
 	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
+	private String logoutPage (HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null){    
 			new SecurityContextLogoutHandler().logout(request, response, auth);
@@ -201,7 +201,7 @@ public class HelloWorldController {
 
 	
 	
-	private String getPrincipal(){
+	public String getPrincipal(){
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

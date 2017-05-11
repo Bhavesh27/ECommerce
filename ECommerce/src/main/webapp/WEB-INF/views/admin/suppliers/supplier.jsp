@@ -36,11 +36,12 @@
   <body>
  
  	<%-- <c:import url="adminheader.jsp"></c:import> --%>
- 	   <%@ include file="adminheader.jsp" %>
+ 	   <%@ include file="../adminheader.jsp" %>
+ 	   <c:url var="supplierUrl" value="/admin/suppliers" />
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
+          <li><a href="<c:url value="/admin/admin-dashboard"/>">Dashboard</a></li>
           <li class="active">Supplier</li>
         </ol>
       </div>
@@ -51,12 +52,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
+              <a href="<c:url value="/admin/dashboard"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier<span class="badge">33</span></a>
-              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products }</span></a>
+              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers }</span></a>
+              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users }</span></a>
+              <a href="<c:url value="/admin/categorys/category"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Categorys <span class="badge">${categories}</span></a>
             </div>
 
             <!-- <div class="well">
@@ -82,7 +84,7 @@
                 <h3 class="panel-title">Add Supplier</h3>
               </div>
               <div class="panel-body">
-                <form:form action="addSupplier" method="POST" commandName="newSupplier">
+                <form:form action="/admin/suppliers/add" method="POST" commandName="newSupplier">
                   <div class="form-group">
                     <label>Supplier Name</label>
                     <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="" required />
@@ -133,7 +135,7 @@
                       			<td>${supplier.address }</td>
                       			<td>${supplier.emailid }</td>
                       			<td>${supplier.mobileno }</td>
-                      			<td><a class="btn btn-default" href="<c:url value="/supplierEdit-${supplier.supplier_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-supplier-${supplier.supplier_id}" />">Delete</a></td>
+                      			<td><a class="btn btn-default" href="<c:url value="/admin/suppliers/edit/${supplier.supplier_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/admin/suppliers/delete/${supplier.supplier_id}" />">Delete</a></td>
                       		</tr>
                       	</c:forEach>
                       </tbody>

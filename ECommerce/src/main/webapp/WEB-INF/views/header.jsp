@@ -37,7 +37,7 @@
         <div class="input-group ui-widget" style="padding-top: 12px" >
           <input type="text" class="form-control" name="search" id="search" placeholder="search"  />
           <span class="input-group-addon">
-            <button style="color:#4CAF50"><i class="fa fa-search"></i></button>
+            <a href='<c:url value='/product?name=<%= request.getParameter("search") %>'></c:url>' style="color:#4CAF50"><i class="fa fa-search"></i></a>
           </span>
         </div>
       </div>

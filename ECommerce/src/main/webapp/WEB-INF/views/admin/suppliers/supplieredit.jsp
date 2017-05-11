@@ -32,12 +32,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
+             <a href="<c:url value="/admin/dashboard"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
-              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products }</span></a>
+              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers }</span></a>
+              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users }</span></a>
+              <a href="<c:url value="/admin/categorys/category"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Categorys <span class="badge">${categories}</span></a>
             </div>
 
             <!-- <div class="well">
@@ -62,22 +63,22 @@
                 <h3 class="panel-title">Supplier Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form:form action="edit-supplier-${supplier_id}" method="POST" commandName="updateSupplier">
+                <form:form action="/admin/suppliers/edit/${updSupplier.supplier_id}" method="POST" commandName="updateSupplier">
                   <div class="form-group">
                     <label>Supplier Name</label>
-                    <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="${supplierName}" />
+                    <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="${updSupplier.supplier_name}" />
                   </div>
                   <div class="form-group">
                     <label>Supplier Address</label>
-                    <input name="address" class="form-control" placeholder="Enter Supplier Address" value="${supplierAddress}" />
+                    <input name="address" class="form-control" placeholder="Enter Supplier Address" value="${updSupplier.address}" />
                   </div>
                   <div class="form-group">
                     <label>Supplier Email Id</label>
-                    <input type="text" name="emailid" class="form-control" placeholder="Enter Supplier Email id" value="${supplierEmailId}" />
+                    <input type="text" name="emailid" class="form-control" placeholder="Enter Supplier Email id" value="${updSupplier.emailid}" />
                   </div>
                   <div class="form-group">
                     <label>Supplier Mobile No</label>
-                    <input type="text" name="mobileno" class="form-control" placeholder="Enter Supplier Mobile No" value="${supplierMobileNo}" />
+                    <input type="text" name="mobileno" class="form-control" placeholder="Enter Supplier Mobile No" value="${updSupplier.mobileno}" />
                   </div>
                   <input type="submit" class="btn btn-default" value="Update">
                 </form:form>
