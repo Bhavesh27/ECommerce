@@ -1,25 +1,36 @@
 package com.example.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
 
 @Entity
+@Table
 @Component
-public class CustomerOrder {
+public class CustomerOrder implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	public int orderId;
+	public int order_id;
 	@Column
-	private String userId;
+	private String user_id;
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 	@Column
 	private String orderStatus;
@@ -28,19 +39,26 @@ public class CustomerOrder {
 	@Column
 	private String paymentMode;
 	@Column
-	private String address;
+	private String orderAddress;
 	
-	public int getOrderId() {
-		return orderId;
+	
+	public int getOrder_id() {
+		return order_id;
 	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
 	}
-	public String getUserId() {
-		return userId;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getOrderAddress() {
+		return orderAddress;
+	}
+	public void setOrderAddress(String orderAddress) {
+		this.orderAddress = orderAddress;
 	}
 	public Date getOrderDate() {
 		return orderDate;
@@ -66,10 +84,5 @@ public class CustomerOrder {
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 }

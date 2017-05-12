@@ -1,4 +1,5 @@
 package com.example.controller;
+/*package com.example.controller;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -28,7 +29,7 @@ import com.example.service.SupplierService;
 import com.example.service.UserService;
 
 @Controller
-public class AdminController {
+public class Admin {
 
 	@Autowired
 	UserService userService;
@@ -65,11 +66,11 @@ public class AdminController {
 		List<User> users = userService.getAllActiveUsers();
 		model.addAttribute("users", users);
 		
-		/*model.addAttribute("edit", false);
+		model.addAttribute("edit", false);
 	    model.addAttribute("new_category", new Category());
 	        
 	    List<Category> categories = categoryService.getAllCategorys();
-	    model.addAttribute("categories", categories);*/
+	    model.addAttribute("categories", categories);
 		
 		return "admin";
 	}
@@ -132,7 +133,7 @@ public class AdminController {
 	
 	
 	
-    /*@RequestMapping(value = "/Product", method = RequestMethod.GET)
+    @RequestMapping(value = "/Product", method = RequestMethod.GET)
     public String productPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
     	model.addAttribute("new_product",new Product());
@@ -147,7 +148,7 @@ public class AdminController {
         model.addAttribute("products", products);
         
         return "product";
-    }*/
+    }
     
     @RequestMapping(value="/addProduct", method = RequestMethod.POST)
     public String addNewProduct(@ModelAttribute("newProduct") Product product,HttpServletRequest request)
@@ -163,7 +164,7 @@ public class AdminController {
     	MultipartFile image = product.getProduct_image();
     	String rootDirectory = request.getSession().getServletContext().getRealPath("/");
     	
-    	path = Paths.get(rootDirectory + "/static/images/product/" + product.getName()+".png");
+    	path = Paths.get(rootDirectory + "/static/images/product/" + product.getProduct_name()+".png");
     	System.out.println(path);
     	if(image != null && !image.isEmpty())
     	{
@@ -193,7 +194,7 @@ public class AdminController {
     	MultipartFile image = product.getProduct_image();
     	String rootDirectory = request.getSession().getServletContext().getRealPath("/");
     	
-    	path = Paths.get(rootDirectory + "/static/images/product/" + product.getName()+".png");
+    	path = Paths.get(rootDirectory + "/static/images/product/" + product.getProduct_name()+".png");
     	System.out.println(path);
     	if(image != null && !image.isEmpty())
     	{
@@ -217,12 +218,12 @@ public class AdminController {
     	
     	Product product = productService.getProductById(product_id);
     	model.addAttribute("product_id",product_id);
-    	model.addAttribute("product_name",product.getName());
-    	model.addAttribute("product_description",product.getDescription());
+    	model.addAttribute("product_name",product.getProduct_name());
+    	model.addAttribute("product_description",product.getProduct_desc());
     	model.addAttribute("product_author",product.getAuthor_name());
-    	model.addAttribute("product_price",product.getPrice());
-    	model.addAttribute("product_discount",product.getDiscount());
-    	model.addAttribute("product_quantity",product.getQuantity());
+    	model.addAttribute("product_price",product.getProduct_price());
+    	model.addAttribute("product_discount",product.getProduct_discount());
+    	model.addAttribute("product_quantity",product.getProduct_quantity());
     	model.addAttribute("category",categoryService.getAllCategorys());
     	model.addAttribute("suppliers",supplierService.getAllSuppliers());
     	model.addAttribute("updateProduct", product);
@@ -341,14 +342,14 @@ public class AdminController {
     	return "redirect:/supplier";
     }
 	
-   /* @RequestMapping(value="/edit-supplier-{supplier_id}" , method = RequestMethod.GET)
+    @RequestMapping(value="/edit-supplier-{supplier_id}" , method = RequestMethod.GET)
     public String editSupplier(@PathVariable int supplier_id , ModelMap model)
     {
     	//model.addAttribute("edit", true);
     	model.addAttribute("update_supplier" , supplierService.getSupplierById(supplier_id));
     	model.addAttribute("suppliers", supplierService.getAllSuppliers());
     	return "supplier";
-    }*/
+    }
     
     @RequestMapping(value="/edit-supplier-{supplier_id}" , method = RequestMethod.POST)
     public String updateSupplier(@ModelAttribute("update_supplier") Supplier supplier)
@@ -370,3 +371,4 @@ public class AdminController {
 	}
 	
 }
+*/

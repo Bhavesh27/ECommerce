@@ -44,11 +44,11 @@
 		</script>
   </head>
   <body>
-     <c:import url="adminheader.jsp"></c:import>
+     <c:import url="../adminheader.jsp"></c:import>
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
+          <li><a href="<c:url value="/admin/dashboard"/>">Dashboard</a></li>
           <li class="active">Product</li>
         </ol>
       </div>
@@ -59,12 +59,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
+              <a href="<c:url value="/admin/dashboard"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
-              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products }</span></a>
+              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers }</span></a>
+              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users }</span></a>
+              <a href="<c:url value="/admin/categorys/category"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Categorys <span class="badge">${categories}</span></a>
             </div>
           </div>
           <div class="col-md-9">
@@ -75,15 +76,15 @@
                 <h3 class="panel-title">Add Product</h3>
               </div>
               <div class="panel-body">
-                <form:form action="addProduct" method="post" commandName="newProduct" enctype="multipart/form-data">
+                <form:form action="/admin/products/add" method="post" commandName="newProduct" enctype="multipart/form-data">
                  <div class="col-md-9">
                   <div class="form-group">
                     <label>Product Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="">
+                    <input type="text" class="form-control" name="product_name" placeholder="Enter Product Name" value="">
                   </div>
                   <div class="form-group">
                     <label>Product Description</label>
-                    <input type="text" class="form-control" name="description" placeholder="Enter Product Description" value="" />
+                    <input type="text" class="form-control" name="product_desc" placeholder="Enter Product Description" value="" />
                   </div>
                   
                   <div class="form-group col-md-6">
@@ -106,15 +107,15 @@
                   <div class="col-md-12">
                   <div class="form-group col-md-4">
                     <label>Price</label>
-                    <input type="number" name="price" class="form-control" placeholder="Enter Price" value="" min="0" />
+                    <input type="number" name="product_price" class="form-control" placeholder="Enter Price" value="" min="0" />
                   </div>
                   <div class="form-group col-md-4">
                     <label>Quantity</label>
-                    <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity" value="" min="0">
+                    <input type="number" name="product_quantity" class="form-control" placeholder="Enter Quantity" value="" min="0">
                   </div>
                   <div class="form-group col-md-4">
                     <label>Discount</label>
-                    <input type="number" class="form-control" name="discount" placeholder="Enter Product Discount" value="" />
+                    <input type="number" class="form-control" name="product_discount" placeholder="Enter Product Discount" value="" />
                   </div>
                   <input type="submit" class="btn btn-default" value="Submit">
                   </div>
@@ -150,7 +151,7 @@
 	                        <td><c:out value="${product.price}"></c:out></td>
 	                        <td><c:out value="${product.author_name}"></c:out></td>
 	                        <td><c:out value="${product.quantity}"></c:out></td>
-	                        <td><a class="btn btn-default" href="<c:url value="/productEdit-${product.product_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/delete-product-${product.product_id}" />">Delete</a></td>
+	                        <td><a class="btn btn-default" href="<c:url value="/admin/products/edit/${product.product_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/admin/products/delete/${product.product_id}" />">Delete</a></td>
 	                      </tr>
 	                     </c:forEach>
                    </tbody>

@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +14,17 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table
 @Component
-public class ShippingDetails {
+public class ShippingDetails implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id		
 	@Column		
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	int address_id;
 	
 	@Column
 	String shipping_address;
@@ -25,12 +32,12 @@ public class ShippingDetails {
 	@Column
 	String billing_address;
 
-	public int getId() {
-		return id;
+	public int getAddress_id() {
+		return address_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAddress_id(int address_id) {
+		this.address_id = address_id;
 	}
 
 	public String getShipping_address() {

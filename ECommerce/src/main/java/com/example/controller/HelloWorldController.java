@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -22,7 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +31,7 @@ import com.example.model.User;
 import com.example.service.CategoryService;
 import com.example.service.ProductService;
 import com.example.service.UserService;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 @Controller
 public class HelloWorldController {

@@ -3,12 +3,13 @@ package com.example.controller.admin;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.controller.HelloWorldController;
 import com.example.model.Category;
 import com.example.model.Supplier;
 import com.example.model.User;
@@ -17,8 +18,8 @@ import com.example.service.ProductService;
 import com.example.service.SupplierService;
 import com.example.service.UserService;
 
-@Controller 
-class AdminController extends HelloWorldController {
+@Controller(value="adminController") 
+class AdminController {
 	
 	@Autowired
 	UserService userService;
@@ -61,6 +62,18 @@ class AdminController extends HelloWorldController {
 	    model.addAttribute("products", productService.getAllProducts().size());
 		
 		return "admin/admin-dashboard";
+	}
+	
+	public String getPrincipal(){
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails)principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
 	}
 	
 }

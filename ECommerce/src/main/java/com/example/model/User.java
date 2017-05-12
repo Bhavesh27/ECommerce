@@ -22,7 +22,7 @@ public class User implements Serializable{
 	@Id
     @Column
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int id;
+	public int user_id;
    
 	@Column(unique=true)
     public String username;
@@ -50,11 +50,23 @@ public class User implements Serializable{
     
     @Transient
     public MultipartFile image;
+
+    //Mapping
     
     @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
     private Set<Cart> cart;
     
+    @OneToMany(mappedBy="user",cascade=CascadeType.ALL)
+    private Set<Wishlist> wishlist;
     
+    
+    
+	public Set<Wishlist> getWishlist() {
+		return wishlist;
+	}
+	public void setWishlist(Set<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
 	public Set<Cart> getCart() {
 		return cart;
 	}
@@ -98,11 +110,11 @@ public class User implements Serializable{
 		this.isActive = isActive;
 	}
 	
-	public int getId() {
-		return id;
+	public int getUser_id() {
+		return user_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	public String getUsername() {
 		return username;

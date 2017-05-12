@@ -2,11 +2,14 @@ package com.example.dao;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+
 import com.example.model.Product;
 
 
 public interface ProductDao {
 
+	@PreAuthorize("hasRole('USER')")
 	public void addProduct(Product product);
 	public void updateProduct(Product product);
 	public void deleteProduct(Product product);

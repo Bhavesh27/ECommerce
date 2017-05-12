@@ -1,13 +1,11 @@
 package com.example.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,24 +30,18 @@ public class Product implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int product_id;
 	@Column
-	public String name;
+	public String product_name;
 	@Column
-	public String description;
+	public String product_desc;
 	@Column
-	public double price;
+	public double Product_price;
 	@Column
-	public int quantity;
+	public int product_quantity;
 	@Column
 	String author_name;
 	@Column
-    int discount=0;
+    int product_discount=0;
 	
-	public int getDiscount() {
-		return discount;
-	}
-	public void setDiscount(int discount) {
-		this.discount = discount;
-	}
 	@Transient
 	MultipartFile product_image;
 	
@@ -74,6 +66,15 @@ public class Product implements Serializable {
 	@OneToMany(mappedBy="product",cascade=CascadeType.ALL)
     private Set<Cart> cart;
 	
+	@OneToMany(mappedBy="product",cascade=CascadeType.ALL)
+    private Set<Wishlist> wishlist;
+	
+	public Set<Wishlist> getWishlist() {
+		return wishlist;
+	}
+	public void setWishlist(Set<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
 	public Set<Cart> getCart() {
 		return cart;
 	}
@@ -90,30 +91,7 @@ public class Product implements Serializable {
 		this.product_id = product_id;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double d) {
-		this.price = d;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+	
 	public String getAuthor_name() {
 		return author_name;
 	}
@@ -137,5 +115,36 @@ public class Product implements Serializable {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	public String getProduct_desc() {
+		return product_desc;
+	}
+	public void setProduct_desc(String product_desc) {
+		this.product_desc = product_desc;
+	}
+	public double getProduct_price() {
+		return Product_price;
+	}
+	public void setProduct_price(double product_price) {
+		Product_price = product_price;
+	}
+	public int getProduct_quantity() {
+		return product_quantity;
+	}
+	public void setProduct_quantity(int product_quantity) {
+		this.product_quantity = product_quantity;
+	}
+	public int getProduct_discount() {
+		return product_discount;
+	}
+	public void setProduct_discount(int product_discount) {
+		this.product_discount = product_discount;
+	}
+	
 	
 }

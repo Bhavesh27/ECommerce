@@ -93,12 +93,13 @@ public class ProductDaoImpl implements ProductDao {
 	public List<String> getProductListByName(String productName) {
 		// TODO Auto-generated method stub
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class);
-		criteria.add(Restrictions.like("name",productName+"%"));
+		//criteria.add(Restrictions.like("name",productName+"%"));
+		criteria.add(Restrictions.like("product_name", productName + "%").ignoreCase());
 		List<Product> products = (List<Product>)criteria.list();
 		List<String> productsName = new ArrayList<String>();
 		for(Product product:products){
-			productsName.add(product.getName());
-			System.out.println(product.getName());
+			productsName.add(product.getProduct_name());
+			System.out.println(product.getProduct_name());
 		}
 		 return productsName;
 	}

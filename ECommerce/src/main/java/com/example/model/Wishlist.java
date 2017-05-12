@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -32,8 +34,32 @@ public class Wishlist implements Serializable {
 	 String author;
 	 @Column
 	 String description;
+	 
+	 //Mapping
+	 
+	    @ManyToOne(optional = false)
+		@JoinColumn(name = "user_id",referencedColumnName="user_id")
+		private User user;
+		
+		@ManyToOne(optional = false)
+		@JoinColumn(name = "productId",referencedColumnName="product_id")
+		private Product product;
 	
-	 public int getWishlist_id() {
+		
+		
+	 public User getUser() {
+			return user;
+		}
+		public void setUser(User user) {
+			this.user = user;
+		}
+		public Product getProduct() {
+			return product;
+		}
+		public void setProduct(Product product) {
+			this.product = product;
+		}
+	public int getWishlist_id() {
 		return wishlist_id;
 	}
 	public void setWishlist_id(int wishlist_id) {

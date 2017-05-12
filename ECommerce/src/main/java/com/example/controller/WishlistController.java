@@ -33,6 +33,12 @@ public class WishlistController {
 	 	
 	 	@Autowired
 	 	ProductService productService;
+	 	
+	 	@Autowired
+	 	Product product;
+	 	 	
+	 	 @Autowired
+	 	 Wishlist wishlist;
 	 
 	 	@RequestMapping(value="/wishlist" , method = RequestMethod.GET)
 	 	public String wishlist(@RequestParam("username") String username , ModelMap model)
@@ -63,11 +69,11 @@ public class WishlistController {
 	 			}
 	 		
 	 	 	System.out.println(book);
-	 		Product product = productService.getProductByName(book);
-	 		Wishlist wishlist = new Wishlist();
+	 		product = productService.getProductByName(book);
+	 		wishlist = new Wishlist();
 	 		wishlist.setAuthor(product.getAuthor_name());
 	 		wishlist.setProduct_name(book);
-	 		wishlist.setDescription(product.getDescription());
+	 		wishlist.setDescription(product.getProduct_desc());
 	 		wishlist.setUsername(getPrincipal());
 	 	 	wishlistDao.addWishlist(wishlist);
 	 		model.addAttribute("username", getPrincipal());

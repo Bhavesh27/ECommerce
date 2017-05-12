@@ -42,7 +42,7 @@ public class CartController {
 		model.addAttribute("categoryList", categoryService.getAllCategorys());
 		User user = userService.getUserByUsername(username);
 		model.addAttribute("name", user.getName());
-		model.addAttribute("products",cartDAO.list(username));
+		model.addAttribute("products",cartDAO.list(userService.getUserByUsername(username).getUser_id()));
 		return "cart";
 		
 	}
@@ -57,37 +57,39 @@ public class CartController {
 		
 		Product product = productService.getProductByName(productName);
 		
-		if(product.getQuantity() == 0)
+		if(product.getProduct_quantity() == 0)
     	{
 			model.addAttribute("username", getPrincipal());
 			return "redirect:/cart";
     	}
 		
-		List<Cart> list = cartDAO.list(getPrincipal());
+		List<Cart> list = cartDAO.list(userService.getUserByUsername(getPrincipal()).getUser_id());
     	System.out.println(list.size());
     	for(int i=0; i<list.size(); i++)
     	{
-    		if(list.get(i).getProductName().equals(productName))
+    		if(list.get(i).getProduct().getProduct_name().equals(productName))
     		{
     			int j=1; //variable created to increase the quantity of product in cart by 1
     			
     			Cart cart = cartDAO.getById(list.get(i).getCart_id());
-    			if(cart.getQuantity() == product.getQuantity())
+    			if(cart.getQuantity() == product.getProduct_quantity())
     			{
     				j=0;
     				//model.addAttribute("msg","This seller has only "+product.getQuantity()+" of these available. Check another seller to buy more");
     				//redirectAttributes.addFlashAttribute("msg", "This seller has only "+product.getQuantity()+" of these available. Check another seller to buy more");
     			}
     			cart.setQuantity(cart.getQuantity()+j);
-    			cart.setProductName(productName);
+    			//cart.setProductName(productName);
     	    	
     	    	// set the price after discount
-    	    	double price = product.getPrice() - product.getDiscount() * product.getPrice() / 100;
+    	    	double price = product.getProduct_price() - product.getProduct_discount() * product.getProduct_price() / 100;
     	    	
-    	    	cart.setPrice(price);
+    	    	//cart.setPrice(price);
     	    	cart.setTotal(price*cart.getQuantity());
-    	    	cart.setAuthorName(product.getAuthor_name());
-    	    	cart.setUsername(getPrincipal());
+    	    	//cart.setAuthorName(product.getAuthor_name());
+    	    	//cart.setUsername(getPrincipal());
+    	    	cart.setProduct(product);
+    	    	cart.setUser(userService.getUserByUsername(getPrincipal()));
     	    	model.addAttribute("username", getPrincipal());
     			cartDAO.Update(cart);
     			
@@ -96,20 +98,22 @@ public class CartController {
     	}
 		
 		Cart cart = new Cart();
-		double price = product.getPrice() - product.getDiscount() * product.getPrice() / 100;
-		cart.setPrice(price);
-		cart.setProductName(productName);
+		double price = product.getProduct_price() - product.getProduct_discount() * product.getProduct_price() / 100;
+		cart.setTotal(price);
+		//cart.setProductName(productName);
 		cart.setQuantity(1);
-		if (product.getQuantity()>0){
+		if (product.getProduct_quantity()>0){
 			
 			cart.setStatus('A');
 		} else
 		{
 			cart.setStatus('N');
 		}
-		cart.setUsername(getPrincipal());
+		//cart.setUsername(getPrincipal());
+		cart.setProduct(product);
+    	cart.setUser(userService.getUserByUsername(getPrincipal()));
 		model.addAttribute("username", getPrincipal());
-		cart.setAuthorName(product.getAuthor_name());
+		//cart.setAuthorName(product.getAuthor_name());
 		cartDAO.addToCart(cart);
 		return "redirect:/cart";
 		
@@ -121,7 +125,7 @@ public class CartController {
     	cartDAO.delete(cartDAO.getById(cart_id));
     	model.addAttribute("user", getPrincipal());
 		model.addAttribute("categories", categoryService.getAllCategorys());
-    	model.addAttribute("products",cartDAO.list(getPrincipal()));
+    	model.addAttribute("products",cartDAO.list(userService.getUserByUsername(getPrincipal()).getUser_id()));
     	return "cart";
     }
 	

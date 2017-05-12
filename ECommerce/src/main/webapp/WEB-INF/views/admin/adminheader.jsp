@@ -24,7 +24,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<c:url value="/admin/dashboard"/>" >Dashboard</a></li>
+            <li class="active"><a class="navbar-brand" href="<c:url value="/admin/dashboard"/>" >Dashboard</a></li>
             <li><a href="<c:url value="/admin/products/product"/>" >Product</a></li>
             <li><a href="<c:url value="/admin/suppliers/supplier"/>" >Supplier</a></li>
             <li><a href="<c:url value="/admin/users/user" />" >Users</a></li>

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +20,7 @@ import com.example.service.ProductService;
 import com.google.gson.Gson;
 
 @Controller
-public class ProductController extends HelloWorldController {
+public class ProductController  {
 	
 	@Autowired
 	ProductService productService;
@@ -65,5 +67,17 @@ public class ProductController extends HelloWorldController {
            	model.addAttribute("categories", categoryService.getAllCategorys());		
            	return "productPage";		
        }
+    
+    public String getPrincipal(){
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails)principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
+	}
     
 }

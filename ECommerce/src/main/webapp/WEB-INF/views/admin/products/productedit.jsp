@@ -44,13 +44,13 @@
 		</script>
   </head>
   <body>
-  	<c:import url="adminheader.jsp"></c:import>
+  	<c:import url="../adminheader.jsp"></c:import>
   
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
-          <li><a href="<c:url value="/product"/>">Product</a></li>
+          <li><a href="<c:url value="/admin/dashboard"/>">Dashboard</a></li>
+          <li><a href="<c:url value="/admin/products/product"/>">Product</a></li>
           <li class="active">Edit Page</li>
         </ol>
       </div>
@@ -61,12 +61,13 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="<c:url value="/admin"/>" class="list-group-item active main-color-bg">
+              <a href="<c:url value="/admin/dashboard"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<c:url value="/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Product <span class="badge">12</span></a>
-              <a href="<c:url value="/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">33</span></a>
-              <a href="<c:url value="/users"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">203</span></a>
+              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products }</span></a>
+              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers }</span></a>
+              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users }</span></a>
+              <a href="<c:url value="/admin/categorys/category"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Categorys <span class="badge">${categories}</span></a>
             </div>
           </div>
           <div class="col-md-9">
@@ -77,15 +78,15 @@
               </div>
               
               <div class="panel-body">
-                <form:form action="edit-product-${product_id}" method="post" commandName="updateProduct" enctype="multipart/form-data">
+                <form:form action="/admin/products/edit/${updProduct.product_id}" method="post" commandName="updateProduct" enctype="multipart/form-data">
                 <div class="col-md-9">
                   <div class="form-group">
                     <label>Product Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Enter Product Name" value="${product_name}">
+                    <input type="text" class="form-control" name="product_name" placeholder="Enter Product Name" value="${updProduct.product_name}">
                   </div>
                   <div class="form-group">
                     <label>Product Description</label>
-                    <input name="description" class="form-control" placeholder="Enter Product Description" value="${product_description}" />
+                    <input name="product_desc" class="form-control" placeholder="Enter Product Description" value="${updProduct.product_desc}" />
                   </div>
                   <div class="form-group col-md-6">
                   	<label>Select Category</label>
@@ -97,7 +98,7 @@
                   </div>
                   <div class="form-group">
                     <label>Author Name</label>
-                    <input type="text" class="form-control" name="author_name" placeholder="Enter Author Name" value="${product_author}">
+                    <input type="text" class="form-control" name="author_name" placeholder="Enter Author Name" value="${updProduct.author_name}">
                   </div>
                 </div>
                   <div class="col-md-3">
@@ -107,15 +108,15 @@
                   <div class="col-md-12">
                   <div class="form-group col-md-4">
                     <label>Price</label>
-                    <input type="number" name="price" class="form-control" placeholder="Enter Price" value="${product_price}" >
+                    <input type="number" name="product_price" class="form-control" placeholder="Enter Price" value="${updProduct.product_price}" >
                   </div>
                   <div class="form-group col-md-4">
                     <label>Discount</label>
-                    <input type="number" class="form-control" name="discount" placeholder="Enter Product Discount" value="${product_discount}" />
+                    <input type="number" class="form-control" name="product_discount" placeholder="Enter Product Discount" value="${updProduct.product_discount}" />
                   </div>
                   <div class="form-group col-md-4">
                     <label>Quantity</label>
-                    <input type="number" name="quantity" class="form-control" placeholder="Enter Quantity" value="${product_quantity}">
+                    <input type="number" name="product_quantit" class="form-control" placeholder="Enter Quantity" value="${updProduct.product_quantity}">
                   </div>
                   <input type="submit" class="btn btn-default" value="Update Details">
                   </div>
