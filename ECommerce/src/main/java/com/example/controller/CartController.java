@@ -39,6 +39,11 @@ public class CartController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String Cart(@RequestParam("username") String username ,ModelMap model){
 		
+		if(!username.equals(getPrincipal())){
+			 	System.out.println(username);
+			 	return "redirect:/home";
+			 }
+		
 		model.addAttribute("categoryList", categoryService.getAllCategorys());
 		User user = userService.getUserByUsername(username);
 		model.addAttribute("name", user.getName());

@@ -13,7 +13,7 @@
 		<div class="row">
 			<c:forEach items="${books }" var="book">
 				<div class="col-md-2">
-					<a href='#'><img src='<c:url value='static/images/product/${book.name }.png'></c:url>' width=150px height=200px /></a>
+					<a href='#'><img src='${pageContext.request.contextPath}/static/images/product/${book.name }.png' width=150px height=200px /></a>
 				</div>
 			</c:forEach>
 		</div>

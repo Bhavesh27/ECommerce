@@ -11,7 +11,7 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	
-	<link rel="stylesheet" href="static/css/landing.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/landing.css">
 	
 	<title>HOME page</title>
 </head>

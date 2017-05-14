@@ -14,9 +14,9 @@
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="static/css/header.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/header.css">
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="static/js/autocompleter.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/autocompleter.js"></script>
     <style type="text/css">
     	#icon{
     	height:30px;
@@ -42,7 +42,7 @@
         <h3>BOOKS VILLA</h3>
       </div> -->
           <div class="col-md-2 col-xs-12">
-            <img id="logo" src='static/images/bookpile.jpg' alt='Bookstore' />
+            <img id="logo" src='${pageContext.request.contextPath}/static/images/bookpile.jpg' alt='Bookstore' />
           </div>
           <div class="col-md-2 col-xs-12" style="float:left">
             <h2>BOOKSTORE</h2>
@@ -68,15 +68,16 @@
 	          		<c:set var="cart_url" value="/cart?username=${pageContext.request.userPrincipal.name}"></c:set>
 	          		<c:set var="wishlist_url" value="/wishlist?username=${pageContext.request.userPrincipal.name}"></c:set>
 	          		<c:set var="cart_size" value="${cartSize }"></c:set>
+	          		<c:set var="wishlist_size" value="${wishlistSize }"></c:set>
 	          	</c:if>
 	            <a href='<c:url value='${cart_url }'></c:url>'><span class="fa fa-shopping-cart" style="font-size: 25px; color:#585858"></span>
-	            <span class="item"><b>CART    0</b></span></a>
+	            <span class="item"><b>CART    ${cartSize }</b></span></a>
 	        </div>
           </div>
           <div class="col-md-2" style="padding-top: 35px">
           	<div class="cart-list">
             	<a href='<c:url value='${wishlist_url }'></c:url>'><img src='<c:url value='static/images/wishlist-pro-icon.jpg'></c:url>' width='30px' height='30px' />
-            	<span class="item"><b>WISHLIST    0</b></span></a>
+            	<span class="item"><b>WISHLIST   ${wishlistSize }</b></span></a>
             </div>
           </div>
     </div>
@@ -118,7 +119,7 @@
             <c:if test="${pageContext.request.userPrincipal.name != null }">
             	<li class="${Contactus} dropdown"><a class="dropbtn" href='<c:url value='/home'></c:url>'>${pageContext.request.userPrincipal.name} <span class="caret"></span></a>
 			       	<ul class="dropdown-menu" style="width:150px">
-			       		<li><a href='<c:url value='/account?username=${pageContext.request.userPrincipal.name}'></c:url>'>your account</a></li>         <%-- /account?username=${user} --%>
+			       		<li><a href='<c:url value='/user/${pageContext.request.userPrincipal.name}/account'></c:url>'>your account</a></li>         <%-- /account?username=${user} --%>
 			       		<li><a>your orders</a></li>
 			       		<li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'>your cart</a></li>
 			       	</ul>
