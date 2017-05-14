@@ -10,9 +10,9 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
+    <!-- <link href="../static/css/stylesheet.css" rel="stylesheet"> -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-     <script type="text/javascript" src="static/js/table_filter.js"></script>
+    <!--  <script type="text/javascript" src="../static/js/table_filter.js"></script> -->
      <style type="text/css">
 	
 	.results tr[visible='false'],
@@ -35,13 +35,13 @@
   </head>
   <body>
  
- 	<%-- <c:import url="adminheader.jsp"></c:import> --%>
- 	   <%@ include file="../adminheader.jsp" %>
+ 	 <c:import url="../adminheader.jsp" />
+ 	  <%--  <%@ include file="../adminheader.jsp" %> --%>
  	   <c:url var="supplierUrl" value="/admin/suppliers" />
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="<c:url value="/admin/admin-dashboard"/>">Dashboard</a></li>
+          <li><a href="<c:url value="/admin/dashboard"/>">Dashboard</a></li>
           <li class="active">Supplier</li>
         </ol>
       </div>
@@ -55,9 +55,9 @@
               <a href="<c:url value="/admin/dashboard"/>" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products }</span></a>
-              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers }</span></a>
-              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users }</span></a>
+              <a href="<c:url value="/admin/products/product"/>" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Products <span class="badge">${products}</span></a>
+              <a href="<c:url value="/admin/suppliers/supplier"/>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Supplier <span class="badge">${suppliers}</span></a>
+              <a href="<c:url value="/admin/users/user"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">${users}</span></a>
               <a href="<c:url value="/admin/categorys/category"/>" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Categorys <span class="badge">${categories}</span></a>
             </div>
 
@@ -84,7 +84,7 @@
                 <h3 class="panel-title">Add Supplier</h3>
               </div>
               <div class="panel-body">
-                <form:form action="/admin/suppliers/add" method="POST" commandName="newSupplier">
+                <form:form action="add" method="POST" commandName="newSupplier">
                   <div class="form-group">
                     <label>Supplier Name</label>
                     <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="" required />

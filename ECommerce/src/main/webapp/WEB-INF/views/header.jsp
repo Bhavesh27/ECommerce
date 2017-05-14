@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +22,13 @@
     	height:30px;
     	width:40px;
     	}
+    	#logo{
+    	height:100px;
+    	width:180px;
+    	}
+ 		#search{
+ 		padding-bottom:10px;
+ 		}
     	.ui-helper-hidden-accessible { display:none; }
     </style>
   
@@ -29,18 +37,48 @@
     <header>
     <div class="container">
     <div class="row">
-      <div class="col-md-4" >
-      	<!-- <img src='static/images/Bookstore-logo.png' alt='Bookstore' height="100px" width="280px"/> -->
+      <!-- <div class="col-md-4" >
+      	<img src='static/images/Bookstore-logo.png' alt='Bookstore' height="100px" width="280px"/>
         <h3>BOOKS VILLA</h3>
-      </div>
-      <div class="col-md-6 search-container" style="float: left; padding-bottom: 1px">
-        <div class="input-group ui-widget" style="padding-top: 12px" >
-          <input type="text" class="form-control" name="search" id="search" placeholder="search"  />
-          <span class="input-group-addon">
-            <button style="color:#4CAF50"><i class="fa fa-search"></i></button>
-          </span>
-        </div>
-      </div>
+      </div> -->
+          <div class="col-md-2 col-xs-12">
+            <img id="logo" src='static/images/bookpile.jpg' alt='Bookstore' />
+          </div>
+          <div class="col-md-2 col-xs-12" style="float:left">
+            <h2>BOOKSTORE</h2>
+          </div>
+          <div class="col-md-4 col-xs-8 search-container" style="padding-top: 40px">
+          <form:form action="product" method="GET">
+            <div class="input-group ui-widget">
+              <input type="text" id="search" name="search" class="form-control" placeholder="search"/>
+              <span class="input-group-addon">
+                <button class="icon" style="color:#4CAF50"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+           </form:form>
+          </div>
+      <div class="col-md-2" style="padding-top: 35px; padding-left:40px">
+          	<div class="cart-list">
+	          	<c:if test="${pageContext.request.userPrincipal.name == null }">
+	          		<c:set var="cart_url" value="/login"></c:set>
+	          		<c:set var="wishlist_url" value="/login"></c:set>
+	          		<c:set var="cart_size" value="0"></c:set>
+	          	</c:if>
+	          	<c:if test="${pageContext.request.userPrincipal.name != null }">
+	          		<c:set var="cart_url" value="/cart?username=${pageContext.request.userPrincipal.name}"></c:set>
+	          		<c:set var="wishlist_url" value="/wishlist?username=${pageContext.request.userPrincipal.name}"></c:set>
+	          		<c:set var="cart_size" value="${cartSize }"></c:set>
+	          	</c:if>
+	            <a href='<c:url value='${cart_url }'></c:url>'><span class="fa fa-shopping-cart" style="font-size: 25px; color:#585858"></span>
+	            <span class="item"><b>CART    0</b></span></a>
+	        </div>
+          </div>
+          <div class="col-md-2" style="padding-top: 35px">
+          	<div class="cart-list">
+            	<a href='<c:url value='${wishlist_url }'></c:url>'><img src='<c:url value='static/images/wishlist-pro-icon.jpg'></c:url>' width='30px' height='30px' />
+            	<span class="item"><b>WISHLIST    0</b></span></a>
+            </div>
+          </div>
     </div>
   </div>
 </header>
@@ -55,11 +93,11 @@
             <li class="active"><a href='<c:url value='/home'></c:url>'>Home</a></li>
             <li><a href='<c:url value='/aboutUs'></c:url>'>About</a></li>
             <li><a href='<c:url value='/contactUs'></c:url>'>Contact</a></li>
-            <li class="dropdown"><a class="dropbtn" href='<c:url value='/allProduct'></c:url>'>Genre <span class="caret"></span></a>
+            <li class="dropdown"><a class="dropbtn" href='<c:url value='/displayProduct/productList'></c:url>'>Genre <span class="caret"></span></a>
               <div class="dropdown-menu">
               	<c:forEach items="${categories}" var="category">
 	              		<ul>
-	              			<li><a href='<c:url value='displayProduct-${category.category_id}'></c:url>'>${category.category_name}</a></li>
+	              			<li><a href='<c:url value='/displayProduct/productList/categorywise/{categoryId}'></c:url>'>${category.category_name}</a></li>
 	              		</ul>
 	  
               	</c:forEach>
@@ -67,11 +105,15 @@
             </div>
             </li>
           </ul>
+          <%! String name; %>
+          <% name=(String)session.getAttribute("role"); %>
+          <c:set var="test" value="${name }"></c:set>
+          <c:set var="role" value="ROLE_ADMIN"></c:set>
           <ul class="nav navbar-nav navbar-right">
           	<c:if test="${pageContext.request.userPrincipal.name == null }">
 	            <li><a href='<c:url value='/login'></c:url>'>Sign In</a></li>
 	            <li><a href='<c:url value='/Registration'></c:url>'>Register</a></li>
-	            <li><a href=""><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+	            <!-- <li><a href=""><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li> -->
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name != null }">
             	<li class="${Contactus} dropdown"><a class="dropbtn" href='<c:url value='/home'></c:url>'>${pageContext.request.userPrincipal.name} <span class="caret"></span></a>
@@ -83,7 +125,12 @@
 			     </li>
             	<li><a href='<c:url value='/account?username=${pageContext.request.userPrincipal.name}'></c:url>' style="padding-bottom: 13px; padding-top: 13px"><img id="icon" src='<c:url value='/static/images/user/${pageContext.request.userPrincipal.name}.png'></c:url>' class="img img-rounded"/></a></li>
             	<li><a href='<c:url value='/logout'></c:url>'>Logout</a></li>
-            	<li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li>
+            	<c:if test="${test == role }">
+            	
+            		<a href='<c:url value='/gotoadminsection'></c:url>' >Admin Section</a>
+            	
+            	</c:if>
+            	<%-- <li><a href='<c:url value='/cart?username=${pageContext.request.userPrincipal.name}'></c:url>'><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i><span class="sr-only">(current)</span></a></li> --%>
             </c:if>
           </ul>
         </div>

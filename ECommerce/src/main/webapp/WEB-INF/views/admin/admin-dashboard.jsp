@@ -10,7 +10,7 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/stylesheet.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -83,7 +83,7 @@
                     <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> ${categories}</h2>
                     <h4>Categorys</h4>
                   </div>
-                </div>z
+                </div>
               </div>
               </div>
 

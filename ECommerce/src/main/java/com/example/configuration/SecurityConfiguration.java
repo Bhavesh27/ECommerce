@@ -25,13 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     {
     	
     	auth.jdbcAuthentication().dataSource(dataSource)
-    	.usersByUsernameQuery("select username, password, isActive from User where username=?")
-    	.authoritiesByUsernameQuery("select u1.username , u2.role from User u1 , Roles u2 where u1.roleId=u2.user_role_id and u1.username=?");
+    	.usersByUsernameQuery("select username, password, isActive from User where (username = ? or email = ?)")
+    	.authoritiesByUsernameQuery("select u1.username,u1.email , u2.role from User u1 , Roles u2 where u1.roleId=u2.user_role_id and (u1.username = ? or u1.email = ?)");
     }
-    
-    
-    
-
+   
 	/*@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("USER");
@@ -47,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	  	.antMatchers("/admin/**").access("hasRole('ADMIN')")
 	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
 	  	.and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
-	  	.usernameParameter("username").passwordParameter("password")
+	  	.usernameParameter("username").usernameParameter("email").passwordParameter("password")
 	  	.and().csrf().disable();
 	  	//.and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}

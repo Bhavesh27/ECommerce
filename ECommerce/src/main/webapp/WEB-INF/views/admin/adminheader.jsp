@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title></title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/stylesheet.css" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/table_filter.js"></script>
     
 </head>
 <body>
@@ -33,6 +34,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, ${user}</a></li>
             <li><a href=" <c:url value="/logout" /> " >Logout</a></li>
+            <li><a href=" <c:url value="/home" /> " >Go To Home</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

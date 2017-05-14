@@ -59,7 +59,7 @@ public class AdminProductController {
 		
 		model.addAttribute("newProduct", new Product());
 		
-		return "product";
+		return "admin/products/product";
 		
 	}
 	
@@ -110,7 +110,7 @@ public class AdminProductController {
     		}
     	}
     	
-    	return "redirect:/product";
+    	return "redirect:/admin/products/product";
     }
     
     @RequestMapping(value="/admin/products/edit/{product_id}", method = RequestMethod.POST)
@@ -140,7 +140,7 @@ public class AdminProductController {
     		}
     	}
     	
-    	return "redirect:/product";
+    	return "redirect:/admin/products/product";
     }
     
     @RequestMapping(value="/admin/products/edit/{product_id}", method = RequestMethod.GET)
@@ -159,7 +159,7 @@ public class AdminProductController {
     	model.addAttribute("category",categoryService.getAllCategorys());
     	model.addAttribute("suppliers",supplierService.getAllSuppliers());*/
     	model.addAttribute("updProduct", product);
-    	return "productedit";
+    	return "admin/products/productedit";
     }
     
     @RequestMapping(value="/admin/products/delete/{product_id}", method = RequestMethod.GET)
@@ -167,7 +167,7 @@ public class AdminProductController {
     {
     	Product product = productService.getProductById(product_id);
 		productService.deleteProduct(product);
-    	return "redirect:/product";
+    	return "redirect:/admin/products/product";
     }
     
     public String getPrincipal(){

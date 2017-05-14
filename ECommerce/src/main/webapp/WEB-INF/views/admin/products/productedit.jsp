@@ -11,7 +11,7 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
+    <!-- <link href="static/css/stylesheet.css" rel="stylesheet"> -->
     <style type="text/css">
 	
 	.results tr[visible='false'],
@@ -78,7 +78,7 @@
               </div>
               
               <div class="panel-body">
-                <form:form action="/admin/products/edit/${updProduct.product_id}" method="post" commandName="updateProduct" enctype="multipart/form-data">
+                <form:form action="${updProduct.product_id}" method="post" commandName="updateProduct" enctype="multipart/form-data">
                 <div class="col-md-9">
                   <div class="form-group">
                     <label>Product Name</label>

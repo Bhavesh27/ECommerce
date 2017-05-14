@@ -8,9 +8,9 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
+    <!-- <link href="../../static/css/stylesheet.css" rel="stylesheet"> -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-     <script type="text/javascript" src="static/js/table_filter.js"></script>
+     <!-- <script type="text/javascript" src="../../static/js/table_filter.js"></script> -->
      
      <style type="text/css">
 	
@@ -76,7 +76,7 @@
                 <h3 class="panel-title">Add Product</h3>
               </div>
               <div class="panel-body">
-                <form:form action="/admin/products/add" method="post" commandName="newProduct" enctype="multipart/form-data">
+                <form:form action="add" method="post" modelAttribute="newProduct" enctype="multipart/form-data">
                  <div class="col-md-9">
                   <div class="form-group">
                     <label>Product Name</label>

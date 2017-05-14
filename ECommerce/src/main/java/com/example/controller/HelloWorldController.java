@@ -68,6 +68,12 @@ public class HelloWorldController {
 		return "dba";
 	}
 
+	@RequestMapping(value = "/gotoadminsection", method = RequestMethod.GET)
+	private String adminPage(ModelMap model) {
+		model.addAttribute("user", getPrincipal());
+		return "redirect:/admin/dashboard";
+	}
+	
 	@RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
 	private String accessDeniedPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());

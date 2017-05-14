@@ -11,7 +11,7 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
+   <!--  <link href="static/css/stylesheet.css" rel="stylesheet"> -->
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -20,8 +20,8 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="<c:url value="/admin"/>">Dashboard</a></li>
-          <li><a href="<c:url value="/supplier"/>">Product</a></li>
+          <li><a href="<c:url value="/admin/dashboard"/>">Dashboard</a></li>
+          <li><a href="<c:url value="/admin/suppliers/supplier"/>">Product</a></li>
           <li class="active">Supplier Edit Page</li>
         </ol>
       </div>
@@ -63,7 +63,7 @@
                 <h3 class="panel-title">Supplier Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form:form action="/admin/suppliers/edit/${updSupplier.supplier_id}" method="POST" commandName="updateSupplier">
+                <form:form action="${updSupplier.supplier_id}" method="POST" commandName="updateSupplier">
                   <div class="form-group">
                     <label>Supplier Name</label>
                     <input type="text" name="supplier_name" class="form-control" placeholder="Enter Supplier Name" value="${updSupplier.supplier_name}" />

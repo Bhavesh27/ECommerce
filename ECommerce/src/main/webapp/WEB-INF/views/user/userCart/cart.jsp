@@ -1,4 +1,7 @@
-<%@ include file="header.jsp" %>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" isELIgnored="false" pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:import url="../../header.jsp"></c:import>
 <style>
 h4:after {
     content:' ';
@@ -76,4 +79,4 @@ hr {
  		</div>
  	</div>
  </div>
-<%@ include file="footer.jsp"  %>
+<%@ include file="../../footer.jsp"  %>

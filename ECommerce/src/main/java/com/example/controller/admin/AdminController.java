@@ -2,13 +2,15 @@ package com.example.controller.admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.model.Category;
 import com.example.model.Supplier;
@@ -39,25 +41,27 @@ class AdminController {
     @Autowired
     Supplier supplier;
     
-	@RequestMapping(value = "/admin/dashboard", method = RequestMethod.GET)
-	public String adminPage(ModelMap model) {
+	@RequestMapping(value = "/admin/dashboard")
+	public String adminPage(ModelMap model,HttpSession session) {
 		
-		/*if(getPrincipal() == "anonymousUser")
+		if(getPrincipal() == "anonymousUser")
 		{
 			return "redirect:/login";
-		}*/
+		}
+		
+		session.setAttribute("role", "ROLE_ADMIN");
 		
 		model.addAttribute("user", getPrincipal());
 		
 		List<User> users = userService.getAllActiveUsers();
-		model.addAttribute("users", users);
+		model.addAttribute("users", users.size());
 		
-		/*model.addAttribute("edit", false);
-	    model.addAttribute("new_category", new Category());
-	    */
+		model.addAttribute("edit", false);
+	    //model.addAttribute("new_category", new Category());
+	    
 		
 	    List<Category> categories = categoryService.getAllCategorys();
-	    model.addAttribute("categories", categories);
+	    model.addAttribute("categories", categories.size());
 	    model.addAttribute("suppliers", supplierService.getAllSuppliers().size());
 	    model.addAttribute("products", productService.getAllProducts().size());
 		

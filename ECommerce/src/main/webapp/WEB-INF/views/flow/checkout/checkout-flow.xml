@@ -1,0 +1,49 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+      	http://www.springframework.org/schema/webflow
+      	http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<secured attributes="ROLE_CUSTOMER" />
+
+	<input name="loggedInUserId" required="true" />
+
+	<on-start>
+		<evaluate expression="userCartService.getAllCartItems(loggedInUserId)" result="flowScope.cartItems" />
+		<evaluate expression="userCustomerService.getCustomer(loggedInUserId)" result="flowScope.userCustomer" />
+		<set name="userCustomer.user.first_name" value="flowScope.loggedInUser" />
+	</on-start>
+	
+	<view-state id="shippingInfo" model="userCustomer">
+		<binder>
+			<binding property="user" />
+			<binding property="mobile_no" />
+			<binding property="shipping_address" />
+			<binding property="billing_address" />
+			<binding property="cardno" />
+			<binding property="cardname" />
+			<binding property="card_exp_month" />
+			<binding property="card_exp_year" />
+			<binding property="cardcvc" />
+		</binder>
+		
+		<transition on="proceed" to="reviewOrder" >
+			<evaluate expression="userCustomerService.updateCustomer(userCustomer)" />
+		</transition>
+	</view-state>
+	
+	<view-state id="reviewOrder">
+		<transition on="proceed" to="orderConfirmed" >
+			<evaluate expression="orderService.createOrderFromUserCart(loggedInUserId)" />
+		</transition>
+		<transition on="cancel" to="cancel" />
+	</view-state>
+	
+	<end-state id="orderConfirmed">
+		<output name="confirmed" value="'Your order is placed. Thanks, for shopping with us.'"/>
+	</end-state>
+
+	<end-state id="cancel" />
+
+</flow> -->

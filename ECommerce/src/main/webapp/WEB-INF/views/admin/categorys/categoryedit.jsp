@@ -11,7 +11,6 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/stylesheet.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -63,7 +62,7 @@
                 <h3 class="panel-title">User Edit Page</h3>
               </div>
               <div class="panel-body">
-                <form:form action="/admin/categorys/edit/${updCategory.category_id}" method="POST" commandName="updateCategory">
+                <form:form action="${updCategory.category_id}" method="POST" commandName="updateCategory">
                   <div class="form-group">
                     <label>Category Name</label>
                     <input type="text" name="category_name" class="form-control" placeholder="Enter Category Name" value="${updCategory.category_name}">

@@ -28,7 +28,7 @@ public class ProductController  {
 	@Autowired
 	CategoryService categoryService;
 
-	@RequestMapping(value="/displayProduct-{categoryId}" , method = RequestMethod.GET)
+	@RequestMapping(value="/displayProduct/productList/categorywise/{categoryId}" , method = RequestMethod.GET)
     public String displayProduct(ModelMap model , @PathVariable("categoryId") int categoryId )
     {
     	model.addAttribute("DisplayProduct", "activ");
@@ -50,7 +50,7 @@ public class ProductController  {
 		}
     }
     
-    @RequestMapping(value="/allProduct" , method=RequestMethod.GET)
+    @RequestMapping(value="/displayProduct/productsList" , method=RequestMethod.GET)
     public String allProducts(ModelMap model)
     {
     	model.addAttribute("DisplayProduct","activ");
