@@ -59,7 +59,7 @@ hr {
 					<p><input type="number" class="form-control" value="${product.quantity}"/></p>
 				</div>
 				<div class="col-md-1">
-					<a href='<c:url value='remove-cart-${product.id}'></c:url>' title="remove"><i class="fa fa-times" aria-hidden="true" style="font-size:20px; color:#e60000"></i></a>
+					<a href='<c:url value='/user/${user}/cart/remove-cart/${product.cart_id }'></c:url>' title="remove"><i class="fa fa-times" aria-hidden="true" style="font-size:20px; color:#e60000"></i></a>
 				</div>
 			</div>
 		</div>

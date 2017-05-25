@@ -183,7 +183,7 @@
 	                                        <div class="col-md-4">
 	                                            <div class="form-group">
 	                                                <label>Mobile No</label>
-	                                                <form:input type="tel" path="mobile" class="form-control" placeholder="Enter Mobile No" value="${updateUser.mobile }" />
+	                                                <form:input type="tel" path="mobile_no" class="form-control" placeholder="Enter Mobile No" value="${updateUser.mobile }" />
 	                                            </div>
 	                                        </div>
 	                                        <div class="col-md-8">

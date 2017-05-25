@@ -147,10 +147,10 @@
                       <tbody>
                       	<c:forEach items="${products}" var="product">
 	                      <tr>
-	                        <td><c:out value="${product.name}"></c:out></td>
-	                        <td><c:out value="${product.price}"></c:out></td>
+	                        <td><c:out value="${product.product_name}"></c:out></td>
+	                        <td><c:out value="${product.product_price}"></c:out></td>
 	                        <td><c:out value="${product.author_name}"></c:out></td>
-	                        <td><c:out value="${product.quantity}"></c:out></td>
+	                        <td><c:out value="${product.product_quantity}"></c:out></td>
 	                        <td><a class="btn btn-default" href="<c:url value="/admin/products/edit/${product.product_id}"/>">Edit</a> <a class="btn btn-danger" href="<c:url value="/admin/products/delete/${product.product_id}" />">Delete</a></td>
 	                      </tr>
 	                     </c:forEach>

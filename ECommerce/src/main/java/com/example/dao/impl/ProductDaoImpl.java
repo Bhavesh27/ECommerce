@@ -60,10 +60,11 @@ public class ProductDaoImpl implements ProductDao {
 	
 	public Product getProductById(int id) {
 		
-		//return sessionFactory.getCurrentSession().get(Product.class, id);
-		Criteria criteria  = sessionFactory.getCurrentSession().createCriteria(Product.class);
+		System.out.println("here");
+		return sessionFactory.getCurrentSession().get(Product.class, id);
+		/*Criteria criteria  = sessionFactory.getCurrentSession().createCriteria(Product.class);
 		criteria.add(Restrictions.like("product_id", id));
-		return (Product)criteria.uniqueResult();
+		return (Product)criteria.uniqueResult();*/
 	}
 
 

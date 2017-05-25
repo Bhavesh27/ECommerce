@@ -36,19 +36,19 @@ public class CartController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String Cart(@RequestParam("username") String username ,ModelMap model){
+	@RequestMapping(value = "/{username}/cart", method = RequestMethod.GET)
+	public String Cart(@PathVariable("username") String username ,ModelMap model){
 		
 		if(!username.equals(getPrincipal())){
 			 	System.out.println(username);
-			 	return "redirect:/home";
+			 	return "redirect:/logout";
 			 }
 		
 		model.addAttribute("categoryList", categoryService.getAllCategorys());
 		User user = userService.getUserByUsername(username);
 		model.addAttribute("name", user.getName());
 		model.addAttribute("products",cartDAO.list(userService.getUserByUsername(username).getUser_id()));
-		return "cart";
+		return "user/userCart/cart";
 		
 	}
 	
@@ -65,7 +65,7 @@ public class CartController {
 		if(product.getProduct_quantity() == 0)
     	{
 			model.addAttribute("username", getPrincipal());
-			return "redirect:/cart";
+			return "redirect:/user/{username}/cart";
     	}
 		
 		List<Cart> list = cartDAO.list(userService.getUserByUsername(getPrincipal()).getUser_id());
@@ -98,7 +98,7 @@ public class CartController {
     	    	model.addAttribute("username", getPrincipal());
     			cartDAO.Update(cart);
     			
-    			return "redirect:/cart";
+    			return "redirect:/user/{username}/wishlist";
     		}
     	}
 		
@@ -120,18 +120,21 @@ public class CartController {
 		model.addAttribute("username", getPrincipal());
 		//cart.setAuthorName(product.getAuthor_name());
 		cartDAO.addToCart(cart);
-		return "redirect:/cart";
+		return "redirect:/user/{username}/cart";
 		
 	}	
 	
-	@RequestMapping(value="remove-cart-{cart_id}", method = RequestMethod.GET)
+	//@RequestMapping(value="remove-cart-{cart_id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{username}/cart/remove-cart/{cart_id}", method = RequestMethod.GET)
     public String removeCart(@PathVariable int cart_id , ModelMap model)
     {
     	cartDAO.delete(cartDAO.getById(cart_id));
-    	model.addAttribute("user", getPrincipal());
+    	/*model.addAttribute("user", getPrincipal());
 		model.addAttribute("categories", categoryService.getAllCategorys());
     	model.addAttribute("products",cartDAO.list(userService.getUserByUsername(getPrincipal()).getUser_id()));
-    	return "cart";
+    	return "cart";*/
+    	model.addAttribute("username", getPrincipal());
+    	return "redirect:/user/{username}/cart";
     }
 	
 	private String getPrincipal(){

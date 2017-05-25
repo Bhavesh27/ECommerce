@@ -28,8 +28,8 @@ public class ProductController  {
 	@Autowired
 	CategoryService categoryService;
 
-	@RequestMapping(value="/displayProduct/productList/categorywise/{categoryId}" , method = RequestMethod.GET)
-    public String displayProduct(ModelMap model , @PathVariable("categoryId") int categoryId )
+	@RequestMapping(value="/displayProduct/productList/categorywise/{category_id}" , method = RequestMethod.GET)
+    public String displayProduct(ModelMap model , @PathVariable("category_id") int categoryId )
     {
     	model.addAttribute("DisplayProduct", "activ");
     	model.addAttribute("categories", categoryService.getAllCategorys());

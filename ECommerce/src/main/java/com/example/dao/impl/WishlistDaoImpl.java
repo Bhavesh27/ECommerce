@@ -39,19 +39,26 @@ public class WishlistDaoImpl implements WishlistDao {
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
+	/*@SuppressWarnings("unchecked")
 	@Override
 	public List<Wishlist> getWishlistItems(String username) {
 		// TODO Auto-generated method stub
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Wishlist.class);
 		criteria.add(Restrictions.like("username", username));
 		return (List<Wishlist>) criteria.list();
-	}
+	}*/
 
 	@Override
 	public Wishlist getWishlist(int wishlist_id) {
 		// TODO Auto-generated method stub
 		return (Wishlist) sessionFactory.getCurrentSession().get(Wishlist.class, wishlist_id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Wishlist> getWishlistItems(int user_id) {
+		// TODO Auto-generated method stub
+		return (List<Wishlist>) sessionFactory.getCurrentSession().createQuery("from Wishlist where user_id = " + user_id).list();
 	}
 
 }

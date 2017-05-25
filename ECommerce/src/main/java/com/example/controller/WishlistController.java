@@ -20,6 +20,7 @@ import com.example.service.ProductService;
 import com.example.service.UserService;
 
 @Controller
+@RequestMapping("/user")
 public class WishlistController {
 
 	    @Autowired
@@ -40,14 +41,18 @@ public class WishlistController {
 	 	 @Autowired
 	 	 Wishlist wishlist;
 	 
-	 	@RequestMapping(value="/wishlist" , method = RequestMethod.GET)
-	 	public String wishlist(@RequestParam("username") String username , ModelMap model)
+	 	@RequestMapping(value="/{username}/wishlist" , method = RequestMethod.GET)
+	 	public String wishlist(@PathVariable("username") String username , ModelMap model)
 	 	{
+	 		
+	 		if(!username.equals(getPrincipal()))
+	 				return "redirect:/logout";
+	 		
 	 		model.addAttribute("user", getPrincipal());
 	 		model.addAttribute("categories", categoryService.getAllCategorys());
-	     	model.addAttribute("products",wishlistDao.getWishlistItems(username));
+	     	model.addAttribute("products",wishlistDao.getWishlistItems(userService.getUserByUsername(username).getUser_id()));
 	     	
-	 		return "wishlist";
+	 		return "user/userWishlist/wishlist";
 	 	}
 	 	
 	 	@RequestMapping(value="/addWishlistItem" , method = RequestMethod.GET)
@@ -58,13 +63,13 @@ public class WishlistController {
 	 	   		return "redirect:/login";
 	 	   	}
 	 			
-	 		List<Wishlist> wishlist1 = wishlistDao.getWishlistItems(getPrincipal());		
+	 		List<Wishlist> wishlist1 = wishlistDao.getWishlistItems(userService.getUserByUsername(getPrincipal()).getUser_id());	
 	 		for(Wishlist list : wishlist1)		
 	 			{		
 		 			if(list.getProduct_name().equals(book))		
 	 					{			
 		 				    model.addAttribute("username", getPrincipal());		
-	 		 	 			return "redirect:/wishlist";		
+	 		 	 			return "redirect:/user/{username}/wishlist";		
 	 		 	 		}		
 	 			}
 	 		
@@ -77,17 +82,20 @@ public class WishlistController {
 	 		wishlist.setUsername(getPrincipal());
 	 	 	wishlistDao.addWishlist(wishlist);
 	 		model.addAttribute("username", getPrincipal());
-	 		return "redirect:/wishlist";
+	 		return "redirect:/user/{username}/wishlist";
 	 	 }
 	 	
-	 	@RequestMapping(value="remove-wishlist-{wishlist_id}", method = RequestMethod.GET)
+	 	//@RequestMapping(value="remove-wishlist-{wishlist_id}", method = RequestMethod.GET)
+	 	@RequestMapping(value="/{username}/wishlist/remove-wishlist/{wishlist_id}", method = RequestMethod.GET)
 	     public String removeCart(@PathVariable int wishlist_id , ModelMap model)
 	     {
 	     	wishlistDao.deleteWishlist(wishlistDao.getWishlist(wishlist_id));
-	     	model.addAttribute("user", getPrincipal());
+	     	/*model.addAttribute("user", getPrincipal());
 	 		model.addAttribute("categories", categoryService.getAllCategorys());
-	     	model.addAttribute("products",wishlistDao.getWishlistItems(getPrincipal()));
-	     	return "wishlist";
+	     	model.addAttribute("products",wishlistDao.getWishlistItems(userService.getUserByUsername(getPrincipal()).getUser_id()));
+	     	return "wishlist";*/
+	     	model.addAttribute("username", getPrincipal());
+	     	return "redirect:/user/{username}/wishlist";
 	     }
 	 	
 	 	private String getPrincipal(){
